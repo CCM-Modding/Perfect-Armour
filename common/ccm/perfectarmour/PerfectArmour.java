@@ -4,7 +4,11 @@ import static ccm.perfectarmour.utils.libs.Archive.CLIENT_PROXY;
 import static ccm.perfectarmour.utils.libs.Archive.MOD_ID;
 import static ccm.perfectarmour.utils.libs.Archive.MOD_NAME;
 import static ccm.perfectarmour.utils.libs.Archive.SERVER_PROXY;
-import ccm.perfectarmour.sided.CommonProxy;
+
+import java.io.File;
+
+import net.minecraftforge.common.Configuration;
+import ccm.perfectarmour.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -23,10 +27,18 @@ public class PerfectArmour
 
     @SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
     public static CommonProxy proxy;
+    
+    public static Configuration config;
 
     @EventHandler
     public void preInit(final FMLPreInitializationEvent event)
-    {}
+    {
+        File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
+        File configFile = new File(configFolder.getAbsolutePath() + "/" + MOD_ID + ".cfg");
+        File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
+        config = new Configuration(configFile, true);
+        
+    }
 
     @EventHandler
     public void init(final FMLInitializationEvent event)
