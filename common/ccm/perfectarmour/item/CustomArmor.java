@@ -9,4 +9,6 @@ public class CustomArmor extends ItemArmor
     {
         super(id, material, renderIndex, type);
     }
+    
+    
 }
