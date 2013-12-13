@@ -10,8 +10,9 @@ import com.google.gson.JsonParser;
 public class JsonHelper
 {
     public static final JsonParser PARSER = new JsonParser();
-    
-    public static void read(File file){
+
+    public static void read(File file)
+    {
         JsonArray rootArray = null;
         try
         {
@@ -23,7 +24,7 @@ public class JsonHelper
 
         for (JsonElement element : rootArray)
         {
-            
+
         }
     }
 }

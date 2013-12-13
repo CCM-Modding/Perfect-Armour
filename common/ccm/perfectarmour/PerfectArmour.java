@@ -27,7 +27,7 @@ public class PerfectArmour
 
     @SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
     public static CommonProxy proxy;
-    
+
     public static Configuration config;
 
     @EventHandler
