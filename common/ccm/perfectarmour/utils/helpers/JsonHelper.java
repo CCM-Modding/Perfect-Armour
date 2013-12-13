@@ -1,13 +1,17 @@
 package ccm.perfectarmour.utils.helpers;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.OutputStreamWriter;
 
 import ccm.perfectarmour.item.ArmourTypes;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.stream.JsonWriter;
 
 public class JsonHelper
 {
@@ -27,5 +31,29 @@ public class JsonHelper
         {
             ArmourTypes.addType(element.getAsJsonObject());
         }
+    }
+
+    public static File addDefaults(File file)
+    {
+        try
+        {
+            JsonWriter writer = new JsonWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8")));
+            writer.beginArray();
+            
+            writer.beginObject();
+            
+            writer.endObject();
+            
+            writer.beginObject();
+            
+            writer.endObject();
+            
+            writer.endArray();
+            writer.close();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return file;
     }
 }
