@@ -1,14 +1,18 @@
 package ccm.perfectarmour;
 
+import static ccm.perfectarmour.utils.libs.Archive.CLIENT_PROXY;
 import static ccm.perfectarmour.utils.libs.Archive.MOD_ID;
 import static ccm.perfectarmour.utils.libs.Archive.MOD_NAME;
+import static ccm.perfectarmour.utils.libs.Archive.SERVER_PROXY;
 
 import java.io.File;
 
+import ccm.perfectarmour.proxy.CommonProxy;
 import ccm.perfectarmour.utils.helpers.JsonHelper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -21,8 +25,8 @@ public class PerfectArmour
     @Instance(MOD_ID)
     public static PerfectArmour instance;
 
-    //@SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
-    //public static CommonProxy proxy;
+    @SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
+    public static CommonProxy proxy;
 
     @EventHandler
     public void preInit(final FMLPreInitializationEvent event)
@@ -30,12 +34,11 @@ public class PerfectArmour
         File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
         configFolder.mkdirs();
         File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
-        if(armours.exists()){
-            JsonHelper.read(armours);
-        }else{
+        if (!armours.exists())
+        {
             JsonHelper.addDefaults(armours);
-            JsonHelper.read(armours);
         }
+        JsonHelper.read(armours);
     }
 
     @EventHandler
