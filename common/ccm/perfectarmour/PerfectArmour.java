@@ -9,6 +9,7 @@ import java.io.File;
 
 import net.minecraftforge.common.Configuration;
 import ccm.perfectarmour.proxy.CommonProxy;
+import ccm.perfectarmour.utils.helpers.JsonHelper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -35,6 +36,12 @@ public class PerfectArmour
     {
         File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
         File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
+        if(armours.exists()){
+            JsonHelper.read(armours);
+        }else{
+            JsonHelper.addDefaults(armours);
+            JsonHelper.read(armours);
+        }
     }
 
     @EventHandler
