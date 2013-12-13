@@ -34,10 +34,7 @@ public class PerfectArmour
     public void preInit(final FMLPreInitializationEvent event)
     {
         File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
-        File configFile = new File(configFolder.getAbsolutePath() + "/" + MOD_ID + ".cfg");
         File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
-        config = new Configuration(configFile, true);
-        
     }
 
     @EventHandler
