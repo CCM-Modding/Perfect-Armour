@@ -48,6 +48,7 @@ public class PerfectArmour
             JsonDefaults.addDefaults(armours);
         }
         JsonHelper.read(armours);
+        
         // Getting our ids
         int helmetID = Item.helmetLeather.itemID;
         int chestID = Item.plateLeather.itemID;
