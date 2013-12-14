@@ -29,35 +29,35 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         return true;
     }
-    
+
     @Override
     public int getDamage(ItemStack stack)
     {
-        if (stack.hasTagCompound())
-        {
-            NBTTagCompound nbt = stack.getTagCompound();
-
-            if (nbt.hasKey(Archive.NBT_ITEM_DAMAGE))
-            {
-                return nbt.getInteger(Archive.NBT_ITEM_DAMAGE);
-            }
-        }
-        return 0;
+        return NBTHelper.getInteger(stack, Archive.NBT_ITEM_DAMAGE);
     }
 
     @Override
     public int getDisplayDamage(ItemStack stack)
     {
-        if (stack.hasTagCompound())
-        {
-            NBTTagCompound nbt = stack.getTagCompound();
+        return getDamage(stack);
+    }
 
-            if (nbt.hasKey(Archive.NBT_ITEM_DAMAGE))
-            {
-                return nbt.getInteger(Archive.NBT_ITEM_DAMAGE);
-            }
-        }
-        return 0;
+    @Override
+    public int getMaxDamage(ItemStack stack)
+    {
+        return ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getDurability();
+    }
+
+    @Override
+    public boolean isDamaged(ItemStack stack)
+    {
+        return NBTHelper.getInteger(stack, Archive.NBT_ITEM_DAMAGE) > 0;
+    }
+
+    @Override
+    public void setDamage(ItemStack stack, int damage)
+    {
+        NBTHelper.setInteger(stack, Archive.NBT_ITEM_DAMAGE, damage);
     }
 
     @Override
@@ -81,19 +81,18 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
     {
-        //for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
-        //{
-        int i = 1;
+        for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
+        {
             ArmourType type = ArmourTypes.getTypes().get(i);
             ItemStack tmp = new ItemStack(id, 1, i);
 
             NBTTagCompound nbt = new NBTTagCompound();
             type.writeToNBT(armorType, nbt);
-            NBTHelper.setInteger(tmp, Archive.NBT_ITEM_DAMAGE, 0);
+            tmp.setItemDamage(0);
 
             tmp.setTagCompound(nbt);
             list.add(tmp);
-        //}
+        }
     }
 
     @Override
@@ -112,21 +111,13 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
     {
-        if (stack.hasTagCompound())
+        int newDamage = getDamage(stack) + damage;
+        if (newDamage >= getMaxDamage(stack))
         {
-            NBTTagCompound nbt = stack.getTagCompound();
-
-            if (nbt.hasKey(Archive.NBT_ITEM_DAMAGE))
-            {
-                int new_damage = NBTHelper.getInteger(stack, Archive.NBT_ITEM_DAMAGE) + damage;
-                if (new_damage <= ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getDurability())
-                {
-                    NBTHelper.setInteger(stack, Archive.NBT_ITEM_DAMAGE, new_damage);
-                } else
-                {
-                    stack.stackSize = 0;
-                }
-            }
+            stack.stackSize = 0;
+        } else
+        {
+            setDamage(stack, newDamage);
         }
     }
 }
