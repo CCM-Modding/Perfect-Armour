@@ -8,6 +8,7 @@ import static ccm.perfectarmour.utils.libs.Archive.SERVER_PROXY;
 import java.io.File;
 
 import ccm.perfectarmour.proxy.CommonProxy;
+import ccm.perfectarmour.utils.helpers.json.JsonDefaults;
 import ccm.perfectarmour.utils.helpers.json.JsonHelper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -36,7 +37,7 @@ public class PerfectArmour
         File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
         if (!armours.exists())
         {
-            JsonHelper.addDefaults(armours);
+            JsonDefaults.addDefaults(armours);
         }
         JsonHelper.read(armours);
     }
