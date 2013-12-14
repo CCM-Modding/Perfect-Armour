@@ -20,6 +20,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         ArmorProperties armorProperties = new ArmorProperties(0, 0, 0);
 
+        
         return null;
     }
 
