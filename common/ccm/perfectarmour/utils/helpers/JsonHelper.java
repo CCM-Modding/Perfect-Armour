@@ -34,6 +34,10 @@ public class JsonHelper
             ArmourTypes.addType(element.getAsJsonObject());
         }
     }
+    
+    public static String getString(JsonObject element, String name){
+        return element.get("textureName").getAsString();
+    }
 
     public static void addDefaults(File file)
     {
