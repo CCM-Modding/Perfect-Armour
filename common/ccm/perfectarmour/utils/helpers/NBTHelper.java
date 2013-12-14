@@ -200,7 +200,7 @@ public final class NBTHelper
 
         return nbt.getDouble(keyName);
     }
-    
+
     // Tag
     public static NBTTagCompound getTag(final NBTTagCompound nbt, final String keyName)
     {
