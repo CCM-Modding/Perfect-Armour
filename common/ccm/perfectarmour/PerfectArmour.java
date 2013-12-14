@@ -80,6 +80,8 @@ public class PerfectArmour
         chest = new CustomArmor(chestID, EnumArmorMaterial.IRON, 1, 1);
         pants = new CustomArmor(pantsID, EnumArmorMaterial.IRON, 1, 2);
         boots = new CustomArmor(bootsID, EnumArmorMaterial.IRON, 1, 3);
+        
+        
     }
 
     @EventHandler
