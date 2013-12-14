@@ -19,15 +19,12 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
     {
         ArmorProperties armorProperties = new ArmorProperties(0, 0, 0);
-
-        
         return null;
     }
 
     @Override
     public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
     {
-
         return 0;
     }
 
