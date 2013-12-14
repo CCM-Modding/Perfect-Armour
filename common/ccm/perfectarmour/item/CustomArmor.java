@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
+import ccm.perfectarmour.utils.helpers.NBTHelper;
 import ccm.perfectarmour.utils.libs.Archive;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -72,8 +73,8 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
 
             NBTTagCompound nbt = new NBTTagCompound();
             type.writeToNBT(armorType, nbt);
-            nbt.setInteger(Archive.NBT_ITEM_DAMAGE, 0);
-            
+            NBTHelper.setInteger(tmp, Archive.NBT_ITEM_DAMAGE, 0);
+
             tmp.setTagCompound(nbt);
             list.add(tmp);
         }
@@ -101,7 +102,14 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
 
             if (nbt.hasKey(Archive.NBT_ITEM_DAMAGE))
             {
-                nbt.setInteger(Archive.NBT_ITEM_DAMAGE, (nbt.getInteger(Archive.NBT_ITEM_DAMAGE) + damage));
+                int new_damage = NBTHelper.getInteger(stack, Archive.NBT_ITEM_DAMAGE) + damage;
+                if (new_damage <= ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getDurability())
+                {
+                    NBTHelper.setInteger(stack, Archive.NBT_ITEM_DAMAGE, new_damage);
+                } else
+                {
+                    stack.stackSize = 0;
+                }
             }
         }
     }
