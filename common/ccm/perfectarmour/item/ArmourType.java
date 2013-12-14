@@ -9,42 +9,42 @@ public final class ArmourType
     private String name;
     private String textureName;
     private boolean hasOverlay;
-    private JsonObject helmet;
-    private JsonObject chest;
-    private JsonObject pants;
-    private JsonObject boots;
+    private ArmourPiece helmet;
+    private ArmourPiece chest;
+    private ArmourPiece pants;
+    private ArmourPiece boots;
 
     public ArmourType(JsonObject type)
     {
         name = JsonHelper.getString(type, "name");
         textureName = JsonHelper.getString(type, "textureName");
         hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
-        helmet = JsonHelper.getJsonObject(type, "helmet");
-        chest = JsonHelper.getJsonObject(type, "chest");
-        pants = JsonHelper.getJsonObject(type, "pants");
-        boots = JsonHelper.getJsonObject(type, "boots");
+        helmet = new ArmourPiece(JsonHelper.getJsonObject(type, "helmet"));
+        chest = new ArmourPiece(JsonHelper.getJsonObject(type, "chest"));
+        pants = new ArmourPiece(JsonHelper.getJsonObject(type, "pants"));
+        boots = new ArmourPiece(JsonHelper.getJsonObject(type, "boots"));
     }
 
-    public final JsonObject getHelmet()
+    public final ArmourPiece getHelmet()
     {
         return helmet;
     }
 
-    public final JsonObject getChest()
+    public final ArmourPiece getChest()
     {
         return chest;
     }
 
-    public final JsonObject getPants()
+    public final ArmourPiece getPants()
     {
         return pants;
     }
 
-    public final JsonObject getBoots()
+    public final ArmourPiece getBoots()
     {
         return boots;
     }
-    
+
     public final String getName()
     {
         return name;
