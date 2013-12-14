@@ -12,10 +12,10 @@ public final class Archive
     public static final String NBT_ITEM_DAMAGE = "ITEM.DAMAGE";
     public static final String NBT_ARMOUR_TYPE = "ARMOUR.TYPE";
     public static final String NBT_ARMOUR_TYPE_NAME = NBT_ARMOUR_TYPE + ".NAME";
-    public static final String NBT_ARMOUR_TYPE_NAME_TEXTURE = NBT_ARMOUR_TYPE_NAME + ".TEXTURE";
+    public static final String NBT_ARMOUR_TYPE_NAME_DISPLAY = NBT_ARMOUR_TYPE_NAME + ".TEXTURE";
     public static final String NBT_ARMOUR_TYPE_HAS_OVERLAY = NBT_ARMOUR_TYPE + ".HAS_OVERLAY";
     public static final String NBT_ARMOUR_PIECE = "ARMOUR.PIECE";
-    public static final String NBT_ARMOUR_PIECE_NAME = NBT_ARMOUR_PIECE + ".NAME";
+    public static final String NBT_ARMOUR_PIECE_NAME_DISPLAY = NBT_ARMOUR_PIECE + ".NAME";
     public static final String NBT_ARMOUR_PIECE_DURABILITY = NBT_ARMOUR_PIECE + ".DURABILITY";
     public static final String NBT_ARMOUR_PIECE_RECIPE = NBT_ARMOUR_PIECE + ".RECIPE";
     public static final String NBT_ARMOUR_PIECE_ABSORBTION = NBT_ARMOUR_PIECE + ".ABSORBTION";

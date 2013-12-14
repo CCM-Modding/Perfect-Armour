@@ -10,16 +10,16 @@ import com.google.gson.JsonObject;
 
 public final class ArmourPiece
 {
-    private final String name;
+    private final String displayName;
     private final int durability;
     private final int maxAbsorption;
     private final double absorptionRatio;
     private final byte type;
     private final NBTTagCompound recipe;
 
-    public ArmourPiece(String name, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
+    public ArmourPiece(String diplayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
-        this.name = name;
+        this.displayName = diplayName;
         this.durability = durability;
         this.maxAbsorption = maxAbsorption;
         this.absorptionRatio = absorptionRatio;
@@ -29,13 +29,13 @@ public final class ArmourPiece
 
     public ArmourPiece(int type, JsonObject piece)
     {
-        this(JsonHelper.getString(piece, "name"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
+        this(JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
                 .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
     }
 
     public String getName()
     {
-        return name;
+        return displayName;
     }
 
     public byte getType()
@@ -68,7 +68,7 @@ public final class ArmourPiece
         String s = (Archive.NBT_ARMOUR_PIECE + "_" + getType());
         NBTTagCompound piece = new NBTTagCompound(s);
 
-        piece.setString(Archive.NBT_ARMOUR_PIECE_NAME, getName());
+        piece.setString(Archive.NBT_ARMOUR_PIECE_NAME_DISPLAY, getName());
         piece.setInteger(Archive.NBT_ARMOUR_PIECE_DURABILITY, getDurability());
         piece.setDouble(Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO, absorptionRatio());
         piece.setInteger(Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX, maxAbsorption());
@@ -83,7 +83,7 @@ public final class ArmourPiece
         String s = (Archive.NBT_ARMOUR_PIECE + "_" + type);
         NBTTagCompound piece = NBTHelper.getTag(nbt, s);
 
-        String name = NBTHelper.getString(piece, Archive.NBT_ARMOUR_PIECE_NAME);
+        String name = NBTHelper.getString(piece, Archive.NBT_ARMOUR_PIECE_NAME_DISPLAY);
         int durability = NBTHelper.getInteger(piece, Archive.NBT_ARMOUR_PIECE_DURABILITY);
         double ratio = NBTHelper.getDouble(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO);
         int max = NBTHelper.getInteger(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX);

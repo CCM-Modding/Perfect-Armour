@@ -39,12 +39,12 @@ public class JsonDefaults
     private static void addLeather(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
-        armourType.addProperty("name", "Leather");
-        armourType.addProperty("textureName", "leather");
+        armourType.addProperty("name", "leather");
+        armourType.addProperty("displayName", "Leather");
         armourType.addProperty("hasOverlay", true);
         // helmet
         JsonObject armour = new JsonObject();
-        armour.addProperty("name", "Helmet");
+        armour.addProperty("displayName", "Helmet");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5.0);
@@ -57,7 +57,7 @@ public class JsonDefaults
         armourType.add("helmet", armour);
         // chest
         armour = new JsonObject();
-        armour.addProperty("name", "Chest");
+        armour.addProperty("displayName", "Chest");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -70,7 +70,7 @@ public class JsonDefaults
         armourType.add("chest", armour);
         // pants
         armour = new JsonObject();
-        armour.addProperty("name", "Pants");
+        armour.addProperty("displayName", "Pants");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -83,7 +83,7 @@ public class JsonDefaults
         armourType.add("pants", armour);
         // boots
         armour = new JsonObject();
-        armour.addProperty("name", "Boots");
+        armour.addProperty("displayName", "Boots");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -100,11 +100,11 @@ public class JsonDefaults
     private static void addIron(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
-        armourType.addProperty("name", "Iron");
-        armourType.addProperty("textureName", "iron");
+        armourType.addProperty("name", "iron");
+        armourType.addProperty("displayName", "Iron");
         // helmet
         JsonObject armour = new JsonObject();
-        armour.addProperty("name", "Helmet");
+        armour.addProperty("displayName", "Helmet");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -117,7 +117,7 @@ public class JsonDefaults
         armourType.add("helmet", armour);
         // chest
         armour = new JsonObject();
-        armour.addProperty("name", "Chest");
+        armour.addProperty("displayName", "Chest");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -130,7 +130,7 @@ public class JsonDefaults
         armourType.add("chest", armour);
         // pants
         armour = new JsonObject();
-        armour.addProperty("name", "Pants");
+        armour.addProperty("displayName", "Pants");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -143,7 +143,7 @@ public class JsonDefaults
         armourType.add("pants", armour);
         // boots
         armour = new JsonObject();
-        armour.addProperty("name", "Boots");
+        armour.addProperty("displayName", "Boots");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -160,11 +160,11 @@ public class JsonDefaults
     private static void addGold(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
-        armourType.addProperty("name", "Gold");
-        armourType.addProperty("textureName", "gold");
+        armourType.addProperty("name", "gold");
+        armourType.addProperty("displayName", "Gold");
         // helmet
         JsonObject armour = new JsonObject();
-        armour.addProperty("name", "Helmet");
+        armour.addProperty("displayName", "Helmet");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -177,7 +177,7 @@ public class JsonDefaults
         armourType.add("helmet", armour);
         // chest
         armour = new JsonObject();
-        armour.addProperty("name", "Chest");
+        armour.addProperty("displayName", "Chest");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -190,7 +190,7 @@ public class JsonDefaults
         armourType.add("chest", armour);
         // pants
         armour = new JsonObject();
-        armour.addProperty("name", "Pants");
+        armour.addProperty("displayName", "Pants");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -203,7 +203,7 @@ public class JsonDefaults
         armourType.add("pants", armour);
         // boots
         armour = new JsonObject();
-        armour.addProperty("name", "Boots");
+        armour.addProperty("displayName", "Boots");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -220,11 +220,11 @@ public class JsonDefaults
     private static void addDiamond(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
-        armourType.addProperty("name", "Diamond");
-        armourType.addProperty("textureName", "diamond");
+        armourType.addProperty("name", "diamond");
+        armourType.addProperty("displayName", "Diamond");
         // helmet
         JsonObject armour = new JsonObject();
-        armour.addProperty("name", "Helmet");
+        armour.addProperty("displayName", "Helmet");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -237,7 +237,7 @@ public class JsonDefaults
         armourType.add("helmet", armour);
         // chest
         armour = new JsonObject();
-        armour.addProperty("name", "Chest");
+        armour.addProperty("displayName", "Chest");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -250,7 +250,7 @@ public class JsonDefaults
         armourType.add("chest", armour);
         // pants
         armour = new JsonObject();
-        armour.addProperty("name", "Pants");
+        armour.addProperty("displayName", "Pants");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);
@@ -263,7 +263,7 @@ public class JsonDefaults
         armourType.add("pants", armour);
         // boots
         armour = new JsonObject();
-        armour.addProperty("name", "Boots");
+        armour.addProperty("displayName", "Boots");
         armour.addProperty("durability", 500);
         armour.addProperty("maxAbsorption", 50);
         armour.addProperty("absorptionRatio", 5);

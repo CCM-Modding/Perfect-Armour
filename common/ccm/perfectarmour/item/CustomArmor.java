@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
-import ccm.perfectarmour.utils.helpers.NBTHelper;
 import ccm.perfectarmour.utils.libs.Archive;
 
 public class CustomArmor extends ItemArmor implements ISpecialArmor
@@ -38,15 +37,10 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         return 0;
     }
 
-    private NBTTagCompound getSubNBT(ItemStack stack)
-    {
-        return NBTHelper.getTag(stack, Archive.NBT_ARMOUR_PIECE + "_" + armorType);
-    }
-
     @Override
     public String getItemStackDisplayName(ItemStack stack)
     {
-        String s = (NBTHelper.getString(stack, Archive.NBT_ARMOUR_TYPE_NAME) + " " + NBTHelper.getString(getSubNBT(stack), Archive.NBT_ARMOUR_PIECE_NAME));
+        String s = (ArmourType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getName());
 
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display"))
         {
@@ -76,14 +70,13 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
     {
-        return new ArmorProperties(0, NBTHelper.getDouble(getSubNBT(armor), Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO), NBTHelper.getInteger(getSubNBT(armor),
-                Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX));
+        return new ArmorProperties(0, ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).absorptionRatio(), ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).maxAbsorption());
     }
 
     @Override
     public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
     {
-        return NBTHelper.getInteger(getSubNBT(armor), Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX);
+        return ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).maxAbsorption();
     }
 
     @Override

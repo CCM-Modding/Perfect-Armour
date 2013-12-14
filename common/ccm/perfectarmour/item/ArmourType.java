@@ -10,17 +10,17 @@ import com.google.gson.JsonObject;
 public final class ArmourType
 {
     private final String name;
-    private final String textureName;
+    private final String displayName;
     private final boolean hasOverlay;
     private final ArmourPiece helmet;
     private final ArmourPiece chest;
     private final ArmourPiece pants;
     private final ArmourPiece boots;
 
-    public ArmourType(String name, String textureName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
+    public ArmourType(String name, String displayName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
         this.name = name;
-        this.textureName = textureName;
+        this.displayName = displayName;
         this.hasOverlay = hasOverlay;
         this.helmet = helmet;
         this.chest = chest;
@@ -30,7 +30,7 @@ public final class ArmourType
 
     public ArmourType(JsonObject type, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
-        this(JsonHelper.getString(type, "name"), JsonHelper.getString(type, "textureName"), JsonHelper.getBoolean(type, "hasOverlay"), helmet, chest, pants, boots);
+        this(JsonHelper.getString(type, "name"), JsonHelper.getString(type, "displayName"), JsonHelper.getBoolean(type, "hasOverlay"), helmet, chest, pants, boots);
     }
 
     public ArmourType(JsonObject type)
@@ -44,9 +44,9 @@ public final class ArmourType
         return name;
     }
 
-    public String getTextureName()
+    public String getDisplayName()
     {
-        return textureName;
+        return displayName;
     }
 
     public boolean hasOverlay()
@@ -93,7 +93,7 @@ public final class ArmourType
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
         nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME, getName());
-        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME_TEXTURE, getTextureName());
+        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME_DISPLAY, getDisplayName());
         nbt.setBoolean(Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY, hasOverlay());
         getHelmet().writeToNBT(nbt);
         getChest().writeToNBT(nbt);
@@ -105,7 +105,7 @@ public final class ArmourType
     public static ArmourType loadFromNBT(NBTTagCompound nbt)
     {
         String name = NBTHelper.getString(nbt, Archive.NBT_ARMOUR_TYPE_NAME);
-        String texture = NBTHelper.getString(nbt, Archive.NBT_ARMOUR_TYPE_NAME_TEXTURE);
+        String texture = NBTHelper.getString(nbt, Archive.NBT_ARMOUR_TYPE_NAME_DISPLAY);
         boolean hasOverlay = NBTHelper.getBoolean(nbt, Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY);
         ArmourPiece helmet = ArmourPiece.loadFromNBT(0, nbt);
         ArmourPiece chest = ArmourPiece.loadFromNBT(1, nbt);
