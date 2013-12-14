@@ -1,4 +1,4 @@
-package ccm.perfectarmour.utils.helpers;
+package ccm.perfectarmour.utils.helpers.json;
 
 import java.io.BufferedWriter;
 import java.io.File;

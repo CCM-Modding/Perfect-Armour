@@ -1,7 +1,8 @@
 package ccm.perfectarmour.item;
 
 import net.minecraft.nbt.NBTTagCompound;
-import ccm.perfectarmour.utils.helpers.JsonHelper;
+import ccm.perfectarmour.utils.helpers.json.JsonHelper;
+import ccm.perfectarmour.utils.libs.Archive;
 
 import com.google.gson.JsonObject;
 
@@ -96,9 +97,9 @@ public final class ArmourType
 
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
-        nbt.setString("", getName());
-        nbt.setString("", getTextureName());
-        nbt.setBoolean("", hasOverlay());
+        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME, getName());
+        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME_TEXTURE, getTextureName());
+        nbt.setBoolean(Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY, hasOverlay());
         getHelmet().writeToNBT(nbt);
         getChest().writeToNBT(nbt);
         getPants().writeToNBT(nbt);

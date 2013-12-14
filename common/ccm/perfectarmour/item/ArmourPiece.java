@@ -1,7 +1,9 @@
 package ccm.perfectarmour.item;
 
 import net.minecraft.nbt.NBTTagCompound;
-import ccm.perfectarmour.utils.helpers.JsonHelper;
+import ccm.perfectarmour.utils.helpers.json.JsonHelper;
+import ccm.perfectarmour.utils.helpers.json.JsonNBTHelper;
+import ccm.perfectarmour.utils.libs.Archive;
 
 import com.google.gson.JsonObject;
 
@@ -11,12 +13,12 @@ public final class ArmourPiece
     private final int durability;
     private final int maxAbsorption;
     private final double absorptionRatio;
-    private final int type;
+    private final byte type;
     private final JsonObject recipe;
 
     public ArmourPiece(int type, JsonObject piece)
     {
-        this.type = type;
+        this.type = (byte) type;
         name = JsonHelper.getString(piece, "name");
         durability = JsonHelper.getNumber(piece, "durability").intValue();
         maxAbsorption = JsonHelper.getNumber(piece, "maxAbsorption").intValue();
@@ -29,7 +31,7 @@ public final class ArmourPiece
         return name;
     }
 
-    public int getType()
+    public byte getType()
     {
         return type;
     }
@@ -56,6 +58,12 @@ public final class ArmourPiece
 
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
+        nbt.setString(Archive.NBT_ARMOUR_PIECE_NAME, getName());
+        nbt.setByte(Archive.NBT_ARMOUR_PIECE_TYPE, getType());
+        nbt.setInteger(Archive.NBT_ARMOUR_PIECE_DURABILITY, getDurability());
+        nbt.setDouble(Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO, absorptionRatio());
+        nbt.setInteger(Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX, maxAbsorption());
+        nbt.setTag(Archive.NBT_ARMOUR_PIECE_RECIPE, JsonNBTHelper.parseJSON(getJsonRecipe()));
         return nbt;
     }
 

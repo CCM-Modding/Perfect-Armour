@@ -8,7 +8,7 @@ import static ccm.perfectarmour.utils.libs.Archive.SERVER_PROXY;
 import java.io.File;
 
 import ccm.perfectarmour.proxy.CommonProxy;
-import ccm.perfectarmour.utils.helpers.JsonHelper;
+import ccm.perfectarmour.utils.helpers.json.JsonHelper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
