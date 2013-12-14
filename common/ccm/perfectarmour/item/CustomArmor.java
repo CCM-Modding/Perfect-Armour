@@ -28,6 +28,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public int getDisplayDamage(ItemStack stack)
     {// Display the right damage, NBT ITEM.DAMAGE
+        
         return super.getDisplayDamage(stack);
     }
 
