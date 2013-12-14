@@ -8,8 +8,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
+import ccm.perfectarmour.utils.libs.Archive;
 
 public class CustomArmor extends ItemArmor implements ISpecialArmor
 {
@@ -27,15 +29,34 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
 
     @Override
     public int getDisplayDamage(ItemStack stack)
-    {// Display the right damage, NBT ITEM.DAMAGE
-        
-        return super.getDisplayDamage(stack);
+    {
+        if (stack.hasTagCompound())
+        {
+            NBTTagCompound nbt = stack.getTagCompound();
+
+            if (nbt.hasKey(Archive.NBT_ITEM_DAMAGE))
+            {
+                return nbt.getInteger(Archive.NBT_ITEM_DAMAGE);
+            }
+        }
+        return 0;
     }
 
     @Override
     public String getItemStackDisplayName(ItemStack stack)
     {
-        return (type.getName() + " " + pice.getName());
+        String s = (type.getName() + " " + pice.getName());
+
+        if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display"))
+        {
+            NBTTagCompound nbt = stack.getTagCompound().getCompoundTag("display");
+
+            if (nbt.hasKey("Name"))
+            {
+                s = nbt.getString("Name");
+            }
+        }
+        return s;
     }
 
     @Override
@@ -45,7 +66,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         {
             ItemStack tmp = new ItemStack(id, 1, i);
 
-            // Do NBT MAGIC
+            // Do NBT BLACK MAGIC
 
             list.add(tmp);
         }
@@ -66,6 +87,14 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
     {
-        // Increase? or reduce? NBT ITEM.DAMAGE
+        if (stack.hasTagCompound())
+        {
+            NBTTagCompound nbt = stack.getTagCompound();
+
+            if (nbt.hasKey(Archive.NBT_ITEM_DAMAGE))
+            {
+                nbt.setInteger(Archive.NBT_ITEM_DAMAGE, (nbt.getInteger(Archive.NBT_ITEM_DAMAGE) + damage));
+            }
+        }
     }
 }
