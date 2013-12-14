@@ -87,7 +87,8 @@ public class JsonHelper
             JsonObject armour = new JsonObject();
             armour.addProperty("name", "Helmet");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5.0);
             JsonObject recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -99,7 +100,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Chest");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "x x");
             recipe.addProperty("middile", "xxx");
@@ -111,7 +113,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Pants");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -123,7 +126,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Boots");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "   ");
             recipe.addProperty("middile", "x x");
@@ -140,7 +144,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Helmet");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -152,7 +157,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Chest");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "x x");
             recipe.addProperty("middile", "xxx");
@@ -164,7 +170,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Pants");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -176,7 +183,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Boots");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "   ");
             recipe.addProperty("middile", "x x");
@@ -193,7 +201,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Helmet");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -205,7 +214,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Chest");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "x x");
             recipe.addProperty("middile", "xxx");
@@ -217,7 +227,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Pants");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -229,7 +240,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Boots");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "   ");
             recipe.addProperty("middile", "x x");
@@ -246,7 +258,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Helmet");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -258,7 +271,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Chest");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "x x");
             recipe.addProperty("middile", "xxx");
@@ -270,7 +284,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Pants");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "xxx");
             recipe.addProperty("middile", "x x");
@@ -282,7 +297,8 @@ public class JsonHelper
             armour = new JsonObject();
             armour.addProperty("name", "Boots");
             armour.addProperty("durability", 500);
-            armour.addProperty("protection", 50);
+            armour.addProperty("maxAbsorption", 50);
+            armour.addProperty("absorptionRatio", 5);
             recipe = new JsonObject();
             recipe.addProperty("top", "   ");
             recipe.addProperty("middile", "x x");
