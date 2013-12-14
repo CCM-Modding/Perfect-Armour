@@ -21,7 +21,7 @@ public final class ArmourPiece
         maxAbsorption = JsonHelper.getNumber(piece, "maxAbsorption").intValue();
         absorptionRatio = JsonHelper.getNumber(piece, "absorptionRatio").doubleValue();
         recipe = JsonHelper.getJsonObject(piece, "recipe");
-        
+        recipe.
     }
     
     public final String getName()
