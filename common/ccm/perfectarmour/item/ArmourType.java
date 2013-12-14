@@ -19,10 +19,10 @@ public final class ArmourType
         name = JsonHelper.getString(type, "name");
         textureName = JsonHelper.getString(type, "textureName");
         hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
-        helmet = new ArmourPiece(JsonHelper.getJsonObject(type, "helmet"));
-        chest = new ArmourPiece(JsonHelper.getJsonObject(type, "chest"));
-        pants = new ArmourPiece(JsonHelper.getJsonObject(type, "pants"));
-        boots = new ArmourPiece(JsonHelper.getJsonObject(type, "boots"));
+        helmet = new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet"));
+        chest = new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest"));
+        pants = new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants"));
+        boots = new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots"));
     }
 
     public final String getName()
@@ -38,6 +38,22 @@ public final class ArmourType
     public final boolean hasOverlay()
     {
         return hasOverlay;
+    }
+
+    public final ArmourPiece getPiece(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                return getHelmet();
+            case 1:
+                return getChest();
+            case 2:
+                return getPants();
+            case 3:
+                return getBoots();
+        }
+        return null;
     }
 
     public final ArmourPiece getHelmet()

@@ -13,11 +13,16 @@ import net.minecraftforge.common.ISpecialArmor;
 
 public class CustomArmor extends ItemArmor implements ISpecialArmor
 {
-    public CustomArmor(int id, EnumArmorMaterial material, int renderIndex, int type)
+    private final ArmourType type;
+    private final ArmourPiece pice;
+
+    public CustomArmor(int id, EnumArmorMaterial material, int renderIndex, int type, ArmourType aType)
     {
         super(id, material, renderIndex, type);
         setHasSubtypes(true);
         setMaxDamage(Short.MAX_VALUE);
+        this.type = aType;
+        pice = aType.getPiece(type);
     }
 
     @Override
@@ -28,32 +33,38 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
 
     @Override
     public String getItemStackDisplayName(ItemStack stack)
-    {// Display the name
-        return super.getItemStackDisplayName(stack);
+    {
+        return (type.getName() + " " + pice.getName());
     }
-    
+
     @Override
     public void getSubItems(int id, CreativeTabs tab, List list)
-    {// Add all registered types
-        super.getSubItems(id, tab, list);
+    {
+        for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
+        {
+            ItemStack tmp = new ItemStack(id, 1, i);
+
+            // Do NBT MAGIC
+
+            list.add(tmp);
+        }
     }
 
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
-    {// take armor and change into armor properties
-        ArmorProperties armorProperties = new ArmorProperties(0, 0, 0);
-        return null;
+    {
+        return new ArmorProperties(0, pice.absorptionRatio(), pice.maxAbsorption());
     }
 
     @Override
     public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
-    {// change to max protection
-        return 0;
+    {
+        return pice.maxAbsorption();
     }
-    
+
     @Override
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
-    {// Increase? or reduce? NBT ITEM.DAMAGE
-        
+    {
+        // Increase? or reduce? NBT ITEM.DAMAGE
     }
 }

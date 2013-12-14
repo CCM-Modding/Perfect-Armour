@@ -10,10 +10,12 @@ public final class ArmourPiece
     private final int durability;
     private final int maxAbsorption;
     private final double absorptionRatio;
+    private final int type;
     private final JsonObject recipe;
 
-    public ArmourPiece(JsonObject piece)
+    public ArmourPiece(int type, JsonObject piece)
     {
+        this.type = type;
         name = JsonHelper.getString(piece, "name");
         durability = JsonHelper.getNumber(piece, "durability").intValue();
         maxAbsorption = JsonHelper.getNumber(piece, "maxAbsorption").intValue();
