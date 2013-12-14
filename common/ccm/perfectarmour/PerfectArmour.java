@@ -54,6 +54,7 @@ public class PerfectArmour
         int pantsID = Item.legsLeather.itemID;
         int bootsID = Item.bootsLeather.itemID;
 
+        
         // Getting rid of Leather
         Item.itemsList[Item.helmetLeather.itemID] = null;
         Item.itemsList[Item.plateLeather.itemID] = null;
