@@ -6,7 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import net.minecraft.item.crafting.IRecipe;
 import ccm.perfectarmour.item.ArmourTypes;
 
 import com.google.gson.Gson;
@@ -44,7 +43,7 @@ public class JsonHelper
         }
         return null;
     }
-    
+
     public static boolean getBoolean(JsonObject element, String name)
     {
         if (element.get(name) != null)
@@ -53,8 +52,8 @@ public class JsonHelper
         }
         return false;
     }
-    
-    public static  JsonObject  getJsonObject(JsonObject element, String name)
+
+    public static JsonObject getJsonObject(JsonObject element, String name)
     {
         if (element.get(name) != null)
         {
@@ -62,7 +61,7 @@ public class JsonHelper
         }
         return null;
     }
-    
+
     public static Number getNumber(JsonObject element, String name)
     {
         if (element.get(name) != null)
@@ -72,12 +71,6 @@ public class JsonHelper
         return 0;
     }
 
-    public static IRecipe getIRecipe(JsonObject recipe, String name)
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
-    
     public static void addDefaults(File file)
     {
         try

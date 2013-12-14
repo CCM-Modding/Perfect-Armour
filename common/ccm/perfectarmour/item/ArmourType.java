@@ -6,13 +6,13 @@ import com.google.gson.JsonObject;
 
 public final class ArmourType
 {
-    private String name;
-    private String textureName;
-    private boolean hasOverlay;
-    private ArmourPiece helmet;
-    private ArmourPiece chest;
-    private ArmourPiece pants;
-    private ArmourPiece boots;
+    private final String name;
+    private final String textureName;
+    private final boolean hasOverlay;
+    private final ArmourPiece helmet;
+    private final ArmourPiece chest;
+    private final ArmourPiece pants;
+    private final ArmourPiece boots;
 
     public ArmourType(JsonObject type)
     {
@@ -23,26 +23,6 @@ public final class ArmourType
         chest = new ArmourPiece(JsonHelper.getJsonObject(type, "chest"));
         pants = new ArmourPiece(JsonHelper.getJsonObject(type, "pants"));
         boots = new ArmourPiece(JsonHelper.getJsonObject(type, "boots"));
-    }
-
-    public final ArmourPiece getHelmet()
-    {
-        return helmet;
-    }
-
-    public final ArmourPiece getChest()
-    {
-        return chest;
-    }
-
-    public final ArmourPiece getPants()
-    {
-        return pants;
-    }
-
-    public final ArmourPiece getBoots()
-    {
-        return boots;
     }
 
     public final String getName()
@@ -58,5 +38,25 @@ public final class ArmourType
     public final boolean hasOverlay()
     {
         return hasOverlay;
+    }
+
+    public final ArmourPiece getHelmet()
+    {// 0
+        return helmet;
+    }
+
+    public final ArmourPiece getChest()
+    {// 1
+        return chest;
+    }
+
+    public final ArmourPiece getPants()
+    {// 2
+        return pants;
+    }
+
+    public final ArmourPiece getBoots()
+    {// 3
+        return boots;
     }
 }

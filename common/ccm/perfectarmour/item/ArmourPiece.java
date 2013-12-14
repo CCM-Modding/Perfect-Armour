@@ -1,23 +1,22 @@
 package ccm.perfectarmour.item;
 
-import net.minecraft.item.crafting.IRecipe;
 import ccm.perfectarmour.utils.helpers.JsonHelper;
 
 import com.google.gson.JsonObject;
 
 public final class ArmourPiece
 {
-    private String name;
-    private int durability;
-    private int protection;
-    private IRecipe recipe;
+    private final String name;
+    private final int durability;
+    private final int protection;
+    private final JsonObject recipe;
 
     public ArmourPiece(JsonObject piece)
     {
         name = JsonHelper.getString(piece, "name");
         durability = (Integer) JsonHelper.getNumber(piece, "name");
         protection = (Integer) JsonHelper.getNumber(piece, "name");
-        recipe = JsonHelper.getIRecipe(piece, "recipe");
+        recipe = JsonHelper.getJsonObject(piece, "recipe");
     }
 
     public final String getName()
@@ -35,7 +34,7 @@ public final class ArmourPiece
         return protection;
     }
 
-    public final IRecipe getRecipe()
+    public final JsonObject getJsonRecipe()
     {
         return recipe;
     }
