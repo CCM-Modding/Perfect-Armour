@@ -22,6 +22,8 @@ public final class JsonNBTHelper
 {
     public static NBTBase parseJSON(JsonElement element)
     {
+        System.out.println(element);
+        System.out.println(element.isJsonNull());
         if (!element.isJsonNull())
         {
             if (element.isJsonObject())

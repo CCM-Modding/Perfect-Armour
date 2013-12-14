@@ -52,7 +52,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "   ");
-        recipe.addProperty("x", 334);
+        recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
         armourType.add("helmet", armour);
         // chest
@@ -65,7 +65,7 @@ public class JsonDefaults
         recipe.addProperty("top", "x x");
         recipe.addProperty("middile", "xxx");
         recipe.addProperty("bottom", "xxx");
-        recipe.addProperty("x", 334);
+        recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
         armourType.add("chest", armour);
         // pants
@@ -78,7 +78,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 334);
+        recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
         armourType.add("pants", armour);
         // boots
@@ -91,7 +91,7 @@ public class JsonDefaults
         recipe.addProperty("top", "   ");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 334);
+        recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
         armourType.add("boots", armour);
         rootArray.add(armourType);
@@ -112,7 +112,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "   ");
-        recipe.addProperty("x", 265);
+        recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
         armourType.add("helmet", armour);
         // chest
@@ -125,7 +125,7 @@ public class JsonDefaults
         recipe.addProperty("top", "x x");
         recipe.addProperty("middile", "xxx");
         recipe.addProperty("bottom", "xxx");
-        recipe.addProperty("x", 265);
+        recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
         armourType.add("chest", armour);
         // pants
@@ -138,7 +138,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 265);
+        recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
         armourType.add("pants", armour);
         // boots
@@ -151,7 +151,7 @@ public class JsonDefaults
         recipe.addProperty("top", "   ");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 265);
+        recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
         armourType.add("boots", armour);
         rootArray.add(armourType);
@@ -172,7 +172,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "   ");
-        recipe.addProperty("x", 266);
+        recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
         armourType.add("helmet", armour);
         // chest
@@ -185,7 +185,7 @@ public class JsonDefaults
         recipe.addProperty("top", "x x");
         recipe.addProperty("middile", "xxx");
         recipe.addProperty("bottom", "xxx");
-        recipe.addProperty("x", 266);
+        recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
         armourType.add("chest", armour);
         // pants
@@ -198,7 +198,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 266);
+        recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
         armourType.add("pants", armour);
         // boots
@@ -211,7 +211,7 @@ public class JsonDefaults
         recipe.addProperty("top", "   ");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 266);
+        recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
         armourType.add("boots", armour);
         rootArray.add(armourType);
@@ -232,7 +232,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "   ");
-        recipe.addProperty("x", 264);
+        recipe.addProperty("x", "264");
         armour.add("recipe", recipe);
         armourType.add("helmet", armour);
         // chest
@@ -245,7 +245,7 @@ public class JsonDefaults
         recipe.addProperty("top", "x x");
         recipe.addProperty("middile", "xxx");
         recipe.addProperty("bottom", "xxx");
-        recipe.addProperty("x", 264);
+        recipe.addProperty("x", "264");
         armour.add("recipe", recipe);
         armourType.add("chest", armour);
         // pants
@@ -258,7 +258,7 @@ public class JsonDefaults
         recipe.addProperty("top", "xxx");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 264);
+        recipe.addProperty("x", "264");
         armour.add("recipe", recipe);
         armourType.add("pants", armour);
         // boots
@@ -271,7 +271,7 @@ public class JsonDefaults
         recipe.addProperty("top", "   ");
         recipe.addProperty("middile", "x x");
         recipe.addProperty("bottom", "x x");
-        recipe.addProperty("x", 264);
+        recipe.addProperty("x", "264");
         armour.add("recipe", recipe);
         armourType.add("boots", armour);
         rootArray.add(armourType);
