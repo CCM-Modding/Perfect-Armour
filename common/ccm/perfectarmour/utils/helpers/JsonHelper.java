@@ -45,129 +45,138 @@ public class JsonHelper
                 // Leather
                 JsonObject armourType = new JsonObject();
                 armourType.addProperty("name", "Leather");
+                armourType.addProperty("textureName", "leather");
+                armourType.addProperty("hasOverlay", true);
                     // helmet
                     JsonObject armour = new JsonObject();
                         armour.addProperty("name", "Helmet");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
+                        JsonObject recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "   ");
+                        armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
                     armour = new JsonObject();
                         armour.addProperty("name", "Chest");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
                 // Iron
                 armourType = new JsonObject();
                 armourType.addProperty("name", "Iron");
+                armourType.addProperty("textureName", "iron");
                     // helmet
                     armour = new JsonObject();
                         armour.addProperty("name", "Helmet");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "   ");
+                        armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
                     armour = new JsonObject();
                         armour.addProperty("name", "Chest");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
                 // Gold
                 armourType = new JsonObject();
                 armourType.addProperty("name", "Gold");
+                armourType.addProperty("textureName", "gold");
                     // helmet
                     armour = new JsonObject();
                         armour.addProperty("name", "Helmet");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "   ");
+                        armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
                     armour = new JsonObject();
                         armour.addProperty("name", "Chest");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");                        
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);                        
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
                 // Diamond
                 armourType = new JsonObject();
                 armourType.addProperty("name", "Diamond");
+                armourType.addProperty("textureName", "diamond");
                     // helmet
                     armour = new JsonObject();
                         armour.addProperty("name", "Helmet");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "   ");
+                        armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
                     armour = new JsonObject();
                         armour.addProperty("name", "Chest");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50"); 
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50); 
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
-                        armour.addProperty("texture", "/leather.png");
-                        armour.addProperty("durability", "500");
-                        armour.addProperty("protection", "50");
+                        armour.addProperty("durability", 500);
+                        armour.addProperty("protection", 50);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
             // Done making Defaults, now writing them 
