@@ -1,5 +1,6 @@
 package ccm.perfectarmour.item;
 
+import net.minecraft.nbt.NBTTagCompound;
 import ccm.perfectarmour.utils.helpers.JsonHelper;
 
 import com.google.gson.JsonObject;
@@ -21,31 +22,45 @@ public final class ArmourPiece
         maxAbsorption = JsonHelper.getNumber(piece, "maxAbsorption").intValue();
         absorptionRatio = JsonHelper.getNumber(piece, "absorptionRatio").doubleValue();
         recipe = JsonHelper.getJsonObject(piece, "recipe");
-        recipe.
     }
-    
-    public final String getName()
+
+    public String getName()
     {
         return name;
     }
 
-    public final int getDurability()
+    public int getType()
+    {
+        return type;
+    }
+
+    public int getDurability()
     {
         return durability;
     }
 
-    public final double absorptionRatio()
+    public double absorptionRatio()
     {
         return absorptionRatio;
     }
 
-    public final int maxAbsorption()
+    public int maxAbsorption()
     {
         return maxAbsorption;
     }
 
-    public final JsonObject getJsonRecipe()
+    public JsonObject getJsonRecipe()
     {
         return recipe;
+    }
+
+    public NBTTagCompound writeToNBT(NBTTagCompound nbt)
+    {
+        return nbt;
+    }
+
+    public static ArmourPiece loadFromNBT(NBTTagCompound nbt)
+    {
+        return null;
     }
 }

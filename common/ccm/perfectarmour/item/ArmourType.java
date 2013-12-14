@@ -1,5 +1,6 @@
 package ccm.perfectarmour.item;
 
+import net.minecraft.nbt.NBTTagCompound;
 import ccm.perfectarmour.utils.helpers.JsonHelper;
 
 import com.google.gson.JsonObject;
@@ -14,33 +15,50 @@ public final class ArmourType
     private final ArmourPiece pants;
     private final ArmourPiece boots;
 
-    public ArmourType(JsonObject type)
+    public ArmourType(String name, String textureName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
-        name = JsonHelper.getString(type, "name");
-        textureName = JsonHelper.getString(type, "textureName");
-        hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
-        helmet = new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet"));
-        chest = new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest"));
-        pants = new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants"));
-        boots = new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots"));
+        this.name = name;
+        this.textureName = textureName;
+        this.hasOverlay = hasOverlay;
+        this.helmet = helmet;
+        this.chest = chest;
+        this.pants = pants;
+        this.boots = boots;
     }
 
-    public final String getName()
+    public ArmourType(JsonObject type, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
+    {
+        this(JsonHelper.getString(type, "name"), 
+              JsonHelper.getString(type, "textureName"),
+              JsonHelper.getBoolean(type, "hasOverlay"),
+              helmet, chest, pants, boots);
+    }
+    
+    public ArmourType(JsonObject type)
+    {
+        this(type, 
+              new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet")), 
+              new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest")), 
+              new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants")), 
+              new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots")));
+    }
+
+    public String getName()
     {
         return name;
     }
 
-    public final String getTextureName()
+    public String getTextureName()
     {
         return textureName;
     }
 
-    public final boolean hasOverlay()
+    public boolean hasOverlay()
     {
         return hasOverlay;
     }
 
-    public final ArmourPiece getPiece(int type)
+    public ArmourPiece getPiece(int type)
     {
         switch (type)
         {
@@ -56,23 +74,40 @@ public final class ArmourType
         return null;
     }
 
-    public final ArmourPiece getHelmet()
+    public ArmourPiece getHelmet()
     {// 0
         return helmet;
     }
 
-    public final ArmourPiece getChest()
+    public ArmourPiece getChest()
     {// 1
         return chest;
     }
 
-    public final ArmourPiece getPants()
+    public ArmourPiece getPants()
     {// 2
         return pants;
     }
 
-    public final ArmourPiece getBoots()
+    public ArmourPiece getBoots()
     {// 3
         return boots;
+    }
+
+    public NBTTagCompound writeToNBT(NBTTagCompound nbt)
+    {
+        nbt.setString("", getName());
+        nbt.setString("", getTextureName());
+        nbt.setBoolean("", hasOverlay());
+        getHelmet().writeToNBT(nbt);
+        getChest().writeToNBT(nbt);
+        getPants().writeToNBT(nbt);
+        getBoots().writeToNBT(nbt);
+        return nbt;
+    }
+
+    public static ArmourType loadFromNBT(NBTTagCompound nbt)
+    {
+        return null;
     }
 }

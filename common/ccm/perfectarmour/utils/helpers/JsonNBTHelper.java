@@ -40,23 +40,27 @@ public final class JsonNBTHelper
         return null;
     }
 
-    static NBTBase parseJSON(JsonObject element)
+    private static NBTTagCompound parseJSON(JsonObject element)
     {
         NBTTagCompound nbt = new NBTTagCompound();
-        for(Map.Entry<String, JsonElement> entry : element.entrySet()){
+        for (Map.Entry<String, JsonElement> entry : element.entrySet())
+        {
             nbt.setTag(entry.getKey(), parseJSON(entry.getValue()));
         }
         return nbt;
     }
 
-    static NBTBase parseJSON(JsonArray element)
+    private static NBTTagList parseJSON(JsonArray element)
     {
-        NBTTagList nbt = null;
-
+        NBTTagList nbt = new NBTTagList();
+        for (JsonElement e : element)
+        {
+            nbt.appendTag(parseJSON(e));
+        }
         return nbt;
     }
-    
-    static NBTBase parseJSON(JsonPrimitive element)
+
+    private static NBTBase parseJSON(JsonPrimitive element)
     {
         if (element.isString())
         {
