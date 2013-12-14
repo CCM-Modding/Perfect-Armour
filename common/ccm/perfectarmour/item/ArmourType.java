@@ -1,5 +1,7 @@
 package ccm.perfectarmour.item;
 
+import ccm.perfectarmour.utils.helpers.JsonHelper;
+
 import com.google.gson.JsonObject;
 
 public final class ArmourType
@@ -14,13 +16,13 @@ public final class ArmourType
 
     public ArmourType(JsonObject type)
     {
-        name = type.get("name").getAsString();
-        textureName = type.get("textureName").getAsString();
-        hasOverlay = type.get("hasOverlay").getAsBoolean();
-        helmet = type.get("helmet").getAsJsonObject();
-        chest = type.get("chest").getAsJsonObject();
-        pants = type.get("pants").getAsJsonObject();
-        boots = type.get("boots").getAsJsonObject();
+        name = JsonHelper.getString(type, "name");
+        textureName = JsonHelper.getString(type, "textureName");
+        hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
+        helmet = JsonHelper.getJsonObject(type, "helmet");
+        chest = JsonHelper.getJsonObject(type, "chest");
+        pants = JsonHelper.getJsonObject(type, "pants");
+        boots = JsonHelper.getJsonObject(type, "boots");
     }
 
     public final JsonObject getHelmet()
@@ -41,5 +43,20 @@ public final class ArmourType
     public final JsonObject getBoots()
     {
         return boots;
+    }
+    
+    public final String getName()
+    {
+        return name;
+    }
+
+    public final String getTextureName()
+    {
+        return textureName;
+    }
+
+    public final boolean hasOverlay()
+    {
+        return hasOverlay;
     }
 }
