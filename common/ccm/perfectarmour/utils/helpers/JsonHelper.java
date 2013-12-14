@@ -111,19 +111,31 @@ public class JsonHelper
                 armourType.addProperty("name", "Gold");
                     // helmet
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Helmet");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50");
                     armourType.add("helmet", armour);
                     // chest
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Chest");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50");                        
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Pants");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50");
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Boots");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50");
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
                 // Diamond
@@ -131,19 +143,31 @@ public class JsonHelper
                 armourType.addProperty("name", "Diamond");
                     // helmet
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Helmet");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50");
                     armourType.add("helmet", armour);
                     // chest
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Chest");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50"); 
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Pants");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50");
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
-                        
+                        armour.addProperty("name", "Boots");
+                        armour.addProperty("texture", "/leather.png");
+                        armour.addProperty("durability", "500");
+                        armour.addProperty("protection", "50");
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
             // Done making Defaults, now writing them 
