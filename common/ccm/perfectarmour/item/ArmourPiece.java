@@ -15,9 +15,9 @@ public final class ArmourPiece
     private final int maxAbsorption;
     private final double absorptionRatio;
     private final byte type;
-    private final JsonObject recipe;
+    private final NBTTagCompound recipe;
 
-    public ArmourPiece(String name, int durability, int maxAbsorption, double absorptionRatio, int type, JsonObject recipe)
+    public ArmourPiece(String name, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
         this.name = name;
         this.durability = durability;
@@ -29,8 +29,8 @@ public final class ArmourPiece
 
     public ArmourPiece(int type, JsonObject piece)
     {
-        this(JsonHelper.getString(piece, "name"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "absorptionRatio").doubleValue(), JsonHelper
-                .getNumber(piece, "maxAbsorption").intValue(), JsonHelper.getJsonObject(piece, "recipe"));
+        this(JsonHelper.getString(piece, "name"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
+                .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
     }
 
     public String getName()
@@ -58,7 +58,7 @@ public final class ArmourPiece
         return maxAbsorption;
     }
 
-    public JsonObject getJsonRecipe()
+    public NBTTagCompound getNBTRecipe()
     {
         return recipe;
     }
@@ -72,7 +72,7 @@ public final class ArmourPiece
         piece.setInteger(Archive.NBT_ARMOUR_PIECE_DURABILITY, getDurability());
         piece.setDouble(Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO, absorptionRatio());
         piece.setInteger(Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX, maxAbsorption());
-        piece.setTag(Archive.NBT_ARMOUR_PIECE_RECIPE, JsonNBTHelper.parseJSON(getJsonRecipe()));
+        piece.setCompoundTag(Archive.NBT_ARMOUR_PIECE_RECIPE, getNBTRecipe());
 
         nbt.setCompoundTag(s, piece);
         return nbt;
@@ -87,7 +87,8 @@ public final class ArmourPiece
         int durability = NBTHelper.getInteger(piece, Archive.NBT_ARMOUR_PIECE_DURABILITY);
         double ratio = NBTHelper.getDouble(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO);
         int max = NBTHelper.getInteger(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX);
+        NBTTagCompound recipe = NBTHelper.getTag(piece, Archive.NBT_ARMOUR_PIECE_RECIPE);
 
-        return null;
+        return new ArmourPiece(name, durability, max, ratio, type, recipe);
     }
 }
