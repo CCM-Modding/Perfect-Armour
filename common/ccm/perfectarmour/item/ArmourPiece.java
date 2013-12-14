@@ -15,12 +15,12 @@ public final class ArmourPiece
     public ArmourPiece(JsonObject piece)
     {
         name = JsonHelper.getString(piece, "name");
-        durability = (Integer)JsonHelper.getNumber(piece, "durability");
-        maxAbsorption = (Integer) JsonHelper.getNumber(piece, "maxAbsorption");
-        absorptionRatio = (Double) JsonHelper.getNumber(piece, "absorptionRatio");
+        durability = JsonHelper.getNumber(piece, "durability").intValue();
+        maxAbsorption = JsonHelper.getNumber(piece, "maxAbsorption").intValue();
+        absorptionRatio = JsonHelper.getNumber(piece, "absorptionRatio").doubleValue();
         recipe = JsonHelper.getJsonObject(piece, "recipe");
     }
-
+    
     public final String getName()
     {
         return name;
@@ -30,7 +30,7 @@ public final class ArmourPiece
     {
         return durability;
     }
-    
+
     public final double absorptionRatio()
     {
         return absorptionRatio;
