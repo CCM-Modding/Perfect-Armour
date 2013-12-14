@@ -56,6 +56,7 @@ public class JsonHelper
                             recipe.addProperty("top", "xxx");
                             recipe.addProperty("middile", "x x");
                             recipe.addProperty("bottom", "   ");
+                            recipe.addProperty("x", 334);
                         armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
@@ -63,18 +64,36 @@ public class JsonHelper
                         armour.addProperty("name", "Chest");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "x x");
+                            recipe.addProperty("middile", "xxx");
+                            recipe.addProperty("bottom", "xxx");
+                            recipe.addProperty("x", 334);
+                        armour.add("recipe", recipe);
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 334);
+                        armour.add("recipe", recipe);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "   ");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 334);
+                        armour.add("recipe", recipe);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
                 // Iron
@@ -90,6 +109,7 @@ public class JsonHelper
                             recipe.addProperty("top", "xxx");
                             recipe.addProperty("middile", "x x");
                             recipe.addProperty("bottom", "   ");
+                            recipe.addProperty("x", 265);
                         armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
@@ -97,18 +117,36 @@ public class JsonHelper
                         armour.addProperty("name", "Chest");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "x x");
+                            recipe.addProperty("middile", "xxx");
+                            recipe.addProperty("bottom", "xxx");
+                            recipe.addProperty("x", 265);
+                        armour.add("recipe", recipe);
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 265);
+                        armour.add("recipe", recipe);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "   ");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 265);
+                        armour.add("recipe", recipe);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
                 // Gold
@@ -124,25 +162,44 @@ public class JsonHelper
                             recipe.addProperty("top", "xxx");
                             recipe.addProperty("middile", "x x");
                             recipe.addProperty("bottom", "   ");
+                            recipe.addProperty("x", 266);
                         armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
                     armour = new JsonObject();
                         armour.addProperty("name", "Chest");
                         armour.addProperty("durability", 500);
-                        armour.addProperty("protection", 50);                        
+                        armour.addProperty("protection", 50); 
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "x x");
+                            recipe.addProperty("middile", "xxx");
+                            recipe.addProperty("bottom", "xxx");
+                            recipe.addProperty("x", 266);
+                        armour.add("recipe", recipe);
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 266);
+                        armour.add("recipe", recipe);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "   ");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 266);
+                        armour.add("recipe", recipe);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
                 // Diamond
@@ -158,6 +215,7 @@ public class JsonHelper
                             recipe.addProperty("top", "xxx");
                             recipe.addProperty("middile", "x x");
                             recipe.addProperty("bottom", "   ");
+                            recipe.addProperty("x", 264);
                         armour.add("recipe", recipe);
                     armourType.add("helmet", armour);
                     // chest
@@ -165,21 +223,39 @@ public class JsonHelper
                         armour.addProperty("name", "Chest");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50); 
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "x x");
+                            recipe.addProperty("middile", "xxx");
+                            recipe.addProperty("bottom", "xxx");
+                            recipe.addProperty("x", 264);
+                        armour.add("recipe", recipe);
                     armourType.add("chest", armour);
                     // pants
                     armour = new JsonObject();
                         armour.addProperty("name", "Pants");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "xxx");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 264);
+                        armour.add("recipe", recipe);
                     armourType.add("pants", armour);
                     // boots
                     armour = new JsonObject();
                         armour.addProperty("name", "Boots");
                         armour.addProperty("durability", 500);
                         armour.addProperty("protection", 50);
+                        recipe = new JsonObject();
+                            recipe.addProperty("top", "   ");
+                            recipe.addProperty("middile", "x x");
+                            recipe.addProperty("bottom", "x x");
+                            recipe.addProperty("x", 264);
+                        armour.add("recipe", recipe);
                     armourType.add("boots", armour);
                 rootArray.add(armourType);
-            // Done making Defaults, now writing them 
+            // Done making Defaults, now writing them
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             bw.write(gson.toJson(rootArray));
