@@ -91,4 +91,99 @@ public final class ArmourPiece
 
         return new ArmourPiece(name, durability, max, ratio, type, recipe);
     }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(absorptionRatio);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
+        result = prime * result + durability;
+        result = prime * result + maxAbsorption;
+        result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
+        result = prime * result + type;
+        return result;
+    }
+    
+    
+
+    @Override
+    public String toString()
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.append("ArmourPiece [displayName=");
+        builder.append(displayName);
+        builder.append(", durability=");
+        builder.append(durability);
+        builder.append(", maxAbsorption=");
+        builder.append(maxAbsorption);
+        builder.append(", absorptionRatio=");
+        builder.append(absorptionRatio);
+        builder.append(", type=");
+        builder.append(type);
+        builder.append(", recipe=");
+        builder.append(recipe);
+        builder.append(", hashCode()=");
+        builder.append(hashCode());
+        builder.append("]");
+        return builder.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj instanceof ArmourPiece))
+        {
+            return false;
+        }
+        ArmourPiece other = (ArmourPiece) obj;
+        if (Double.doubleToLongBits(absorptionRatio) != Double.doubleToLongBits(other.absorptionRatio))
+        {
+            return false;
+        }
+        if (displayName == null)
+        {
+            if (other.displayName != null)
+            {
+                return false;
+            }
+        } else if (!displayName.equals(other.displayName))
+        {
+            return false;
+        }
+        if (durability != other.durability)
+        {
+            return false;
+        }
+        if (maxAbsorption != other.maxAbsorption)
+        {
+            return false;
+        }
+        if (recipe == null)
+        {
+            if (other.recipe != null)
+            {
+                return false;
+            }
+        } else if (!recipe.equals(other.recipe))
+        {
+            return false;
+        }
+        if (type != other.type)
+        {
+            return false;
+        }
+        return true;
+    }
 }

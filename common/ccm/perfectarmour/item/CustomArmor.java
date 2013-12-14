@@ -12,6 +12,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
 import ccm.perfectarmour.utils.libs.Archive;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class CustomArmor extends ItemArmor implements ISpecialArmor
 {
@@ -19,7 +21,12 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         super(id, material, renderIndex, type);
         setHasSubtypes(true);
-        setMaxDamage(Short.MAX_VALUE);
+    }
+
+    @Override
+    public boolean getShareTag()
+    {
+        return true;
     }
 
     @Override
@@ -38,7 +45,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     }
 
     @Override
-    public String getItemStackDisplayName(ItemStack stack)
+    public String getItemDisplayName(ItemStack stack)
     {
         String s = (ArmourType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getName());
 
@@ -55,6 +62,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     }
 
     @Override
+    @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
     {
         for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
@@ -63,7 +71,8 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             ItemStack tmp = new ItemStack(id, 1, i);
 
             NBTTagCompound nbt = new NBTTagCompound();
-            type.writeToNBT(nbt, armorType);
+            type.writeToNBT(armorType, nbt);
+            nbt.setInteger(Archive.NBT_ITEM_DAMAGE, 0);
             
             tmp.setTagCompound(nbt);
             list.add(tmp);
@@ -73,7 +82,8 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
     {
-        return new ArmorProperties(0, ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).absorptionRatio(), ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).maxAbsorption());
+        return new ArmorProperties(0, ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).absorptionRatio(), ArmourPiece.loadFromNBT(armorType, armor.getTagCompound())
+                .maxAbsorption());
     }
 
     @Override

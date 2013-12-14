@@ -103,7 +103,7 @@ public final class ArmourType
         return nbt;
     }
 
-    public NBTTagCompound writeToNBT(NBTTagCompound nbt, int type)
+    public NBTTagCompound writeToNBT(int type, NBTTagCompound nbt)
     {
         nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME, getName());
         nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME_DISPLAY, getDisplayName());
@@ -122,5 +122,118 @@ public final class ArmourType
         ArmourPiece pants = ArmourPiece.loadFromNBT(2, nbt);
         ArmourPiece boots = ArmourPiece.loadFromNBT(3, nbt);
         return new ArmourType(name, texture, hasOverlay, helmet, chest, pants, boots);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((boots == null) ? 0 : boots.hashCode());
+        result = prime * result + ((chest == null) ? 0 : chest.hashCode());
+        result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
+        result = prime * result + (hasOverlay ? 1231 : 1237);
+        result = prime * result + ((helmet == null) ? 0 : helmet.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((pants == null) ? 0 : pants.hashCode());
+        return result;
+    }
+    
+    @Override
+    public String toString()
+    {
+        StringBuilder builder = new StringBuilder();
+        builder.append("ArmourType [name=").append(name).append(", displayName=").append(displayName).append(", hasOverlay=").append(hasOverlay);
+
+        builder.append(", helmet=").append(getHelmet() != null ? getHelmet().toString() : "null");
+        builder.append(", chest=").append(getChest() != null ? getChest().toString() : "null");
+        builder.append(", pants=").append(getPants() != null ? getPants().toString() : "null");
+        builder.append(", boots=").append(getBoots() != null ? getBoots().toString() : "null");
+
+        builder.append(", hashCode()=").append(hashCode()).append("]");
+        return builder.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (obj == null)
+        {
+            return false;
+        }
+        if (!(obj instanceof ArmourType))
+        {
+            return false;
+        }
+        ArmourType other = (ArmourType) obj;
+        if (boots == null)
+        {
+            if (other.boots != null)
+            {
+                return false;
+            }
+        } else if (!boots.equals(other.boots))
+        {
+            return false;
+        }
+        if (chest == null)
+        {
+            if (other.chest != null)
+            {
+                return false;
+            }
+        } else if (!chest.equals(other.chest))
+        {
+            return false;
+        }
+        if (displayName == null)
+        {
+            if (other.displayName != null)
+            {
+                return false;
+            }
+        } else if (!displayName.equals(other.displayName))
+        {
+            return false;
+        }
+        if (hasOverlay != other.hasOverlay)
+        {
+            return false;
+        }
+        if (helmet == null)
+        {
+            if (other.helmet != null)
+            {
+                return false;
+            }
+        } else if (!helmet.equals(other.helmet))
+        {
+            return false;
+        }
+        if (name == null)
+        {
+            if (other.name != null)
+            {
+                return false;
+            }
+        } else if (!name.equals(other.name))
+        {
+            return false;
+        }
+        if (pants == null)
+        {
+            if (other.pants != null)
+            {
+                return false;
+            }
+        } else if (!pants.equals(other.pants))
+        {
+            return false;
+        }
+        return true;
     }
 }
