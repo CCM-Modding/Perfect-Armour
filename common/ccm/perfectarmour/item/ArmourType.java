@@ -4,6 +4,9 @@ import com.google.gson.JsonObject;
 
 public final class ArmourType
 {
+    private String name;
+    private String textureName;
+    private boolean hasOverlay;
     private JsonObject helmet;
     private JsonObject chest;
     private JsonObject pants;
@@ -11,6 +14,9 @@ public final class ArmourType
 
     public ArmourType(JsonObject type)
     {
+        name = type.get("name").getAsString();
+        textureName = type.get("textureName").getAsString();
+        hasOverlay = type.get("hasOverlay").getAsBoolean();
         helmet = type.get("helmet").getAsJsonObject();
         chest = type.get("chest").getAsJsonObject();
         pants = type.get("pants").getAsJsonObject();
