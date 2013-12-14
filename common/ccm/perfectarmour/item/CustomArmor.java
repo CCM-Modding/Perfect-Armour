@@ -3,6 +3,7 @@ package ccm.perfectarmour.item;
 import java.util.List;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
@@ -119,5 +120,11 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         {
             setDamage(stack, newDamage);
         }
+    }
+    
+    @Override
+    public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
+    {
+        return super.getArmorTexture(stack, entity, slot, type);
     }
 }
