@@ -45,6 +45,7 @@ public final class JsonNBTHelper
         NBTTagCompound nbt = new NBTTagCompound();
         for (Map.Entry<String, JsonElement> entry : element.entrySet())
         {
+            System.out.println(entry.getValue());
             nbt.setTag(entry.getKey(), parseJSON(entry.getValue()));
         }
         return nbt;

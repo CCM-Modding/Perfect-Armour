@@ -59,10 +59,13 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
         {
+            ArmourType type = ArmourTypes.getTypes().get(i);
             ItemStack tmp = new ItemStack(id, 1, i);
 
-            // Do NBT BLACK MAGIC
-
+            NBTTagCompound nbt = new NBTTagCompound();
+            type.writeToNBT(nbt, armorType);
+            
+            tmp.setTagCompound(nbt);
             list.add(tmp);
         }
     }

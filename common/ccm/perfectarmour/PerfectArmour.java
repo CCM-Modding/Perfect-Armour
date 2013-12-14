@@ -7,6 +7,7 @@ import static ccm.perfectarmour.utils.libs.Archive.SERVER_PROXY;
 
 import java.io.File;
 
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import ccm.perfectarmour.item.CustomArmor;
 import ccm.perfectarmour.proxy.CommonProxy;
@@ -47,10 +48,11 @@ public class PerfectArmour
             JsonDefaults.addDefaults(armours);
         }
         JsonHelper.read(armours);
+        // Getting our ids
         int helmetID = Item.helmetLeather.itemID;
-        int chestID = Item.helmetLeather.itemID;
-        int pantsID = Item.helmetLeather.itemID;
-        int bootsID = Item.helmetLeather.itemID;
+        int chestID = Item.plateLeather.itemID;
+        int pantsID = Item.legsLeather.itemID;
+        int bootsID = Item.bootsLeather.itemID;
 
         // Getting rid of Leather
         Item.itemsList[Item.helmetLeather.itemID] = null;
@@ -72,6 +74,11 @@ public class PerfectArmour
         Item.itemsList[Item.plateDiamond.itemID] = null;
         Item.itemsList[Item.legsDiamond.itemID] = null;
         Item.itemsList[Item.bootsDiamond.itemID] = null;
+
+        helmet = new CustomArmor(helmetID, EnumArmorMaterial.IRON, 1, 0);
+        chest = new CustomArmor(chestID, EnumArmorMaterial.IRON, 1, 1);
+        pants = new CustomArmor(pantsID, EnumArmorMaterial.IRON, 1, 2);
+        boots = new CustomArmor(bootsID, EnumArmorMaterial.IRON, 1, 3);
     }
 
     @EventHandler

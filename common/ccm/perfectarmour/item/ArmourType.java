@@ -90,6 +90,7 @@ public final class ArmourType
         return boots;
     }
 
+    /** This writes EVERYTHING to NBT */
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
         nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME, getName());
@@ -99,6 +100,15 @@ public final class ArmourType
         getChest().writeToNBT(nbt);
         getPants().writeToNBT(nbt);
         getBoots().writeToNBT(nbt);
+        return nbt;
+    }
+
+    public NBTTagCompound writeToNBT(NBTTagCompound nbt, int type)
+    {
+        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME, getName());
+        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME_DISPLAY, getDisplayName());
+        nbt.setBoolean(Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY, hasOverlay());
+        getPiece(type).writeToNBT(nbt);
         return nbt;
     }
 
