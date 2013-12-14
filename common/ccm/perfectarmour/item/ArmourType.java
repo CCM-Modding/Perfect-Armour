@@ -106,8 +106,11 @@ public final class ArmourType
     public NBTTagCompound writeToNBT(int type, NBTTagCompound nbt)
     {
         nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME, getName());
+        System.out.println("NAME: " + getName());
         nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME_DISPLAY, getDisplayName());
+        System.out.println("DISPLAY NAME: " + getDisplayName());
         nbt.setBoolean(Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY, hasOverlay());
+        System.out.println("OVERLAY: " + hasOverlay());
         getPiece(type).writeToNBT(nbt);
         return nbt;
     }
@@ -138,7 +141,7 @@ public final class ArmourType
         result = prime * result + ((pants == null) ? 0 : pants.hashCode());
         return result;
     }
-    
+
     @Override
     public String toString()
     {

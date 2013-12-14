@@ -29,6 +29,21 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         return true;
     }
+    
+    @Override
+    public int getDamage(ItemStack stack)
+    {
+        if (stack.hasTagCompound())
+        {
+            NBTTagCompound nbt = stack.getTagCompound();
+
+            if (nbt.hasKey(Archive.NBT_ITEM_DAMAGE))
+            {
+                return nbt.getInteger(Archive.NBT_ITEM_DAMAGE);
+            }
+        }
+        return 0;
+    }
 
     @Override
     public int getDisplayDamage(ItemStack stack)
@@ -48,7 +63,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public String getItemDisplayName(ItemStack stack)
     {
-        String s = (ArmourType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getName());
+        String s = (ArmourType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getDisplayName());
 
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display"))
         {
@@ -66,8 +81,9 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
     {
-        for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
-        {
+        //for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
+        //{
+        int i = 1;
             ArmourType type = ArmourTypes.getTypes().get(i);
             ItemStack tmp = new ItemStack(id, 1, i);
 
@@ -77,7 +93,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
 
             tmp.setTagCompound(nbt);
             list.add(tmp);
-        }
+        //}
     }
 
     @Override

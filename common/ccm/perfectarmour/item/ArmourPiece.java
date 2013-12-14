@@ -33,7 +33,7 @@ public final class ArmourPiece
                 .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
     }
 
-    public String getName()
+    public String getDisplayName()
     {
         return displayName;
     }
@@ -66,13 +66,19 @@ public final class ArmourPiece
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
         String s = (Archive.NBT_ARMOUR_PIECE + "_" + getType());
+        System.out.println("NAME: " + s);
         NBTTagCompound piece = new NBTTagCompound(s);
 
-        piece.setString(Archive.NBT_ARMOUR_PIECE_NAME_DISPLAY, getName());
+        piece.setString(Archive.NBT_ARMOUR_PIECE_NAME_DISPLAY, getDisplayName());
+        System.out.println("DISPLAY NAME: " + getDisplayName());
         piece.setInteger(Archive.NBT_ARMOUR_PIECE_DURABILITY, getDurability());
+        System.out.println("DURABILITY: " + getDurability());
         piece.setDouble(Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO, absorptionRatio());
+        System.out.println("RATIO: " + absorptionRatio());
         piece.setInteger(Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX, maxAbsorption());
+        System.out.println("MAX: " + maxAbsorption());
         piece.setCompoundTag(Archive.NBT_ARMOUR_PIECE_RECIPE, getNBTRecipe());
+        System.out.println("RECIPE: " + getNBTRecipe());
 
         nbt.setCompoundTag(s, piece);
         return nbt;
@@ -107,8 +113,6 @@ public final class ArmourPiece
         result = prime * result + type;
         return result;
     }
-    
-    
 
     @Override
     public String toString()
