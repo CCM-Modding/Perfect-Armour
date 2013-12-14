@@ -29,19 +29,13 @@ public final class ArmourType
 
     public ArmourType(JsonObject type, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
-        this(JsonHelper.getString(type, "name"), 
-              JsonHelper.getString(type, "textureName"),
-              JsonHelper.getBoolean(type, "hasOverlay"),
-              helmet, chest, pants, boots);
+        this(JsonHelper.getString(type, "name"), JsonHelper.getString(type, "textureName"), JsonHelper.getBoolean(type, "hasOverlay"), helmet, chest, pants, boots);
     }
-    
+
     public ArmourType(JsonObject type)
     {
-        this(type, 
-              new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet")), 
-              new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest")), 
-              new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants")), 
-              new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots")));
+        this(type, new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet")), new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest")), new ArmourPiece(2,
+                JsonHelper.getJsonObject(type, "pants")), new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots")));
     }
 
     public String getName()
@@ -109,6 +103,13 @@ public final class ArmourType
 
     public static ArmourType loadFromNBT(NBTTagCompound nbt)
     {
-        return null;
+        String name = nbt.getString(Archive.NBT_ARMOUR_TYPE_NAME);
+        String texture = nbt.getString(Archive.NBT_ARMOUR_TYPE_NAME);
+        boolean hasOverlay = nbt.getBoolean(Archive.NBT_ARMOUR_TYPE_NAME);
+        ArmourPiece helmet = ArmourPiece.loadFromNBT(0, nbt);
+        ArmourPiece chest = ArmourPiece.loadFromNBT(1, nbt);
+        ArmourPiece pants = ArmourPiece.loadFromNBT(2, nbt);
+        ArmourPiece boots = ArmourPiece.loadFromNBT(3, nbt);
+        return new ArmourType(name, texture, hasOverlay, helmet, chest, pants, boots);
     }
 }

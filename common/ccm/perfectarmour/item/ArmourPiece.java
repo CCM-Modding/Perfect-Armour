@@ -58,16 +58,21 @@ public final class ArmourPiece
 
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
-        nbt.setString(Archive.NBT_ARMOUR_PIECE_NAME, getName());
-        nbt.setByte(Archive.NBT_ARMOUR_PIECE_TYPE, getType());
-        nbt.setInteger(Archive.NBT_ARMOUR_PIECE_DURABILITY, getDurability());
-        nbt.setDouble(Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO, absorptionRatio());
-        nbt.setInteger(Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX, maxAbsorption());
-        nbt.setTag(Archive.NBT_ARMOUR_PIECE_RECIPE, JsonNBTHelper.parseJSON(getJsonRecipe()));
+        String s = (Archive.NBT_ARMOUR_PIECE + " " + getType());
+        NBTTagCompound piece = new NBTTagCompound(s);
+
+        piece.setString(Archive.NBT_ARMOUR_PIECE_NAME, getName());
+        piece.setByte(Archive.NBT_ARMOUR_PIECE_TYPE, getType());
+        piece.setInteger(Archive.NBT_ARMOUR_PIECE_DURABILITY, getDurability());
+        piece.setDouble(Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO, absorptionRatio());
+        piece.setInteger(Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX, maxAbsorption());
+        piece.setTag(Archive.NBT_ARMOUR_PIECE_RECIPE, JsonNBTHelper.parseJSON(getJsonRecipe()));
+
+        nbt.setCompoundTag(s, piece);
         return nbt;
     }
 
-    public static ArmourPiece loadFromNBT(NBTTagCompound nbt)
+    public static ArmourPiece loadFromNBT(int type, NBTTagCompound nbt)
     {
         return null;
     }
