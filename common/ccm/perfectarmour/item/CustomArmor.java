@@ -15,16 +15,11 @@ import ccm.perfectarmour.utils.libs.Archive;
 
 public class CustomArmor extends ItemArmor implements ISpecialArmor
 {
-    private final ArmourType type;
-    private final ArmourPiece pice;
-
-    public CustomArmor(int id, EnumArmorMaterial material, int renderIndex, int type, ArmourType aType)
+    public CustomArmor(int id, EnumArmorMaterial material, int renderIndex, int type)
     {
         super(id, material, renderIndex, type);
         setHasSubtypes(true);
         setMaxDamage(Short.MAX_VALUE);
-        this.type = aType;
-        pice = aType.getPiece(type);
     }
 
     @Override

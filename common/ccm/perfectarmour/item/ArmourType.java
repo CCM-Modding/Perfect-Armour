@@ -1,6 +1,7 @@
 package ccm.perfectarmour.item;
 
 import net.minecraft.nbt.NBTTagCompound;
+import ccm.perfectarmour.utils.helpers.NBTHelper;
 import ccm.perfectarmour.utils.helpers.json.JsonHelper;
 import ccm.perfectarmour.utils.libs.Archive;
 
@@ -103,9 +104,9 @@ public final class ArmourType
 
     public static ArmourType loadFromNBT(NBTTagCompound nbt)
     {
-        String name = nbt.getString(Archive.NBT_ARMOUR_TYPE_NAME);
-        String texture = nbt.getString(Archive.NBT_ARMOUR_TYPE_NAME);
-        boolean hasOverlay = nbt.getBoolean(Archive.NBT_ARMOUR_TYPE_NAME);
+        String name = NBTHelper.getString(nbt, Archive.NBT_ARMOUR_TYPE_NAME);
+        String texture = NBTHelper.getString(nbt, Archive.NBT_ARMOUR_TYPE_NAME_TEXTURE);
+        boolean hasOverlay = NBTHelper.getBoolean(nbt, Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY);
         ArmourPiece helmet = ArmourPiece.loadFromNBT(0, nbt);
         ArmourPiece chest = ArmourPiece.loadFromNBT(1, nbt);
         ArmourPiece pants = ArmourPiece.loadFromNBT(2, nbt);
