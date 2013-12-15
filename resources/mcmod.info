@@ -1,0 +1,11 @@
+[
+{
+  "modid": "perfectarmor",
+  "name": "Perfect Armor",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/CCM-Modding/Perfect-Armour",
+  "description": "Customize ALL THE ARMOR!",
+  "authors": [  "captain_shadows" ]
+}
+]
