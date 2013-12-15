@@ -78,7 +78,7 @@ public class PerfectArmour
         GameRegistry.registerItem(chest, "custom.chest", Archive.MOD_ID);
         GameRegistry.registerItem(pants, "custom.pants", Archive.MOD_ID);
         GameRegistry.registerItem(boots, "custom.boots", Archive.MOD_ID);
-        
+
         JsonDefaults.loadJson(event);
     }
 

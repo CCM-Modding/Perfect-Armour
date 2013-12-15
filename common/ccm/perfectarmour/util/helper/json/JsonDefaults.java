@@ -14,7 +14,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class JsonDefaults
 {
-    public static void loadJson(final FMLPreInitializationEvent event){
+    public static void loadJson(final FMLPreInitializationEvent event)
+    {
         File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
         configFolder.mkdirs();
         File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
@@ -24,7 +25,7 @@ public class JsonDefaults
         }
         JsonHelper.read(armours);
     }
-    
+
     public static void addDefaults(File file)
     {
         try
@@ -64,7 +65,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5.0);
         JsonObject recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "   ");
         recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
@@ -77,7 +78,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "x x");
-        recipe.addProperty("middile", "xxx");
+        recipe.addProperty("middle", "xxx");
         recipe.addProperty("bottom", "xxx");
         recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
@@ -90,7 +91,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
@@ -103,7 +104,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "   ");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "334");
         armour.add("recipe", recipe);
@@ -125,7 +126,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         JsonObject recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "   ");
         recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
@@ -138,7 +139,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "x x");
-        recipe.addProperty("middile", "xxx");
+        recipe.addProperty("middle", "xxx");
         recipe.addProperty("bottom", "xxx");
         recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
@@ -151,7 +152,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
@@ -164,7 +165,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "   ");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "265");
         armour.add("recipe", recipe);
@@ -186,7 +187,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         JsonObject recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "   ");
         recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
@@ -199,7 +200,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "x x");
-        recipe.addProperty("middile", "xxx");
+        recipe.addProperty("middle", "xxx");
         recipe.addProperty("bottom", "xxx");
         recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
@@ -212,7 +213,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
@@ -225,7 +226,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "   ");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "266");
         armour.add("recipe", recipe);
@@ -247,7 +248,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         JsonObject recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "   ");
         recipe.addProperty("x", "264");
         armour.add("recipe", recipe);
@@ -260,7 +261,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "x x");
-        recipe.addProperty("middile", "xxx");
+        recipe.addProperty("middle", "xxx");
         recipe.addProperty("bottom", "xxx");
         recipe.addProperty("x", "264");
         armour.add("recipe", recipe);
@@ -273,7 +274,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "xxx");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "264");
         armour.add("recipe", recipe);
@@ -286,7 +287,7 @@ public class JsonDefaults
         armour.addProperty("absorptionRatio", 5);
         recipe = new JsonObject();
         recipe.addProperty("top", "   ");
-        recipe.addProperty("middile", "x x");
+        recipe.addProperty("middle", "x x");
         recipe.addProperty("bottom", "x x");
         recipe.addProperty("x", "264");
         armour.add("recipe", recipe);

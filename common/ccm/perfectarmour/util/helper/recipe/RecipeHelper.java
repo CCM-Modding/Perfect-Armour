@@ -13,31 +13,25 @@ public class RecipeHelper
 {
     public static IRecipe getRecipe(ArmourPiece piece, Map<?, ?> recipeData)
     {
-        System.out.println("DATA: " + recipeData);
-        System.out.println("SIZE: " + ((recipeData.entrySet().size() * 2) - 3));
         Object[] data = new Object[(recipeData.entrySet().size() * 2) - 3];
         int index = 3;
         for (Map.Entry<?, ?> e : recipeData.entrySet())
         {
-            String s = (String) e.getKey();
+            String s = e.getKey().toString();
             if (s.equalsIgnoreCase("top"))
             {
                 data[0] = e.getValue().toString();
-                System.out.println("DATA ARRAY: " + data);
             } else if (s.equalsIgnoreCase("middle"))
             {
                 data[1] = e.getValue().toString();
-                System.out.println("DATA ARRAY: " + data);
             } else if (s.equalsIgnoreCase("bottom"))
             {
                 data[2] = e.getValue().toString();
-                System.out.println("DATA ARRAY: " + data);
             } else
             {
                 data[index++] = s.toCharArray()[0];
                 ItemStack tmp = getItemStack(e.getValue().toString());
                 data[index++] = tmp.itemID > 0 ? tmp : e.getValue().toString();
-                System.out.println("DATA ARRAY: " + data);
             }
         }
         int id;
@@ -61,11 +55,11 @@ public class RecipeHelper
         }
         ItemStack result = new ItemStack(id, 1, piece.getParent().getID());
         NBTTagCompound nbt = new NBTTagCompound();
-        
+
         piece.getParent().writeToNBT(piece.getType(), nbt);
         result.setTagCompound(nbt);
         result.setItemDamage(0);
-        
+
         return new ShapedOreRecipe(result, data);
     }
 

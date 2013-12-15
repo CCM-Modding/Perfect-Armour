@@ -33,10 +33,10 @@ public final class ArmourType
 
     public ArmourType(JsonObject type, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
-        this.id = JsonHelper.getNumber(type, "id").intValue();
-        this.name = JsonHelper.getString(type, "name");
-        this.displayName = JsonHelper.getString(type, "displayName");
-        this.hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
+        id = JsonHelper.getNumber(type, "id").intValue();
+        name = JsonHelper.getString(type, "name");
+        displayName = JsonHelper.getString(type, "displayName");
+        hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
         this.helmet = helmet;
         this.chest = chest;
         this.pants = pants;
@@ -46,14 +46,14 @@ public final class ArmourType
 
     public ArmourType(JsonObject type)
     {
-        this.id = JsonHelper.getNumber(type, "id").intValue();
-        this.name = JsonHelper.getString(type, "name");
-        this.displayName = JsonHelper.getString(type, "displayName");
-        this.hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
-        this.helmet = new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet"));
-        this.chest = new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest"));
-        this.pants = new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants"));
-        this.boots = new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots"));
+        id = JsonHelper.getNumber(type, "id").intValue();
+        name = JsonHelper.getString(type, "name");
+        displayName = JsonHelper.getString(type, "displayName");
+        hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
+        helmet = new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet"));
+        chest = new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest"));
+        pants = new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants"));
+        boots = new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots"));
         initChildren();
     }
 

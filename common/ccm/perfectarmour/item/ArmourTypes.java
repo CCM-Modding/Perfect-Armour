@@ -14,7 +14,7 @@ public final class ArmourTypes
         ArmourType type = new ArmourType(element.getAsJsonObject());
         types.put(type.getID(), type);
     }
-    
+
     public static final ArmourType getType(int id)
     {
         return types.get(Integer.valueOf(id));

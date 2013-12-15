@@ -88,7 +88,7 @@ public final class ArmourPiece
     {
         return recipe;
     }
-    
+
     public IRecipe getIRecipe()
     {
         return RecipeHelper.getRecipe(this, recipeData);
