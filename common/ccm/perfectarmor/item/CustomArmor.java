@@ -3,6 +3,7 @@ package ccm.perfectarmor.item;
 import java.util.List;
 import java.util.Map;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,6 +13,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Icon;
 import net.minecraftforge.common.ISpecialArmor;
 import ccm.perfectarmor.types.ArmorPiece;
 import ccm.perfectarmor.types.ArmorType;
@@ -30,6 +32,26 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     }
 
     private static final String iTexture = Archive.MOD_ID + ":textures/items/";
+
+    @Override
+    public Icon getIcon(ItemStack stack, int pass)
+    {
+        
+        return super.getIcon(stack, pass);
+    }
+    
+    @Override
+    public void registerIcons(IconRegister register)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(iTexture);
+        for (ArmorType type : ArmorTypes.getTypes().values())
+        {
+            //sb.
+            type.setIcon(register.registerIcon(sb.toString()));
+            sb.delete(iTexture.length(), sb.length());
+        }
+    }
 
     @Override
     public boolean getShareTag()

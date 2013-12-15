@@ -1,6 +1,7 @@
 package ccm.perfectarmor.types;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.Icon;
 import ccm.perfectarmor.util.helper.NBTHelper;
 import ccm.perfectarmor.util.helper.json.JsonHelper;
 import ccm.perfectarmor.util.lib.Archive;
@@ -17,6 +18,7 @@ public final class ArmorType
     private final ArmorPiece chest;
     private final ArmorPiece pants;
     private final ArmorPiece boots;
+    private Icon item;
 
     public ArmorType(int id, String textureName, String displayName, boolean hasOverlay, ArmorPiece helmet, ArmorPiece chest, ArmorPiece pants, ArmorPiece boots)
     {
@@ -75,6 +77,16 @@ public final class ArmorType
         {
             boots.setParent(this);
         }
+    }
+    
+    public Icon getIcon()
+    {
+        return item;
+    }
+
+    public void setIcon(Icon icon)
+    {
+        this.item = icon;
     }
 
     public int getID()
