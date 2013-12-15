@@ -33,10 +33,10 @@ public class PerfectArmour
     @SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
     public static CommonProxy proxy;
 
-    CustomArmor helmet;
-    CustomArmor chest;
-    CustomArmor pants;
-    CustomArmor boots;
+    public CustomArmor helmet;
+    public CustomArmor chest;
+    public CustomArmor pants;
+    public CustomArmor boots;
 
     @EventHandler
     public void preInit(final FMLPreInitializationEvent event)

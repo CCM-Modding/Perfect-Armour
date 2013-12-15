@@ -4,33 +4,55 @@ import java.util.Map;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import ccm.perfectarmour.PerfectArmour;
+import ccm.perfectarmour.item.ArmourPiece;
 
 public class RecipeHelper
 {
-    public static IRecipe getRecipe(Map<?, ?> recipeData)
+    public static IRecipe getRecipe(ArmourPiece piece, Map<?, ?> recipeData)
     {
-        StringBuilder recipe = new StringBuilder();
-        StringBuilder data = new StringBuilder();
+        Object[] data = new Object[recipeData.entrySet().size() * 2];
+        int index = 3;
         for (Map.Entry<?, ?> e : recipeData.entrySet())
         {
             String s = (String) e.getKey();
             if (s.equalsIgnoreCase("top"))
             {
-                recipe.insert(0, e.getValue().toString());
+                data[0] = e.getValue().toString();
             } else if (s.equalsIgnoreCase("middle"))
             {
-                recipe.insert(3, e.getValue().toString());
+                data[1] = e.getValue().toString();
             } else if (s.equalsIgnoreCase("bottom"))
             {
-                recipe.insert(6, e.getValue().toString());
+                data[2] = e.getValue().toString();
             } else
             {
-                data.append(s);
-                data.append(e.getValue().toString());
+                data[index++] = s;
+                ItemStack tmp = getItemStack(e.getValue().toString());
+                data[index++] = tmp.stackSize > 0 ? tmp : e.getValue().toString();
             }
         }
-
-        return new StringShapedRecipe(null, (recipe.toString() + data.toString()));
+        int id = 0;
+        switch (piece.getType())
+        {
+            case 0:
+                id = PerfectArmour.instance.helmet.itemID;
+                break;
+            case 1:
+                id = PerfectArmour.instance.chest.itemID;
+                break;
+            case 2:
+                id = PerfectArmour.instance.pants.itemID;
+                break;
+            case 3:
+                id = PerfectArmour.instance.boots.itemID;
+                break;
+            default:
+                break;
+        }
+        ItemStack result = new ItemStack(id, 1, 0);
+        return new ShapedOreRecipe(result, data);
     }
 
     private static ItemStack getItemStack(final String itemID)
