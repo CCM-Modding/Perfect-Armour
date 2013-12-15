@@ -30,10 +30,10 @@ public class RecipeHelper
             {
                 data[index++] = s;
                 ItemStack tmp = getItemStack(e.getValue().toString());
-                data[index++] = tmp.stackSize > 0 ? tmp : e.getValue().toString();
+                data[index++] = tmp.itemID > 0 ? tmp : e.getValue().toString();
             }
         }
-        int id = 0;
+        int id;
         switch (piece.getType())
         {
             case 0:
@@ -49,6 +49,7 @@ public class RecipeHelper
                 id = PerfectArmour.instance.boots.itemID;
                 break;
             default:
+                id = 0;
                 break;
         }
         ItemStack result = new ItemStack(id, 1, 0);

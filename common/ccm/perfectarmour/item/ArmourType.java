@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 
 public final class ArmourType
 {
+    private final int id;
     private final String name;
     private final String displayName;
     private final boolean hasOverlay;
@@ -17,8 +18,9 @@ public final class ArmourType
     private final ArmourPiece pants;
     private final ArmourPiece boots;
 
-    public ArmourType(String name, String displayName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
+    public ArmourType(int id,String name, String displayName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
+        this.id = id;
         this.name = name;
         this.displayName = displayName;
         this.hasOverlay = hasOverlay;
@@ -30,7 +32,7 @@ public final class ArmourType
 
     public ArmourType(JsonObject type, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
-        this(JsonHelper.getString(type, "name"), JsonHelper.getString(type, "displayName"), JsonHelper.getBoolean(type, "hasOverlay"), helmet, chest, pants, boots);
+        this(JsonHelper.getNumber(type, "id").intValue(),JsonHelper.getString(type, "name"), JsonHelper.getString(type, "displayName"), JsonHelper.getBoolean(type, "hasOverlay"), helmet, chest, pants, boots);
     }
 
     public ArmourType(JsonObject type)
@@ -39,6 +41,11 @@ public final class ArmourType
                 JsonHelper.getJsonObject(type, "pants")), new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots")));
     }
 
+    public int getID()
+    {
+        return id;
+    }
+    
     public String getName()
     {
         return name;
