@@ -14,25 +14,30 @@ public class RecipeHelper
 {
     public static IRecipe getRecipe(ArmorPiece piece, NBTTagCompound recipe)
     {
-        String[] temp = fix(recipe.toString());
+        Object[] temp = fix(recipe.toString());
         Object[] data = new Object[temp.length];
         int index = 3;
         for (int i = 0; i < temp.length; i += 2)
         {
-            String s = temp[i];
+            String s = (String) temp[i];
+            System.out.println("S:" + s);
             if (s.equalsIgnoreCase("top"))
             {
                 data[0] = temp[i + 1];
+                System.out.println("TOP:"+temp[i + 1]);
             } else if (s.equalsIgnoreCase("middle"))
             {
                 data[1] = temp[i + 1];
+                System.out.println("MIDDLE:"+temp[i + 1]);
             } else if (s.equalsIgnoreCase("bottom"))
             {
                 data[2] = temp[i + 1];
+                System.out.println("BOTTOM:"+temp[i + 1]);
             } else
             {
                 data[index++] = s.toCharArray()[0];
-                ItemStack tmp = getItemStack(temp[i + 1]);
+                System.out.println("TOP:"+temp[i + 1]);
+                ItemStack tmp = getItemStack((String) temp[i + 1]);
                 data[index++] = tmp.itemID > 0 ? tmp : temp[i + 1];
             }
         }
@@ -65,19 +70,28 @@ public class RecipeHelper
         return new ShapedOreRecipe(result, data);
     }
 
-    private static String[] fix(String in)
+    private static Object[] fix(String in)
     {
+        System.out.println(in);
+        in = in.substring(2);
+        System.out.println(in);
+        in = in.replace(",]", "");
+        System.out.println(in);
         String[] tmp = in.split(",");
         List<String> temp = new ArrayList<String>();
         for (String s : tmp)
         {
+            System.out.println(s);
             String[] r = s.split(":");
             for (int i = 0; i < r.length; i++)
             {
+                System.out.println(r[i]);
                 temp.add(r[i]);
             }
         }
-        return (String[]) temp.toArray();
+        System.out.println(temp);
+        System.out.println("DONE FIXING!!!");
+        return temp.toArray();
     }
 
     private static ItemStack getItemStack(final String itemID)
