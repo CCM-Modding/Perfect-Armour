@@ -51,31 +51,31 @@ public class PerfectArmour
         JsonHelper.read(armours);
 
         // Getting our ids
-        int helmetID = 3000/*Item.helmetLeather.itemID*/;
-        int chestID = 3001/*Item.plateLeather.itemID*/;
-        int pantsID = 3002/*Item.legsLeather.itemID*/;
-        int bootsID = 3003/*Item.bootsLeather.itemID*/;
+        int helmetID = 3000/* Item.helmetLeather.itemID */;
+        int chestID = 3001/* Item.plateLeather.itemID */;
+        int pantsID = 3002/* Item.legsLeather.itemID */;
+        int bootsID = 3003/* Item.bootsLeather.itemID */;
 
         // Getting rid of Leather
-        //Item.itemsList[Item.helmetLeather.itemID] = null;
-        //Item.itemsList[Item.plateLeather.itemID] = null;
-        //Item.itemsList[Item.legsLeather.itemID] = null;
-        //Item.itemsList[Item.bootsLeather.itemID] = null;
+        // Item.itemsList[Item.helmetLeather.itemID] = null;
+        // Item.itemsList[Item.plateLeather.itemID] = null;
+        // Item.itemsList[Item.legsLeather.itemID] = null;
+        // Item.itemsList[Item.bootsLeather.itemID] = null;
         // Getting rid of Iron
-        //Item.itemsList[Item.helmetIron.itemID] = null;
-        //Item.itemsList[Item.plateIron.itemID] = null;
-        //Item.itemsList[Item.legsIron.itemID] = null;
-        //Item.itemsList[Item.bootsIron.itemID] = null;
+        // Item.itemsList[Item.helmetIron.itemID] = null;
+        // Item.itemsList[Item.plateIron.itemID] = null;
+        // Item.itemsList[Item.legsIron.itemID] = null;
+        // Item.itemsList[Item.bootsIron.itemID] = null;
         // Getting rid of Gold
-        //Item.itemsList[Item.helmetGold.itemID] = null;
-        //Item.itemsList[Item.plateGold.itemID] = null;
-        //Item.itemsList[Item.legsGold.itemID] = null;
-        //Item.itemsList[Item.bootsGold.itemID] = null;
+        // Item.itemsList[Item.helmetGold.itemID] = null;
+        // Item.itemsList[Item.plateGold.itemID] = null;
+        // Item.itemsList[Item.legsGold.itemID] = null;
+        // Item.itemsList[Item.bootsGold.itemID] = null;
         // Getting rid of Diamond
-        //Item.itemsList[Item.helmetDiamond.itemID] = null;
-        //Item.itemsList[Item.plateDiamond.itemID] = null;
-        //Item.itemsList[Item.legsDiamond.itemID] = null;
-        //Item.itemsList[Item.bootsDiamond.itemID] = null;
+        // Item.itemsList[Item.helmetDiamond.itemID] = null;
+        // Item.itemsList[Item.plateDiamond.itemID] = null;
+        // Item.itemsList[Item.legsDiamond.itemID] = null;
+        // Item.itemsList[Item.bootsDiamond.itemID] = null;
 
         helmet = new CustomArmor(helmetID, EnumArmorMaterial.IRON, 1, 0);
         chest = new CustomArmor(chestID, EnumArmorMaterial.IRON, 1, 1);

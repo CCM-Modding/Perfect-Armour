@@ -116,13 +116,13 @@ public final class ArmourType
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((boots == null) ? 0 : boots.hashCode());
-        result = prime * result + ((chest == null) ? 0 : chest.hashCode());
-        result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
-        result = prime * result + (hasOverlay ? 1231 : 1237);
-        result = prime * result + ((helmet == null) ? 0 : helmet.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((pants == null) ? 0 : pants.hashCode());
+        result = (prime * result) + ((boots == null) ? 0 : boots.hashCode());
+        result = (prime * result) + ((chest == null) ? 0 : chest.hashCode());
+        result = (prime * result) + ((displayName == null) ? 0 : displayName.hashCode());
+        result = (prime * result) + (hasOverlay ? 1231 : 1237);
+        result = (prime * result) + ((helmet == null) ? 0 : helmet.hashCode());
+        result = (prime * result) + ((name == null) ? 0 : name.hashCode());
+        result = (prime * result) + ((pants == null) ? 0 : pants.hashCode());
         return result;
     }
 

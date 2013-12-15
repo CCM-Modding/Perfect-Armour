@@ -16,7 +16,7 @@ public final class NBTHelper
     public static boolean hasTag(final ItemStack item, final String keyName)
     {
         initCompound(item);
-        
+
         return item.getTagCompound().hasKey(keyName);
     }
 

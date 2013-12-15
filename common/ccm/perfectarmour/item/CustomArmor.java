@@ -121,7 +121,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             setDamage(stack, newDamage);
         }
     }
-    
+
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {

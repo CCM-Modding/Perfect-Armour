@@ -19,7 +19,7 @@ public final class ArmourPiece
 
     public ArmourPiece(String diplayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
-        this.displayName = diplayName;
+        displayName = diplayName;
         this.durability = durability;
         this.maxAbsorption = maxAbsorption;
         this.absorptionRatio = absorptionRatio;
@@ -99,12 +99,12 @@ public final class ArmourPiece
         int result = 1;
         long temp;
         temp = Double.doubleToLongBits(absorptionRatio);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
-        result = prime * result + durability;
-        result = prime * result + maxAbsorption;
-        result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
-        result = prime * result + type;
+        result = (prime * result) + (int) (temp ^ (temp >>> 32));
+        result = (prime * result) + ((displayName == null) ? 0 : displayName.hashCode());
+        result = (prime * result) + durability;
+        result = (prime * result) + maxAbsorption;
+        result = (prime * result) + ((recipe == null) ? 0 : recipe.hashCode());
+        result = (prime * result) + type;
         return result;
     }
 
