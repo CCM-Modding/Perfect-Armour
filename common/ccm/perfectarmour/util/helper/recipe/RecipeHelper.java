@@ -4,6 +4,7 @@ import java.util.Map;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import ccm.perfectarmour.PerfectArmour;
 import ccm.perfectarmour.item.ArmourPiece;
@@ -52,7 +53,13 @@ public class RecipeHelper
                 id = 0;
                 break;
         }
-        ItemStack result = new ItemStack(id, 1, 0);
+        ItemStack result = new ItemStack(id, 1, piece.getParent().getID());
+        NBTTagCompound nbt = new NBTTagCompound();
+        
+        piece.getParent().writeToNBT(piece.getType(), nbt);
+        result.setTagCompound(nbt);
+        result.setItemDamage(0);
+        
         return new ShapedOreRecipe(result, data);
     }
 

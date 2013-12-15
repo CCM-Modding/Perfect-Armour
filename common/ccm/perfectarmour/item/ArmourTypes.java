@@ -9,18 +9,19 @@ public final class ArmourTypes
 {
     private static final Map<Integer, ArmourType> types = new HashMap<Integer, ArmourType>();
 
-    public static final void addType(JsonElement type)
+    public static final void addType(JsonElement element)
     {
-        types.put(Integer.valueOf(id), new ArmourType(type.getAsJsonObject()));
+        ArmourType type = new ArmourType(element.getAsJsonObject());
+        types.put(type.getID(), type);
+    }
+    
+    public static final ArmourType getType(int id)
+    {
+        return types.get(Integer.valueOf(id));
     }
 
     public static final Map<Integer, ArmourType> getTypes()
     {
         return types;
-    }
-
-    public static final ArmourType getType(int id)
-    {
-        return types.get(Integer.valueOf(id));
     }
 }

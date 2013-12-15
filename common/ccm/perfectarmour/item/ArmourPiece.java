@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 
 public final class ArmourPiece
 {
+    private final ArmourType parent;
     private final String displayName;
     private final int durability;
     private final int maxAbsorption;
@@ -20,9 +21,10 @@ public final class ArmourPiece
     private final byte type;
     private final NBTTagCompound recipe;
 
-    public ArmourPiece(String diplayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
+    public ArmourPiece(ArmourType parent, String displayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
-        displayName = diplayName;
+        this.parent = parent;
+        this.displayName = displayName;
         this.durability = durability;
         this.maxAbsorption = maxAbsorption;
         this.absorptionRatio = absorptionRatio;
@@ -38,13 +40,13 @@ public final class ArmourPiece
         {
             e.printStackTrace();
         }
-        System.out.println(result);
+        
     }
 
-    public ArmourPiece(int type, JsonObject piece)
+    public ArmourPiece(ArmourType parent, int type, JsonObject piece)
     {
-        this(JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
-                .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
+        this(parent, JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(),
+                JsonHelper.getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
     }
 
     public String getDisplayName()
@@ -55,6 +57,10 @@ public final class ArmourPiece
     public byte getType()
     {
         return type;
+    }
+    
+    public ArmourType getParent(){
+        return parent;
     }
 
     public int getDurability()
@@ -92,7 +98,7 @@ public final class ArmourPiece
         return nbt;
     }
 
-    public static ArmourPiece loadFromNBT(int type, NBTTagCompound nbt)
+    public static ArmourPiece loadFromNBT(ArmourType parent, int type, NBTTagCompound nbt)
     {
         String s = (Archive.NBT_ARMOUR_PIECE + "_" + type);
         NBTTagCompound piece = NBTHelper.getTag(nbt, s);
@@ -103,7 +109,7 @@ public final class ArmourPiece
         int max = NBTHelper.getInteger(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX);
         NBTTagCompound recipe = NBTHelper.getTag(piece, Archive.NBT_ARMOUR_PIECE_RECIPE);
 
-        return new ArmourPiece(name, durability, max, ratio, type, recipe);
+        return new ArmourPiece(parent, name, durability, max, ratio, type, recipe);
     }
 
     @Override

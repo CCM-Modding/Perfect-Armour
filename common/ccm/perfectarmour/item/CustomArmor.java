@@ -1,6 +1,7 @@
 package ccm.perfectarmour.item;
 
 import java.util.List;
+import java.util.Map;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -46,7 +47,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public int getMaxDamage(ItemStack stack)
     {
-        return ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getDurability();
+        return getPiece(stack).getDurability();
     }
 
     @Override
@@ -64,7 +65,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public String getItemDisplayName(ItemStack stack)
     {
-        String s = (ArmourType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + ArmourPiece.loadFromNBT(armorType, stack.getTagCompound()).getDisplayName());
+        String s = (ArmourType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + getPiece(stack).getDisplayName());
 
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display"))
         {
@@ -82,16 +83,15 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
     {
-        for (int i = 0; i < ArmourTypes.getTypes().size(); i++)
+        for (Map.Entry<Integer, ArmourType> e : ArmourTypes.getTypes().entrySet())
         {
-            ArmourType type = ArmourTypes.getTypes().get(i);
-            ItemStack tmp = new ItemStack(id, 1, i);
-
+            ItemStack tmp = new ItemStack(id, 1, e.getKey());
             NBTTagCompound nbt = new NBTTagCompound();
-            type.writeToNBT(armorType, nbt);
+            
+            e.getValue().writeToNBT(armorType, nbt);
+            tmp.setTagCompound(nbt);
             tmp.setItemDamage(0);
 
-            tmp.setTagCompound(nbt);
             list.add(tmp);
         }
     }
@@ -99,14 +99,18 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
     {
-        return new ArmorProperties(0, ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).absorptionRatio(), ArmourPiece.loadFromNBT(armorType, armor.getTagCompound())
-                .maxAbsorption());
+        return new ArmorProperties(0, getPiece(armor).absorptionRatio(), getPiece(armor).maxAbsorption());
     }
 
     @Override
     public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
     {
-        return ArmourPiece.loadFromNBT(armorType, armor.getTagCompound()).maxAbsorption();
+        return getPiece(armor).maxAbsorption();
+    }
+
+    private ArmourPiece getPiece(ItemStack stack)
+    {
+        return ArmourPiece.loadFromNBT(ArmourType.loadFromNBT(stack.getTagCompound()), armorType, stack.getTagCompound());
     }
 
     @Override

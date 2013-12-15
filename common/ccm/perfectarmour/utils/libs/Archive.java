@@ -11,6 +11,7 @@ public final class Archive
     // NBT Black Magic
     public static final String NBT_ITEM_DAMAGE = "ITEM.DAMAGE";
     public static final String NBT_ARMOUR_TYPE = "ARMOUR.TYPE";
+    public static final String NBT_ARMOUR_TYPE_ID = NBT_ARMOUR_TYPE + ".ID";
     public static final String NBT_ARMOUR_TYPE_NAME = NBT_ARMOUR_TYPE + ".NAME";
     public static final String NBT_ARMOUR_TYPE_NAME_DISPLAY = NBT_ARMOUR_TYPE_NAME + ".DISPLAY";
     public static final String NBT_ARMOUR_TYPE_HAS_OVERLAY = NBT_ARMOUR_TYPE + ".HAS_OVERLAY";
