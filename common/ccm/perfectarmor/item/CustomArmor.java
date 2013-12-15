@@ -34,6 +34,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public Icon getIcon(ItemStack stack, int pass)
     {
+        
         return ArmorTypes.getType(stack).getIcon();
     }
 
