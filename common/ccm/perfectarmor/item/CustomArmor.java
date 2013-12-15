@@ -192,8 +192,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
                     sb.append("chestplate");
                     break;
                 case 2:
-                    
-                    sb.append("leggins");
+                    sb.append("leggings");
                     break;
                 case 3:
                     sb.append("boots");

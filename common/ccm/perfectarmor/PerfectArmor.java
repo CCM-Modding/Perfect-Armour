@@ -25,10 +25,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = MOD_ID, name = MOD_NAME, useMetadata = true)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-public class PerfectArmour
+public class PerfectArmor
 {
     @Instance(MOD_ID)
-    public static PerfectArmour instance;
+    public static PerfectArmor instance;
 
     @SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
     public static CommonProxy proxy;

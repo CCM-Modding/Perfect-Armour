@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import ccm.perfectarmor.PerfectArmour;
+import ccm.perfectarmor.PerfectArmor;
 import ccm.perfectarmor.types.ArmorPiece;
 
 public class RecipeHelper
@@ -38,16 +38,16 @@ public class RecipeHelper
         switch (piece.getType())
         {
             case 0:
-                id = PerfectArmour.instance.helmet.itemID;
+                id = PerfectArmor.instance.helmet.itemID;
                 break;
             case 1:
-                id = PerfectArmour.instance.chest.itemID;
+                id = PerfectArmor.instance.chest.itemID;
                 break;
             case 2:
-                id = PerfectArmour.instance.pants.itemID;
+                id = PerfectArmor.instance.pants.itemID;
                 break;
             case 3:
-                id = PerfectArmour.instance.boots.itemID;
+                id = PerfectArmor.instance.boots.itemID;
                 break;
             default:
                 id = 0;
