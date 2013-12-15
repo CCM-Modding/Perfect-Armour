@@ -1,19 +1,19 @@
-package ccm.perfectarmour;
+package ccm.perfectarmor;
 
-import static ccm.perfectarmour.util.lib.Archive.CLIENT_PROXY;
-import static ccm.perfectarmour.util.lib.Archive.MOD_ID;
-import static ccm.perfectarmour.util.lib.Archive.MOD_NAME;
-import static ccm.perfectarmour.util.lib.Archive.SERVER_PROXY;
+import static ccm.perfectarmor.util.lib.Archive.CLIENT_PROXY;
+import static ccm.perfectarmor.util.lib.Archive.MOD_ID;
+import static ccm.perfectarmor.util.lib.Archive.MOD_NAME;
+import static ccm.perfectarmor.util.lib.Archive.SERVER_PROXY;
 
 import java.util.Map;
 
 import net.minecraft.item.EnumArmorMaterial;
-import ccm.perfectarmour.item.ArmourType;
-import ccm.perfectarmour.item.ArmourTypes;
-import ccm.perfectarmour.item.CustomArmor;
-import ccm.perfectarmour.proxy.CommonProxy;
-import ccm.perfectarmour.util.helper.json.JsonDefaults;
-import ccm.perfectarmour.util.lib.Archive;
+import ccm.perfectarmor.item.ArmourType;
+import ccm.perfectarmor.item.ArmourTypes;
+import ccm.perfectarmor.item.CustomArmor;
+import ccm.perfectarmor.proxy.CommonProxy;
+import ccm.perfectarmor.util.helper.json.JsonDefaults;
+import ccm.perfectarmor.util.lib.Archive;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

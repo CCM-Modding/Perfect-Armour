@@ -1,9 +1,9 @@
-package ccm.perfectarmour.item;
+package ccm.perfectarmor.item;
 
 import net.minecraft.nbt.NBTTagCompound;
-import ccm.perfectarmour.util.helper.NBTHelper;
-import ccm.perfectarmour.util.helper.json.JsonHelper;
-import ccm.perfectarmour.util.lib.Archive;
+import ccm.perfectarmor.util.helper.NBTHelper;
+import ccm.perfectarmor.util.helper.json.JsonHelper;
+import ccm.perfectarmor.util.lib.Archive;
 
 import com.google.gson.JsonObject;
 
@@ -11,6 +11,7 @@ public final class ArmourType
 {
     private final int id;
     private final String name;
+    private final String textureName;
     private final String displayName;
     private final boolean hasOverlay;
     private final ArmourPiece helmet;
@@ -18,10 +19,11 @@ public final class ArmourType
     private final ArmourPiece pants;
     private final ArmourPiece boots;
 
-    public ArmourType(int id, String name, String displayName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
+    public ArmourType(int id, String name, String textureName, String displayName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
     {
         this.id = id;
         this.name = name;
+        this.textureName = textureName;
         this.displayName = displayName;
         this.hasOverlay = hasOverlay;
         this.helmet = helmet;
@@ -35,6 +37,7 @@ public final class ArmourType
     {
         id = JsonHelper.getNumber(type, "id").intValue();
         name = JsonHelper.getString(type, "name");
+        textureName = JsonHelper.getString(type, "textureName");
         displayName = JsonHelper.getString(type, "displayName");
         hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
         this.helmet = helmet;
@@ -48,6 +51,7 @@ public final class ArmourType
     {
         id = JsonHelper.getNumber(type, "id").intValue();
         name = JsonHelper.getString(type, "name");
+        textureName = JsonHelper.getString(type, "textureName");
         displayName = JsonHelper.getString(type, "displayName");
         hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
         helmet = new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet"));
@@ -85,6 +89,11 @@ public final class ArmourType
     public String getName()
     {
         return name;
+    }
+    
+    public String getTextureName()
+    {
+        return textureName;
     }
 
     public String getDisplayName()
@@ -135,25 +144,27 @@ public final class ArmourType
 
     public NBTTagCompound writeToNBT(int type, NBTTagCompound nbt)
     {
-        nbt.setInteger(Archive.NBT_ARMOUR_TYPE_ID, getID());
-        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME, getName());
-        nbt.setString(Archive.NBT_ARMOUR_TYPE_NAME_DISPLAY, getDisplayName());
-        nbt.setBoolean(Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY, hasOverlay());
+        nbt.setInteger(Archive.NBT_ARMOR_TYPE_ID, getID());
+        nbt.setString(Archive.NBT_ARMOR_TYPE_NAME, getName());
+        nbt.setString(Archive.NBT_ARMOR_TYPE_NAME_TEXTURE, getTextureName());
+        nbt.setString(Archive.NBT_ARMOR_TYPE_NAME_DISPLAY, getDisplayName());
+        nbt.setBoolean(Archive.NBT_ARMOR_TYPE_HAS_OVERLAY, hasOverlay());
         getPiece(type).writeToNBT(nbt);
         return nbt;
     }
 
     public static ArmourType loadFromNBT(NBTTagCompound nbt)
     {
-        int id = NBTHelper.getInteger(nbt, Archive.NBT_ARMOUR_TYPE_ID);
-        String name = NBTHelper.getString(nbt, Archive.NBT_ARMOUR_TYPE_NAME);
-        String texture = NBTHelper.getString(nbt, Archive.NBT_ARMOUR_TYPE_NAME_DISPLAY);
-        boolean hasOverlay = NBTHelper.getBoolean(nbt, Archive.NBT_ARMOUR_TYPE_HAS_OVERLAY);
+        int id = NBTHelper.getInteger(nbt, Archive.NBT_ARMOR_TYPE_ID);
+        String name = NBTHelper.getString(nbt, Archive.NBT_ARMOR_TYPE_NAME);
+        String texture = NBTHelper.getString(nbt, Archive.NBT_ARMOR_TYPE_NAME_TEXTURE);
+        String display = NBTHelper.getString(nbt, Archive.NBT_ARMOR_TYPE_NAME_DISPLAY);
+        boolean hasOverlay = NBTHelper.getBoolean(nbt, Archive.NBT_ARMOR_TYPE_HAS_OVERLAY);
         ArmourPiece helmet = ArmourPiece.loadFromNBT(0, nbt);
         ArmourPiece chest = ArmourPiece.loadFromNBT(1, nbt);
         ArmourPiece pants = ArmourPiece.loadFromNBT(2, nbt);
         ArmourPiece boots = ArmourPiece.loadFromNBT(3, nbt);
-        return new ArmourType(id, name, texture, hasOverlay, helmet, chest, pants, boots);
+        return new ArmourType(id, name, texture, display, hasOverlay, helmet, chest, pants, boots);
     }
 
     @Override

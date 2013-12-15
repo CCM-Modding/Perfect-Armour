@@ -1,9 +1,9 @@
-package ccm.perfectarmour.util.helper.json;
+package ccm.perfectarmor.util.helper.json;
 
 import java.io.File;
 import java.io.FileReader;
 
-import ccm.perfectarmour.item.ArmourTypes;
+import ccm.perfectarmor.item.ArmourTypes;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

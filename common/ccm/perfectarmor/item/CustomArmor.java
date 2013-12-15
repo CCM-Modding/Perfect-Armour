@@ -1,4 +1,4 @@
-package ccm.perfectarmour.item;
+package ccm.perfectarmor.item;
 
 import java.util.List;
 import java.util.Map;
@@ -13,8 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
-import ccm.perfectarmour.util.helper.NBTHelper;
-import ccm.perfectarmour.util.lib.Archive;
+import ccm.perfectarmor.util.helper.NBTHelper;
+import ccm.perfectarmor.util.lib.Archive;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

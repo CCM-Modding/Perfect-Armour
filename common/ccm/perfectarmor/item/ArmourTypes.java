@@ -1,4 +1,4 @@
-package ccm.perfectarmour.item;
+package ccm.perfectarmor.item;
 
 import java.util.HashMap;
 import java.util.Map;

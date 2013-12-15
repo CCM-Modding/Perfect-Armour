@@ -1,4 +1,4 @@
-package ccm.perfectarmour.util.helper.recipe;
+package ccm.perfectarmor.util.helper.recipe;
 
 import java.util.Map;
 
@@ -6,8 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import ccm.perfectarmour.PerfectArmour;
-import ccm.perfectarmour.item.ArmourPiece;
+import ccm.perfectarmor.PerfectArmour;
+import ccm.perfectarmor.item.ArmourPiece;
 
 public class RecipeHelper
 {

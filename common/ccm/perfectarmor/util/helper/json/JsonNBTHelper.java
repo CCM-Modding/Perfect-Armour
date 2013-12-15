@@ -1,4 +1,4 @@
-package ccm.perfectarmour.util.helper.json;
+package ccm.perfectarmor.util.helper.json;
 
 import java.util.Map;
 
