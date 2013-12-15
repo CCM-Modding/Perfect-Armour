@@ -1,4 +1,4 @@
-package ccm.perfectarmor.item;
+package ccm.perfectarmor.types;
 
 import net.minecraft.nbt.NBTTagCompound;
 import ccm.perfectarmor.util.helper.NBTHelper;
@@ -7,22 +7,20 @@ import ccm.perfectarmor.util.lib.Archive;
 
 import com.google.gson.JsonObject;
 
-public final class ArmourType
+public final class ArmorType
 {
     private final int id;
-    private final String name;
     private final String textureName;
     private final String displayName;
     private final boolean hasOverlay;
-    private final ArmourPiece helmet;
-    private final ArmourPiece chest;
-    private final ArmourPiece pants;
-    private final ArmourPiece boots;
+    private final ArmorPiece helmet;
+    private final ArmorPiece chest;
+    private final ArmorPiece pants;
+    private final ArmorPiece boots;
 
-    public ArmourType(int id, String name, String textureName, String displayName, boolean hasOverlay, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
+    public ArmorType(int id, String textureName, String displayName, boolean hasOverlay, ArmorPiece helmet, ArmorPiece chest, ArmorPiece pants, ArmorPiece boots)
     {
         this.id = id;
-        this.name = name;
         this.textureName = textureName;
         this.displayName = displayName;
         this.hasOverlay = hasOverlay;
@@ -33,10 +31,9 @@ public final class ArmourType
         initChildren();
     }
 
-    public ArmourType(JsonObject type, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
+    public ArmorType(JsonObject type, ArmorPiece helmet, ArmorPiece chest, ArmorPiece pants, ArmorPiece boots)
     {
         id = JsonHelper.getNumber(type, "id").intValue();
-        name = JsonHelper.getString(type, "name");
         textureName = JsonHelper.getString(type, "textureName");
         displayName = JsonHelper.getString(type, "displayName");
         hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
@@ -47,17 +44,16 @@ public final class ArmourType
         initChildren();
     }
 
-    public ArmourType(JsonObject type)
+    public ArmorType(JsonObject type)
     {
         id = JsonHelper.getNumber(type, "id").intValue();
-        name = JsonHelper.getString(type, "name");
         textureName = JsonHelper.getString(type, "textureName");
         displayName = JsonHelper.getString(type, "displayName");
         hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
-        helmet = new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet"));
-        chest = new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest"));
-        pants = new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants"));
-        boots = new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots"));
+        helmet = new ArmorPiece(0, JsonHelper.getJsonObject(type, "helmet"));
+        chest = new ArmorPiece(1, JsonHelper.getJsonObject(type, "chest"));
+        pants = new ArmorPiece(2, JsonHelper.getJsonObject(type, "pants"));
+        boots = new ArmorPiece(3, JsonHelper.getJsonObject(type, "boots"));
         initChildren();
     }
 
@@ -86,11 +82,6 @@ public final class ArmourType
         return id;
     }
 
-    public String getName()
-    {
-        return name;
-    }
-    
     public String getTextureName()
     {
         return textureName;
@@ -106,7 +97,7 @@ public final class ArmourType
         return hasOverlay;
     }
 
-    public ArmourPiece getPiece(int type)
+    public ArmorPiece getPiece(int type)
     {
         switch (type)
         {
@@ -122,22 +113,22 @@ public final class ArmourType
         return null;
     }
 
-    public ArmourPiece getHelmet()
+    public ArmorPiece getHelmet()
     {// 0
         return helmet;
     }
 
-    public ArmourPiece getChest()
+    public ArmorPiece getChest()
     {// 1
         return chest;
     }
 
-    public ArmourPiece getPants()
+    public ArmorPiece getPants()
     {// 2
         return pants;
     }
 
-    public ArmourPiece getBoots()
+    public ArmorPiece getBoots()
     {// 3
         return boots;
     }
@@ -145,7 +136,6 @@ public final class ArmourType
     public NBTTagCompound writeToNBT(int type, NBTTagCompound nbt)
     {
         nbt.setInteger(Archive.NBT_ARMOR_TYPE_ID, getID());
-        nbt.setString(Archive.NBT_ARMOR_TYPE_NAME, getName());
         nbt.setString(Archive.NBT_ARMOR_TYPE_NAME_TEXTURE, getTextureName());
         nbt.setString(Archive.NBT_ARMOR_TYPE_NAME_DISPLAY, getDisplayName());
         nbt.setBoolean(Archive.NBT_ARMOR_TYPE_HAS_OVERLAY, hasOverlay());
@@ -153,18 +143,17 @@ public final class ArmourType
         return nbt;
     }
 
-    public static ArmourType loadFromNBT(NBTTagCompound nbt)
+    public static ArmorType loadFromNBT(NBTTagCompound nbt)
     {
         int id = NBTHelper.getInteger(nbt, Archive.NBT_ARMOR_TYPE_ID);
-        String name = NBTHelper.getString(nbt, Archive.NBT_ARMOR_TYPE_NAME);
         String texture = NBTHelper.getString(nbt, Archive.NBT_ARMOR_TYPE_NAME_TEXTURE);
         String display = NBTHelper.getString(nbt, Archive.NBT_ARMOR_TYPE_NAME_DISPLAY);
         boolean hasOverlay = NBTHelper.getBoolean(nbt, Archive.NBT_ARMOR_TYPE_HAS_OVERLAY);
-        ArmourPiece helmet = ArmourPiece.loadFromNBT(0, nbt);
-        ArmourPiece chest = ArmourPiece.loadFromNBT(1, nbt);
-        ArmourPiece pants = ArmourPiece.loadFromNBT(2, nbt);
-        ArmourPiece boots = ArmourPiece.loadFromNBT(3, nbt);
-        return new ArmourType(id, name, texture, display, hasOverlay, helmet, chest, pants, boots);
+        ArmorPiece helmet = ArmorPiece.loadFromNBT(0, nbt);
+        ArmorPiece chest = ArmorPiece.loadFromNBT(1, nbt);
+        ArmorPiece pants = ArmorPiece.loadFromNBT(2, nbt);
+        ArmorPiece boots = ArmorPiece.loadFromNBT(3, nbt);
+        return new ArmorType(id, texture, display, hasOverlay, helmet, chest, pants, boots);
     }
 
     @Override
@@ -177,7 +166,7 @@ public final class ArmourType
         result = (prime * result) + ((displayName == null) ? 0 : displayName.hashCode());
         result = (prime * result) + (hasOverlay ? 1231 : 1237);
         result = (prime * result) + ((helmet == null) ? 0 : helmet.hashCode());
-        result = (prime * result) + ((name == null) ? 0 : name.hashCode());
+        result = (prime * result) + ((textureName == null) ? 0 : textureName.hashCode());
         result = (prime * result) + ((pants == null) ? 0 : pants.hashCode());
         return result;
     }
@@ -186,7 +175,7 @@ public final class ArmourType
     public String toString()
     {
         StringBuilder builder = new StringBuilder();
-        builder.append("ArmourType [name=").append(name).append(", displayName=").append(displayName).append(", hasOverlay=").append(hasOverlay);
+        builder.append("ArmourType [textureName=").append(textureName).append(", displayName=").append(displayName).append(", hasOverlay=").append(hasOverlay);
 
         builder.append(", helmet=").append(getHelmet() != null ? getHelmet().toString() : "null");
         builder.append(", chest=").append(getChest() != null ? getChest().toString() : "null");
@@ -208,11 +197,11 @@ public final class ArmourType
         {
             return false;
         }
-        if (!(obj instanceof ArmourType))
+        if (!(obj instanceof ArmorType))
         {
             return false;
         }
-        ArmourType other = (ArmourType) obj;
+        ArmorType other = (ArmorType) obj;
         if (boots == null)
         {
             if (other.boots != null)
@@ -257,13 +246,13 @@ public final class ArmourType
         {
             return false;
         }
-        if (name == null)
+        if (textureName == null)
         {
-            if (other.name != null)
+            if (other.textureName != null)
             {
                 return false;
             }
-        } else if (!name.equals(other.name))
+        } else if (!textureName.equals(other.textureName))
         {
             return false;
         }

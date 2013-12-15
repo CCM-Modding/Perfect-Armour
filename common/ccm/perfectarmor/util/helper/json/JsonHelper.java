@@ -3,7 +3,7 @@ package ccm.perfectarmor.util.helper.json;
 import java.io.File;
 import java.io.FileReader;
 
-import ccm.perfectarmor.item.ArmourTypes;
+import ccm.perfectarmor.types.ArmorTypes;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -26,7 +26,7 @@ public class JsonHelper
         }
         for (JsonElement element : rootArray)
         {
-            ArmourTypes.addType(element.getAsJsonObject());
+            ArmorTypes.addType(element.getAsJsonObject());
         }
     }
 

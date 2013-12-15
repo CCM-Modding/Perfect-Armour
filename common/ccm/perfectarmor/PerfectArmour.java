@@ -7,11 +7,10 @@ import static ccm.perfectarmor.util.lib.Archive.SERVER_PROXY;
 
 import java.util.Map;
 
-import net.minecraft.item.EnumArmorMaterial;
-import ccm.perfectarmor.item.ArmourType;
-import ccm.perfectarmor.item.ArmourTypes;
 import ccm.perfectarmor.item.CustomArmor;
 import ccm.perfectarmor.proxy.CommonProxy;
+import ccm.perfectarmor.types.ArmorType;
+import ccm.perfectarmor.types.ArmorTypes;
 import ccm.perfectarmor.util.helper.json.JsonDefaults;
 import ccm.perfectarmor.util.lib.Archive;
 import cpw.mods.fml.common.Mod;
@@ -69,10 +68,10 @@ public class PerfectArmour
         // Item.itemsList[Item.legsDiamond.itemID] = null;
         // Item.itemsList[Item.bootsDiamond.itemID] = null;
 
-        helmet = new CustomArmor(helmetID, EnumArmorMaterial.IRON, 1, 0);
-        chest = new CustomArmor(chestID, EnumArmorMaterial.IRON, 1, 1);
-        pants = new CustomArmor(pantsID, EnumArmorMaterial.IRON, 1, 2);
-        boots = new CustomArmor(bootsID, EnumArmorMaterial.IRON, 1, 3);
+        helmet = new CustomArmor(helmetID, 1, 0);
+        chest = new CustomArmor(chestID, 1, 1);
+        pants = new CustomArmor(pantsID, 1, 2);
+        boots = new CustomArmor(bootsID, 1, 3);
 
         GameRegistry.registerItem(helmet, "custom.helmet", Archive.MOD_ID);
         GameRegistry.registerItem(chest, "custom.chest", Archive.MOD_ID);
@@ -85,7 +84,7 @@ public class PerfectArmour
     @EventHandler
     public void init(final FMLInitializationEvent event)
     {
-        for (Map.Entry<Integer, ArmourType> e : ArmourTypes.getTypes().entrySet())
+        for (Map.Entry<Integer, ArmorType> e : ArmorTypes.getTypes().entrySet())
         {
             GameRegistry.addRecipe(e.getValue().getHelmet().getIRecipe());
             GameRegistry.addRecipe(e.getValue().getChest().getIRecipe());

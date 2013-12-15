@@ -13,6 +13,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
+import ccm.perfectarmor.types.ArmorPiece;
+import ccm.perfectarmor.types.ArmorType;
+import ccm.perfectarmor.types.ArmorTypes;
 import ccm.perfectarmor.util.helper.NBTHelper;
 import ccm.perfectarmor.util.lib.Archive;
 import cpw.mods.fml.relauncher.Side;
@@ -20,9 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class CustomArmor extends ItemArmor implements ISpecialArmor
 {
-    public CustomArmor(int id, EnumArmorMaterial material, int renderIndex, int type)
+    public CustomArmor(int id, int renderIndex, int type)
     {
-        super(id, material, renderIndex, type);
+        super(id, EnumArmorMaterial.DIAMOND, renderIndex, type);
         setHasSubtypes(true);
     }
 
@@ -65,7 +68,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public String getItemDisplayName(ItemStack stack)
     {
-        String s = (ArmourType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + getPiece(stack).getDisplayName());
+        String s = (ArmorType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + getPiece(stack).getDisplayName());
 
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display"))
         {
@@ -83,7 +86,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @SideOnly(Side.CLIENT)
     public void getSubItems(int id, CreativeTabs tab, List list)
     {
-        for (Map.Entry<Integer, ArmourType> e : ArmourTypes.getTypes().entrySet())
+        for (Map.Entry<Integer, ArmorType> e : ArmorTypes.getTypes().entrySet())
         {
             ItemStack tmp = new ItemStack(id, 1, e.getKey());
             NBTTagCompound nbt = new NBTTagCompound();
@@ -108,9 +111,9 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         return getPiece(armor).maxAbsorption();
     }
 
-    private ArmourPiece getPiece(ItemStack stack)
+    private ArmorPiece getPiece(ItemStack stack)
     {
-        return ArmourPiece.loadFromNBT(armorType, stack.getTagCompound());
+        return ArmorPiece.loadFromNBT(armorType, stack.getTagCompound());
     }
 
     @Override
@@ -126,10 +129,18 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         }
     }
 
+    private static final String texture = Archive.MOD_ID + ":textures/models/armor/";
+
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
+        StringBuilder builder = new StringBuilder();
         
-        return super.getArmorTexture(stack, entity, slot, type);
+        builder.append(texture);
+        builder.append(ArmorType.loadFromNBT(stack.getTagCompound()).getTextureName());
+        builder.append("_");
+        
+        
+        return builder.toString();
     }
 }

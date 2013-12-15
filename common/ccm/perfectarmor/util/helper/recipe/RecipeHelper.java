@@ -7,11 +7,11 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import ccm.perfectarmor.PerfectArmour;
-import ccm.perfectarmor.item.ArmourPiece;
+import ccm.perfectarmor.types.ArmorPiece;
 
 public class RecipeHelper
 {
-    public static IRecipe getRecipe(ArmourPiece piece, Map<?, ?> recipeData)
+    public static IRecipe getRecipe(ArmorPiece piece, Map<?, ?> recipeData)
     {
         Object[] data = new Object[(recipeData.entrySet().size() * 2) - 3];
         int index = 3;

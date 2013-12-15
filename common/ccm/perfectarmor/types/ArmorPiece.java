@@ -1,4 +1,4 @@
-package ccm.perfectarmor.item;
+package ccm.perfectarmor.types;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -13,9 +13,9 @@ import ccm.perfectarmor.util.lib.Archive;
 
 import com.google.gson.JsonObject;
 
-public final class ArmourPiece
+public final class ArmorPiece
 {
-    private ArmourType parent;
+    private ArmorType parent;
     private final String displayName;
     private final int durability;
     private final int maxAbsorption;
@@ -24,7 +24,7 @@ public final class ArmourPiece
     private final NBTTagCompound recipe;
     private Map<?, ?> recipeData;
 
-    public ArmourPiece(String displayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
+    public ArmorPiece(String displayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
         this.displayName = displayName;
         this.durability = durability;
@@ -43,7 +43,7 @@ public final class ArmourPiece
         }
     }
 
-    public ArmourPiece(int type, JsonObject piece)
+    public ArmorPiece(int type, JsonObject piece)
     {
         this(JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
                 .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
@@ -59,12 +59,12 @@ public final class ArmourPiece
         return type;
     }
 
-    public void setParent(ArmourType parent)
+    public void setParent(ArmorType parent)
     {
         this.parent = parent;
     }
 
-    public ArmourType getParent()
+    public ArmorType getParent()
     {
         return parent;
     }
@@ -109,7 +109,7 @@ public final class ArmourPiece
         return nbt;
     }
 
-    public static ArmourPiece loadFromNBT(int type, NBTTagCompound nbt)
+    public static ArmorPiece loadFromNBT(int type, NBTTagCompound nbt)
     {
         String s = (Archive.NBT_ARMOR_PIECE + "_" + type);
         NBTTagCompound piece = NBTHelper.getTag(nbt, s);
@@ -120,7 +120,7 @@ public final class ArmourPiece
         int max = NBTHelper.getInteger(piece, Archive.NBT_ARMOR_PIECE_ABSORBTION_MAX);
         NBTTagCompound recipe = NBTHelper.getTag(piece, Archive.NBT_ARMOR_PIECE_RECIPE);
 
-        return new ArmourPiece(name, durability, max, ratio, type, recipe);
+        return new ArmorPiece(name, durability, max, ratio, type, recipe);
     }
 
     @Override
@@ -172,11 +172,11 @@ public final class ArmourPiece
         {
             return false;
         }
-        if (!(obj instanceof ArmourPiece))
+        if (!(obj instanceof ArmorPiece))
         {
             return false;
         }
-        ArmourPiece other = (ArmourPiece) obj;
+        ArmorPiece other = (ArmorPiece) obj;
         if (Double.doubleToLongBits(absorptionRatio) != Double.doubleToLongBits(other.absorptionRatio))
         {
             return false;

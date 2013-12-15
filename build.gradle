@@ -1,4 +1,4 @@
-// CCM Modding, Perfect Armour
+// CCM Modding, Perfect Armor
 buildscript {
     repositories {
         mavenCentral()
@@ -14,9 +14,9 @@ buildscript {
 
 apply plugin: "forge"
 
-group = 'ccm.perfectarmour'
+group = 'ccm.perfectarmor'
 version = "0.0.1.${System.env.BUILD_NUMBER}"
-archivesBaseName = 'PerfectArmour'
+archivesBaseName = 'PerfectArmor'
 
 sourceSets {
     main {
