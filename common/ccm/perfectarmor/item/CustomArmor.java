@@ -52,6 +52,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             switch (armorType)
             {
                 case 0:
+                    
                     sb.append("helmet");
                     break;
                 case 1:
