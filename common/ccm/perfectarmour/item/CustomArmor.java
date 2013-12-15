@@ -129,6 +129,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
+        
         return super.getArmorTexture(stack, entity, slot, type);
     }
 }
