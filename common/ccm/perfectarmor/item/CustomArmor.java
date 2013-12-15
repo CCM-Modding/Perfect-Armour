@@ -31,22 +31,20 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         setHasSubtypes(true);
     }
 
-    private static final String iTexture = Archive.MOD_ID + ":textures/items/";
-
     @Override
     public Icon getIcon(ItemStack stack, int pass)
     {
-        return ArmorTypes.getType(ArmorType.loadFromNBT(stack.getTagCompound()).getID()).getIcon();
+        System.out.println(ArmorTypes.getType(stack).getIcon());
+        return ArmorTypes.getType(stack).getIcon();
     }
 
     @Override
     public void registerIcons(IconRegister register)
     {
-        StringBuilder sb = new StringBuilder();
-        sb.append(iTexture);
         for (ArmorType type : ArmorTypes.getTypes().values())
         {
-            sb.append("/");
+            StringBuilder sb = new StringBuilder();
+            sb.append(Archive.MOD_ID + ":");
             sb.append(type.getTextureName());
             sb.append("/");
             switch (armorType)
@@ -70,9 +68,8 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             {
                 sb.append("_overlay");
             }
-            sb.append(".png");
+            System.out.println(sb.toString());
             type.setIcon(register.registerIcon(sb.toString()));
-            sb.delete(iTexture.length(), sb.length());
         }
     }
 
@@ -115,7 +112,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public String getItemDisplayName(ItemStack stack)
     {
-        String s = (ArmorType.loadFromNBT(stack.getTagCompound()).getDisplayName() + " " + getPiece(stack).getDisplayName());
+        String s = (ArmorTypes.getType(stack).getDisplayName() + " " + getPiece(stack).getDisplayName());
 
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display"))
         {
@@ -182,7 +179,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         StringBuilder builder = new StringBuilder();
 
         builder.append(Archive.MOD_ID + ":textures/models/armor/");
-        builder.append(ArmorType.loadFromNBT(stack.getTagCompound()).getTextureName());
+        builder.append(ArmorTypes.getType(stack).getTextureName());
         builder.append("_layer_");
         switch (getPiece(stack).getType())
         {
@@ -193,7 +190,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
                 builder.append(1);
                 break;
         }
-        if (ArmorType.loadFromNBT(stack.getTagCompound()).hasOverlay() && (type != null) && type.equalsIgnoreCase("overlay"))
+        if (ArmorTypes.getType(stack).hasOverlay() && (type != null) && type.equalsIgnoreCase("overlay"))
         {
             builder.append("_overlay");
         }

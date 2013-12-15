@@ -3,6 +3,8 @@ package ccm.perfectarmor.types;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.minecraft.item.ItemStack;
+
 import com.google.gson.JsonElement;
 
 public final class ArmorTypes
@@ -18,6 +20,11 @@ public final class ArmorTypes
     public static final ArmorType getType(int id)
     {
         return types.get(Integer.valueOf(id));
+    }
+    
+    public static final ArmorType getType(ItemStack stack)
+    {
+        return getType(ArmorType.loadFromNBT(stack.getTagCompound()).getID());
     }
 
     public static final Map<Integer, ArmorType> getTypes()

@@ -78,7 +78,7 @@ public final class ArmorType
             boots.setParent(this);
         }
     }
-    
+
     public Icon getIcon()
     {
         return item;
@@ -86,7 +86,7 @@ public final class ArmorType
 
     public void setIcon(Icon icon)
     {
-        this.item = icon;
+        item = icon;
     }
 
     public int getID()
