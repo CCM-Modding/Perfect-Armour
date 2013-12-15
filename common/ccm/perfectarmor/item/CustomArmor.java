@@ -90,8 +90,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         System.out.println("TEXTURE!");
         System.out.println(ArmorTypes.getType(stack).getIcon());
         System.out.println(ArmorTypes.getType(stack).getOverlay());
-        //return pass == 1 ? ArmorTypes.getType(stack).getOverlay() : ArmorTypes.getType(stack).getIcon();
-        return null;
+        return pass == 1 ? ArmorTypes.getType(stack).getOverlay() : ArmorTypes.getType(stack).getIcon();
     }
     
     @Override
