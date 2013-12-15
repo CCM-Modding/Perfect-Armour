@@ -38,16 +38,6 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         System.out.println(ArmorTypes.getType(stack).getOverlay());
         return pass == 1 ? ArmorTypes.getType(stack).getOverlay() : ArmorTypes.getType(stack).getIcon();
     }
-    
-    /**
-     * Gets an icon index based on an item's damage value and the given render pass
-     */
-    @Override
-    public Icon getIconFromDamageForRenderPass(int par1, int par2)
-    {
-        System.out.println("TEXTURE!");
-        return super.getIconFromDamageForRenderPass(par1, par2);
-    }
 
     @Override
     public void registerIcons(IconRegister register)
@@ -77,7 +67,6 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             {
                 type.setOverlay(register.registerIcon(sb.toString() + "_overlay"));
             }
-            System.out.println(sb.toString());
             type.setIcon(register.registerIcon(sb.toString()));
         }
     }

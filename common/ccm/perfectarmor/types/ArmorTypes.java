@@ -21,7 +21,7 @@ public final class ArmorTypes
     {
         return types.get(Integer.valueOf(id));
     }
-    
+
     public static final ArmorType getType(ItemStack stack)
     {
         return getType(ArmorType.loadFromNBT(stack.getTagCompound()).getID());
