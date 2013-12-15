@@ -1,9 +1,8 @@
-package ccm.perfectarmour.utils.helpers;
+package ccm.perfectarmour.util.helper.recipe;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 
 public class RecipeHelper
 {
@@ -12,7 +11,7 @@ public class RecipeHelper
         IRecipe recipe = null;
         
         Object[] inputs;
-        for(nbt.getTags())
+        
         
         return recipe;
     }

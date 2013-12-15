@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
-import ccm.perfectarmour.utils.helpers.NBTHelper;
+import ccm.perfectarmour.util.helper.NBTHelper;
 import ccm.perfectarmour.utils.libs.Archive;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

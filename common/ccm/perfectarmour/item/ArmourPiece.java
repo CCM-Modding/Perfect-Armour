@@ -1,9 +1,9 @@
 package ccm.perfectarmour.item;
 
 import net.minecraft.nbt.NBTTagCompound;
-import ccm.perfectarmour.utils.helpers.NBTHelper;
-import ccm.perfectarmour.utils.helpers.json.JsonHelper;
-import ccm.perfectarmour.utils.helpers.json.JsonNBTHelper;
+import ccm.perfectarmour.util.helper.NBTHelper;
+import ccm.perfectarmour.util.helper.json.JsonHelper;
+import ccm.perfectarmour.util.helper.json.JsonNBTHelper;
 import ccm.perfectarmour.utils.libs.Archive;
 
 import com.google.gson.JsonObject;

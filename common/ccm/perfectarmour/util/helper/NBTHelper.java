@@ -1,4 +1,4 @@
-package ccm.perfectarmour.utils.helpers;
+package ccm.perfectarmour.util.helper;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
