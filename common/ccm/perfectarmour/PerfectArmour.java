@@ -42,8 +42,6 @@ public class PerfectArmour
     @EventHandler
     public void preInit(final FMLPreInitializationEvent event)
     {
-        JsonDefaults.loadJson(event);
-
         // Getting our ids
         int helmetID = 3000/* Item.helmetLeather.itemID */;
         int chestID = 3001/* Item.plateLeather.itemID */;
@@ -80,6 +78,8 @@ public class PerfectArmour
         GameRegistry.registerItem(chest, "custom.chest", Archive.MOD_ID);
         GameRegistry.registerItem(pants, "custom.pants", Archive.MOD_ID);
         GameRegistry.registerItem(boots, "custom.boots", Archive.MOD_ID);
+        
+        JsonDefaults.loadJson(event);
     }
 
     @EventHandler

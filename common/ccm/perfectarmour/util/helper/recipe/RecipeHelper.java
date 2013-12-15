@@ -13,7 +13,9 @@ public class RecipeHelper
 {
     public static IRecipe getRecipe(ArmourPiece piece, Map<?, ?> recipeData)
     {
-        Object[] data = new Object[recipeData.entrySet().size() * 2];
+        System.out.println("DATA: " + recipeData);
+        System.out.println("SIZE: " + ((recipeData.entrySet().size() * 2) - 3));
+        Object[] data = new Object[(recipeData.entrySet().size() * 2) - 3];
         int index = 3;
         for (Map.Entry<?, ?> e : recipeData.entrySet())
         {
@@ -21,17 +23,21 @@ public class RecipeHelper
             if (s.equalsIgnoreCase("top"))
             {
                 data[0] = e.getValue().toString();
+                System.out.println("DATA ARRAY: " + data);
             } else if (s.equalsIgnoreCase("middle"))
             {
                 data[1] = e.getValue().toString();
+                System.out.println("DATA ARRAY: " + data);
             } else if (s.equalsIgnoreCase("bottom"))
             {
                 data[2] = e.getValue().toString();
+                System.out.println("DATA ARRAY: " + data);
             } else
             {
-                data[index++] = s;
+                data[index++] = s.toCharArray()[0];
                 ItemStack tmp = getItemStack(e.getValue().toString());
                 data[index++] = tmp.itemID > 0 ? tmp : e.getValue().toString();
+                System.out.println("DATA ARRAY: " + data);
             }
         }
         int id;

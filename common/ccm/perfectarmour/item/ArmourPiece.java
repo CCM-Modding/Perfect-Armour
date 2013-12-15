@@ -22,7 +22,7 @@ public final class ArmourPiece
     private final double absorptionRatio;
     private final byte type;
     private final NBTTagCompound recipe;
-    private final IRecipe iRecipe;
+    private Map<?, ?> recipeData;
 
     public ArmourPiece(String displayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
@@ -32,17 +32,15 @@ public final class ArmourPiece
         this.absorptionRatio = absorptionRatio;
         this.type = (byte) type;
         this.recipe = recipe;
-        Map<?, ?> result = null;
         try
         {
             Method map = recipe.getClass().getDeclaredMethod("getTagMap", NBTTagCompound.class);
             map.setAccessible(true);
-            result = (Map<?, ?>) map.invoke(recipe, recipe);
+            recipeData = (Map<?, ?>) map.invoke(recipe, recipe);
         } catch (Exception e)
         {
             e.printStackTrace();
         }
-        iRecipe = RecipeHelper.getRecipe(this, result);
     }
 
     public ArmourPiece(int type, JsonObject piece)
@@ -93,7 +91,7 @@ public final class ArmourPiece
     
     public IRecipe getIRecipe()
     {
-        return iRecipe;
+        return RecipeHelper.getRecipe(this, recipeData);
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)

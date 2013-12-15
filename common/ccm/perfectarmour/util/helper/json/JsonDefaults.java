@@ -52,6 +52,7 @@ public class JsonDefaults
     private static void addLeather(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
+        armourType.addProperty("id", "0");
         armourType.addProperty("name", "leather");
         armourType.addProperty("displayName", "Leather");
         armourType.addProperty("hasOverlay", true);
@@ -113,6 +114,7 @@ public class JsonDefaults
     private static void addIron(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
+        armourType.addProperty("id", "1");
         armourType.addProperty("name", "iron");
         armourType.addProperty("displayName", "Iron");
         // helmet
@@ -173,6 +175,7 @@ public class JsonDefaults
     private static void addGold(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
+        armourType.addProperty("id", "2");
         armourType.addProperty("name", "gold");
         armourType.addProperty("displayName", "Gold");
         // helmet
@@ -233,6 +236,7 @@ public class JsonDefaults
     private static void addDiamond(JsonArray rootArray)
     {
         JsonObject armourType = new JsonObject();
+        armourType.addProperty("id", "3");
         armourType.addProperty("name", "diamond");
         armourType.addProperty("displayName", "Diamond");
         // helmet
