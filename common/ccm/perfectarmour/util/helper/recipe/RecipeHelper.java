@@ -1,18 +1,37 @@
 package ccm.perfectarmour.util.helper.recipe;
 
+import java.util.Map;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.nbt.NBTTagCompound;
 
 public class RecipeHelper
 {
-    public static IRecipe nbtRecipe(NBTTagCompound nbt)
+    public static IRecipe getRecipe(Map<?, ?> data)
     {
         IRecipe recipe = null;
-        
+
         Object[] inputs;
-        
-        
+        StringBuilder builder = new StringBuilder();
+        for (Map.Entry<?, ?> e : data.entrySet())
+        {
+            String s = (String) e.getKey();
+            if (e.getValue().toString().length() == 3)
+            {
+                if (s.equalsIgnoreCase("top"))
+                {
+                    builder.insert(0, e.getValue().toString());
+                } else if (s.equalsIgnoreCase("middle"))
+                {
+                    builder.insert(3, e.getValue().toString());
+                } else if (s.equalsIgnoreCase("bottom"))
+                {
+                    builder.insert(6, e.getValue().toString());
+                }
+            }
+            
+        }
+
         return recipe;
     }
 
@@ -45,7 +64,7 @@ public class RecipeHelper
                 }
             }
         } else
-        {//Its only an id
+        {// Its only an id
             id = Integer.parseInt(itemID);
         }
         return new ItemStack(id, 1, meta);

@@ -7,9 +7,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import ccm.perfectarmour.util.helper.NBTHelper;
 import ccm.perfectarmour.util.helper.json.JsonHelper;
 import ccm.perfectarmour.util.helper.json.JsonNBTHelper;
+import ccm.perfectarmour.util.helper.recipe.RecipeHelper;
 import ccm.perfectarmour.utils.libs.Archive;
 
 import com.google.gson.JsonObject;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public final class ArmourPiece
 {
@@ -36,7 +39,7 @@ public final class ArmourPiece
         {
             e.printStackTrace();
         }
-        System.out.println(result);
+        GameRegistry.addRecipe(RecipeHelper.getRecipe(result));
     }
 
     public ArmourPiece(int type, JsonObject piece)
@@ -94,7 +97,7 @@ public final class ArmourPiece
         double ratio = NBTHelper.getDouble(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_RATIO);
         int max = NBTHelper.getInteger(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX);
 
-        return new ArmourPiece(name, durability, max, ratio, type, recipe);
+        return new ArmourPiece(name, durability, max, ratio, type);
     }
 
     @Override
