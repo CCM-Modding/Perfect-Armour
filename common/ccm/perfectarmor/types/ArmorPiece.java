@@ -51,7 +51,7 @@ public final class ArmorPiece
         this(JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
                 .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
     }
-    
+
     public Icon getIcon()
     {
         return icon;
