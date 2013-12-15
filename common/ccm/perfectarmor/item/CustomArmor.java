@@ -131,31 +131,21 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         }
     }
 
-    private static final String aTexture = Archive.MOD_ID + ":textures/models/armor/";
-
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
         StringBuilder builder = new StringBuilder();
 
-        builder.append(aTexture);
+        builder.append(Archive.MOD_ID + ":textures/models/armor/");
         builder.append(ArmorType.loadFromNBT(stack.getTagCompound()).getTextureName());
         builder.append("_layer_");
         switch (getPiece(stack).getType())
         {
-            case 0:
-                builder.append(1);
-                break;
-            case 1:
-                builder.append(1);
-                break;
             case 2:
                 builder.append(2);
                 break;
-            case 3:
-                builder.append(2);
-                break;
             default:
+                builder.append(1);
                 break;
         }
         if (ArmorType.loadFromNBT(stack.getTagCompound()).hasOverlay() && (type != null) && type.equalsIgnoreCase("overlay"))
