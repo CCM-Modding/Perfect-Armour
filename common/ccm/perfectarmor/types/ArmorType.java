@@ -18,8 +18,9 @@ public final class ArmorType
     private final ArmorPiece chest;
     private final ArmorPiece pants;
     private final ArmorPiece boots;
-    private Icon item;
-
+    private Icon icon;
+    private Icon overlay;
+    
     public ArmorType(int id, String textureName, String displayName, boolean hasOverlay, ArmorPiece helmet, ArmorPiece chest, ArmorPiece pants, ArmorPiece boots)
     {
         this.id = id;
@@ -81,12 +82,22 @@ public final class ArmorType
 
     public Icon getIcon()
     {
-        return item;
+        return icon;
     }
 
     public void setIcon(Icon icon)
     {
-        item = icon;
+        this.icon = icon;
+    }
+    
+    public Icon getOverlay()
+    {
+        return overlay;
+    }
+
+    public void setOverlay(Icon icon)
+    {
+        this.overlay = icon;
     }
 
     public int getID()

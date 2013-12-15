@@ -34,7 +34,6 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public Icon getIcon(ItemStack stack, int pass)
     {
-        System.out.println(ArmorTypes.getType(stack).getIcon());
         return ArmorTypes.getType(stack).getIcon();
     }
 
@@ -66,9 +65,8 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             }
             if (type.hasOverlay())
             {
-                sb.append("_overlay");
+                type.setOverlay(register.registerIcon(sb.toString()+ "_overlay"));
             }
-            System.out.println(sb.toString());
             type.setIcon(register.registerIcon(sb.toString()));
         }
     }
