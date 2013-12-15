@@ -1,6 +1,5 @@
 package ccm.perfectarmor.types;
 
-import java.lang.reflect.Method;
 import java.util.Map;
 
 import net.minecraft.item.crafting.IRecipe;
@@ -35,15 +34,6 @@ public final class ArmorPiece
         this.absorptionRatio = absorptionRatio;
         this.type = (byte) type;
         this.recipe = recipe;
-        try
-        {
-            Method map = recipe.getClass().getDeclaredMethod("getTagMap", NBTTagCompound.class);
-            map.setAccessible(true);
-            recipeData = (Map<?, ?>) map.invoke(recipe, recipe);
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
     }
 
     public ArmorPiece(int type, JsonObject piece)
