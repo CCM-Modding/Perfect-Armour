@@ -25,7 +25,8 @@ public final class ArmourPiece
         this.absorptionRatio = absorptionRatio;
         this.type = (byte) type;
         this.recipe = recipe;
-        System.out.println(recipe);
+        Method map = 
+        System.out.println();
     }
 
     public ArmourPiece(int type, JsonObject piece)
