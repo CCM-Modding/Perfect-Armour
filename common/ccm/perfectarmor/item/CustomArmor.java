@@ -32,46 +32,6 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     }
 
     @Override
-    public Icon getIcon(ItemStack stack, int pass)
-    {
-        System.out.println(ArmorTypes.getType(stack).getIcon());
-        System.out.println(ArmorTypes.getType(stack).getOverlay());
-        return pass == 1 ? ArmorTypes.getType(stack).getOverlay() : ArmorTypes.getType(stack).getIcon();
-    }
-
-    @Override
-    public void registerIcons(IconRegister register)
-    {
-        for (ArmorType type : ArmorTypes.getTypes().values())
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.append(Archive.MOD_ID + ":");
-            sb.append(type.getTextureName());
-            sb.append("/");
-            switch (armorType)
-            {
-                case 0:
-                    sb.append("helmet");
-                    break;
-                case 1:
-                    sb.append("chestplate");
-                    break;
-                case 2:
-                    sb.append("leggins");
-                    break;
-                case 3:
-                    sb.append("boots");
-                    break;
-            }
-            if (type.hasOverlay())
-            {
-                type.setOverlay(register.registerIcon(sb.toString() + "_overlay"));
-            }
-            type.setIcon(register.registerIcon(sb.toString()));
-        }
-    }
-
-    @Override
     public boolean getShareTag()
     {
         return true;
@@ -105,6 +65,46 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     public void setDamage(ItemStack stack, int damage)
     {
         NBTHelper.setInteger(stack, Archive.NBT_ITEM_DAMAGE, damage);
+    }
+    
+    @Override
+    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
+    {
+        return new ArmorProperties(0, getPiece(armor).absorptionRatio(), getPiece(armor).maxAbsorption());
+    }
+
+    @Override
+    public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
+    {
+        return getPiece(armor).maxAbsorption();
+    }
+
+    private ArmorPiece getPiece(ItemStack stack)
+    {
+        return ArmorPiece.loadFromNBT(armorType, stack.getTagCompound());
+    }
+    
+    @Override
+    public Icon getIcon(ItemStack stack, int pass)
+    {
+        System.out.println("TEXTURE!");
+        System.out.println(ArmorTypes.getType(stack).getIcon());
+        System.out.println(ArmorTypes.getType(stack).getOverlay());
+        //return pass == 1 ? ArmorTypes.getType(stack).getOverlay() : ArmorTypes.getType(stack).getIcon();
+        return null;
+    }
+    
+    @Override
+    public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
+    {
+        int newDamage = getDamage(stack) + damage;
+        if (newDamage >= getMaxDamage(stack))
+        {
+            stack.stackSize = 0;
+        } else
+        {
+            setDamage(stack, newDamage);
+        }
     }
 
     @Override
@@ -140,37 +140,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             list.add(tmp);
         }
     }
-
-    @Override
-    public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
-    {
-        return new ArmorProperties(0, getPiece(armor).absorptionRatio(), getPiece(armor).maxAbsorption());
-    }
-
-    @Override
-    public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
-    {
-        return getPiece(armor).maxAbsorption();
-    }
-
-    private ArmorPiece getPiece(ItemStack stack)
-    {
-        return ArmorPiece.loadFromNBT(armorType, stack.getTagCompound());
-    }
-
-    @Override
-    public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
-    {
-        int newDamage = getDamage(stack) + damage;
-        if (newDamage >= getMaxDamage(stack))
-        {
-            stack.stackSize = 0;
-        } else
-        {
-            setDamage(stack, newDamage);
-        }
-    }
-
+    
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
@@ -195,5 +165,37 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         builder.append(".png");
 
         return builder.toString();
+    }
+    
+    @Override
+    public void registerIcons(IconRegister register)
+    {
+        for (ArmorType type : ArmorTypes.getTypes().values())
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.append(Archive.MOD_ID + ":");
+            sb.append(type.getTextureName());
+            sb.append("/");
+            switch (armorType)
+            {
+                case 0:
+                    sb.append("helmet");
+                    break;
+                case 1:
+                    sb.append("chestplate");
+                    break;
+                case 2:
+                    sb.append("leggins");
+                    break;
+                case 3:
+                    sb.append("boots");
+                    break;
+            }
+            if (type.hasOverlay())
+            {
+                type.setOverlay(register.registerIcon(sb.toString() + "_overlay"));
+            }
+            type.setIcon(register.registerIcon(sb.toString()));
+        }
     }
 }
