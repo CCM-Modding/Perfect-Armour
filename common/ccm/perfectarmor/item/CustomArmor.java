@@ -36,8 +36,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public Icon getIcon(ItemStack stack, int pass)
     {
-
-        return super.getIcon(stack, pass);
+        return ArmorTypes.getType(ArmorType.loadFromNBT(stack.getTagCompound()).getID()).getIcon();
     }
 
     @Override
@@ -47,12 +46,12 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         sb.append(iTexture);
         for (ArmorType type : ArmorTypes.getTypes().values())
         {
+            sb.append("/");
             sb.append(type.getTextureName());
-            sb.append("_");
+            sb.append("/");
             switch (armorType)
             {
                 case 0:
-                    
                     sb.append("helmet");
                     break;
                 case 1:
