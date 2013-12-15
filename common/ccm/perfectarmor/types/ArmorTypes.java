@@ -26,6 +26,11 @@ public final class ArmorTypes
     {
         return getType(ArmorType.loadFromNBT(stack.getTagCompound()).getID());
     }
+    
+    public static final ArmorPiece getPiece(int type, ItemStack stack)
+    {
+        return getType(stack).getPiece(type);
+    }
 
     public static final Map<Integer, ArmorType> getTypes()
     {

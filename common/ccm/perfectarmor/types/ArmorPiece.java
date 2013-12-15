@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.Icon;
 import ccm.perfectarmor.util.helper.NBTHelper;
 import ccm.perfectarmor.util.helper.json.JsonHelper;
 import ccm.perfectarmor.util.helper.json.JsonNBTHelper;
@@ -23,6 +24,8 @@ public final class ArmorPiece
     private final byte type;
     private final NBTTagCompound recipe;
     private Map<?, ?> recipeData;
+    private Icon icon;
+    private Icon overlay;
 
     public ArmorPiece(String displayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
@@ -47,6 +50,26 @@ public final class ArmorPiece
     {
         this(JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
                 .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
+    }
+    
+    public Icon getIcon()
+    {
+        return icon;
+    }
+
+    public void setIcon(Icon icon)
+    {
+        this.icon = icon;
+    }
+
+    public Icon getOverlay()
+    {
+        return overlay;
+    }
+
+    public void setOverlay(Icon icon)
+    {
+        overlay = icon;
     }
 
     public String getDisplayName()

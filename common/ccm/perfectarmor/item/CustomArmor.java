@@ -66,7 +66,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         NBTHelper.setInteger(stack, Archive.NBT_ITEM_DAMAGE, damage);
     }
-    
+
     @Override
     public ArmorProperties getProperties(EntityLivingBase player, ItemStack armor, DamageSource source, double damage, int slot)
     {
@@ -83,16 +83,24 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         return ArmorPiece.loadFromNBT(armorType, stack.getTagCompound());
     }
-    
+
+    @SideOnly(Side.CLIENT)
+    @Override
+    public boolean requiresMultipleRenderPasses()
+    {
+        return true;
+    }
+
     @Override
     public Icon getIcon(ItemStack stack, int pass)
     {
-        System.out.println("TEXTURE!");
-        System.out.println(ArmorTypes.getType(stack).getIcon());
-        System.out.println(ArmorTypes.getType(stack).getOverlay());
-        return pass == 1 ? ArmorTypes.getType(stack).getOverlay() : ArmorTypes.getType(stack).getIcon();
+        if (ArmorTypes.getType(stack).hasOverlay())
+        {
+            return pass == 1 ? ArmorTypes.getPiece(armorType, stack).getOverlay() : ArmorTypes.getPiece(armorType, stack).getIcon();
+        }
+        return ArmorTypes.getPiece(armorType, stack).getIcon();
     }
-    
+
     @Override
     public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot)
     {
@@ -139,7 +147,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             list.add(tmp);
         }
     }
-    
+
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
@@ -165,7 +173,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
 
         return builder.toString();
     }
-    
+
     @Override
     public void registerIcons(IconRegister register)
     {
@@ -192,9 +200,9 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             }
             if (type.hasOverlay())
             {
-                type.setOverlay(register.registerIcon(sb.toString() + "_overlay"));
+                type.getPiece(armorType).setOverlay(register.registerIcon(sb.toString() + "_overlay"));
             }
-            type.setIcon(register.registerIcon(sb.toString()));
+            type.getPiece(armorType).setIcon(register.registerIcon(sb.toString()));
         }
     }
 }
