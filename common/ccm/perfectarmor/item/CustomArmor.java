@@ -29,6 +29,8 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         setHasSubtypes(true);
     }
 
+    private static final String iTexture = Archive.MOD_ID + ":textures/items/";
+
     @Override
     public boolean getShareTag()
     {
@@ -129,18 +131,39 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         }
     }
 
-    private static final String texture = Archive.MOD_ID + ":textures/models/armor/";
+    private static final String aTexture = Archive.MOD_ID + ":textures/models/armor/";
 
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
         StringBuilder builder = new StringBuilder();
-        
-        builder.append(texture);
+
+        builder.append(aTexture);
         builder.append(ArmorType.loadFromNBT(stack.getTagCompound()).getTextureName());
-        builder.append("_");
-        
-        
+        builder.append("_layer_");
+        switch (getPiece(stack).getType())
+        {
+            case 0:
+                builder.append(1);
+                break;
+            case 1:
+                builder.append(1);
+                break;
+            case 2:
+                builder.append(2);
+                break;
+            case 3:
+                builder.append(2);
+                break;
+            default:
+                break;
+        }
+        if (ArmorType.loadFromNBT(stack.getTagCompound()).hasOverlay() && (type != null) && type.equalsIgnoreCase("overlay"))
+        {
+            builder.append("overlay");
+        }
+        builder.append(".png");
+
         return builder.toString();
     }
 }
