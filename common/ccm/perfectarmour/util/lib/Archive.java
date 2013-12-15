@@ -1,4 +1,4 @@
-package ccm.perfectarmour.utils.libs;
+package ccm.perfectarmour.util.lib;
 
 public final class Archive
 {

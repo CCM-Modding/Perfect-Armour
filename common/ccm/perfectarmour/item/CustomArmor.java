@@ -14,7 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.ISpecialArmor;
 import ccm.perfectarmour.util.helper.NBTHelper;
-import ccm.perfectarmour.utils.libs.Archive;
+import ccm.perfectarmour.util.lib.Archive;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -110,7 +110,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
 
     private ArmourPiece getPiece(ItemStack stack)
     {
-        return ArmourPiece.loadFromNBT(ArmourType.loadFromNBT(stack.getTagCompound()), armorType, stack.getTagCompound());
+        return ArmourPiece.loadFromNBT(armorType, stack.getTagCompound());
     }
 
     @Override

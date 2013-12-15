@@ -1,18 +1,19 @@
 package ccm.perfectarmour;
 
-import static ccm.perfectarmour.utils.libs.Archive.CLIENT_PROXY;
-import static ccm.perfectarmour.utils.libs.Archive.MOD_ID;
-import static ccm.perfectarmour.utils.libs.Archive.MOD_NAME;
-import static ccm.perfectarmour.utils.libs.Archive.SERVER_PROXY;
+import static ccm.perfectarmour.util.lib.Archive.CLIENT_PROXY;
+import static ccm.perfectarmour.util.lib.Archive.MOD_ID;
+import static ccm.perfectarmour.util.lib.Archive.MOD_NAME;
+import static ccm.perfectarmour.util.lib.Archive.SERVER_PROXY;
 
-import java.io.File;
+import java.util.Map;
 
 import net.minecraft.item.EnumArmorMaterial;
+import ccm.perfectarmour.item.ArmourType;
+import ccm.perfectarmour.item.ArmourTypes;
 import ccm.perfectarmour.item.CustomArmor;
 import ccm.perfectarmour.proxy.CommonProxy;
 import ccm.perfectarmour.util.helper.json.JsonDefaults;
-import ccm.perfectarmour.util.helper.json.JsonHelper;
-import ccm.perfectarmour.utils.libs.Archive;
+import ccm.perfectarmour.util.lib.Archive;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -41,14 +42,7 @@ public class PerfectArmour
     @EventHandler
     public void preInit(final FMLPreInitializationEvent event)
     {
-        File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
-        configFolder.mkdirs();
-        File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
-        if (!armours.exists())
-        {
-            JsonDefaults.addDefaults(armours);
-        }
-        JsonHelper.read(armours);
+        JsonDefaults.loadJson(event);
 
         // Getting our ids
         int helmetID = 3000/* Item.helmetLeather.itemID */;
@@ -90,7 +84,15 @@ public class PerfectArmour
 
     @EventHandler
     public void init(final FMLInitializationEvent event)
-    {}
+    {
+        for (Map.Entry<Integer, ArmourType> e : ArmourTypes.getTypes().entrySet())
+        {
+            GameRegistry.addRecipe(e.getValue().getHelmet().getIRecipe());
+            GameRegistry.addRecipe(e.getValue().getChest().getIRecipe());
+            GameRegistry.addRecipe(e.getValue().getPants().getIRecipe());
+            GameRegistry.addRecipe(e.getValue().getBoots().getIRecipe());
+        }
+    }
 
     @EventHandler
     public void postInit(final FMLPostInitializationEvent event)

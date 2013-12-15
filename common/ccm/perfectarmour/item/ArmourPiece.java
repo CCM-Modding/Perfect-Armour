@@ -3,27 +3,29 @@ package ccm.perfectarmour.item;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import ccm.perfectarmour.util.helper.NBTHelper;
 import ccm.perfectarmour.util.helper.json.JsonHelper;
 import ccm.perfectarmour.util.helper.json.JsonNBTHelper;
-import ccm.perfectarmour.utils.libs.Archive;
+import ccm.perfectarmour.util.helper.recipe.RecipeHelper;
+import ccm.perfectarmour.util.lib.Archive;
 
 import com.google.gson.JsonObject;
 
 public final class ArmourPiece
 {
-    private final ArmourType parent;
+    private ArmourType parent;
     private final String displayName;
     private final int durability;
     private final int maxAbsorption;
     private final double absorptionRatio;
     private final byte type;
     private final NBTTagCompound recipe;
+    private final IRecipe iRecipe;
 
-    public ArmourPiece(ArmourType parent, String displayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
+    public ArmourPiece(String displayName, int durability, int maxAbsorption, double absorptionRatio, int type, NBTTagCompound recipe)
     {
-        this.parent = parent;
         this.displayName = displayName;
         this.durability = durability;
         this.maxAbsorption = maxAbsorption;
@@ -40,13 +42,13 @@ public final class ArmourPiece
         {
             e.printStackTrace();
         }
-        
+        iRecipe = RecipeHelper.getRecipe(this, result);
     }
 
-    public ArmourPiece(ArmourType parent, int type, JsonObject piece)
+    public ArmourPiece(int type, JsonObject piece)
     {
-        this(parent, JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(),
-                JsonHelper.getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
+        this(JsonHelper.getString(piece, "displayName"), JsonHelper.getNumber(piece, "durability").intValue(), JsonHelper.getNumber(piece, "maxAbsorption").intValue(), JsonHelper
+                .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
     }
 
     public String getDisplayName()
@@ -58,8 +60,14 @@ public final class ArmourPiece
     {
         return type;
     }
-    
-    public ArmourType getParent(){
+
+    public void setParent(ArmourType parent)
+    {
+        this.parent = parent;
+    }
+
+    public ArmourType getParent()
+    {
         return parent;
     }
 
@@ -82,6 +90,11 @@ public final class ArmourPiece
     {
         return recipe;
     }
+    
+    public IRecipe getIRecipe()
+    {
+        return iRecipe;
+    }
 
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {
@@ -98,7 +111,7 @@ public final class ArmourPiece
         return nbt;
     }
 
-    public static ArmourPiece loadFromNBT(ArmourType parent, int type, NBTTagCompound nbt)
+    public static ArmourPiece loadFromNBT(int type, NBTTagCompound nbt)
     {
         String s = (Archive.NBT_ARMOUR_PIECE + "_" + type);
         NBTTagCompound piece = NBTHelper.getTag(nbt, s);
@@ -109,7 +122,7 @@ public final class ArmourPiece
         int max = NBTHelper.getInteger(piece, Archive.NBT_ARMOUR_PIECE_ABSORBTION_MAX);
         NBTTagCompound recipe = NBTHelper.getTag(piece, Archive.NBT_ARMOUR_PIECE_RECIPE);
 
-        return new ArmourPiece(parent, name, durability, max, ratio, type, recipe);
+        return new ArmourPiece(name, durability, max, ratio, type, recipe);
     }
 
     @Override

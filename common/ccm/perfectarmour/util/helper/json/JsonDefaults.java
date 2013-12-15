@@ -10,8 +10,21 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+
 public class JsonDefaults
 {
+    public static void loadJson(final FMLPreInitializationEvent event){
+        File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
+        configFolder.mkdirs();
+        File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
+        if (!armours.exists())
+        {
+            JsonDefaults.addDefaults(armours);
+        }
+        JsonHelper.read(armours);
+    }
+    
     public static void addDefaults(File file)
     {
         try

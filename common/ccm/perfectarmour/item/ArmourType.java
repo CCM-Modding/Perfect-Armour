@@ -3,7 +3,7 @@ package ccm.perfectarmour.item;
 import net.minecraft.nbt.NBTTagCompound;
 import ccm.perfectarmour.util.helper.NBTHelper;
 import ccm.perfectarmour.util.helper.json.JsonHelper;
-import ccm.perfectarmour.utils.libs.Archive;
+import ccm.perfectarmour.util.lib.Archive;
 
 import com.google.gson.JsonObject;
 
@@ -28,6 +28,7 @@ public final class ArmourType
         this.chest = chest;
         this.pants = pants;
         this.boots = boots;
+        initChildren();
     }
 
     public ArmourType(JsonObject type, ArmourPiece helmet, ArmourPiece chest, ArmourPiece pants, ArmourPiece boots)
@@ -40,6 +41,7 @@ public final class ArmourType
         this.chest = chest;
         this.pants = pants;
         this.boots = boots;
+        initChildren();
     }
 
     public ArmourType(JsonObject type)
@@ -48,10 +50,31 @@ public final class ArmourType
         this.name = JsonHelper.getString(type, "name");
         this.displayName = JsonHelper.getString(type, "displayName");
         this.hasOverlay = JsonHelper.getBoolean(type, "hasOverlay");
-        this.helmet = new ArmourPiece(this, 0, JsonHelper.getJsonObject(type, "helmet"));
-        this.chest = new ArmourPiece(this, 1, JsonHelper.getJsonObject(type, "chest"));
-        this.pants = new ArmourPiece(this, 2, JsonHelper.getJsonObject(type, "pants"));
-        this.boots = new ArmourPiece(this, 3, JsonHelper.getJsonObject(type, "boots"));
+        this.helmet = new ArmourPiece(0, JsonHelper.getJsonObject(type, "helmet"));
+        this.chest = new ArmourPiece(1, JsonHelper.getJsonObject(type, "chest"));
+        this.pants = new ArmourPiece(2, JsonHelper.getJsonObject(type, "pants"));
+        this.boots = new ArmourPiece(3, JsonHelper.getJsonObject(type, "boots"));
+        initChildren();
+    }
+
+    private void initChildren()
+    {
+        if (helmet != null)
+        {
+            helmet.setParent(this);
+        }
+        if (chest != null)
+        {
+            chest.setParent(this);
+        }
+        if (pants != null)
+        {
+            pants.setParent(this);
+        }
+        if (boots != null)
+        {
+            boots.setParent(this);
+        }
     }
 
     public int getID()
