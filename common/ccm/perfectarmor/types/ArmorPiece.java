@@ -1,7 +1,5 @@
 package ccm.perfectarmor.types;
 
-import java.util.Map;
-
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
@@ -22,7 +20,6 @@ public final class ArmorPiece
     private final double absorptionRatio;
     private final byte type;
     private final NBTTagCompound recipe;
-    private Map<?, ?> recipeData;
     private Icon icon;
     private Icon overlay;
 
@@ -104,7 +101,7 @@ public final class ArmorPiece
 
     public IRecipe getIRecipe()
     {
-        return RecipeHelper.getRecipe(this, recipeData);
+        return RecipeHelper.getRecipe(this, recipe);
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
