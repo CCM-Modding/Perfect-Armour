@@ -82,9 +82,9 @@ public class RecipeHelper
         for (String s : tmp)
         {
             String[] r = s.split(":");
-            for (int i = 0; i < r.length; i++)
+            for (String element : r)
             {
-                temp.add(r[i]);
+                temp.add(element);
             }
         }
         return temp.toArray();
@@ -98,7 +98,7 @@ public class RecipeHelper
         // Decompose String into (item ID, Meta) pairs
         final String[] tmp = itemID.split("&");
         if ((tmp != null) && (tmp.length > 0))
-        {          
+        {
             try
             {
                 id = Integer.parseInt(tmp[0]);
