@@ -84,6 +84,7 @@ public class PerfectArmor
     @EventHandler
     public void init(final FMLInitializationEvent event)
     {
+        
         for (Map.Entry<Integer, ArmorType> e : ArmorTypes.getTypes().entrySet())
         {
             GameRegistry.addRecipe(e.getValue().getHelmet().getIRecipe());
