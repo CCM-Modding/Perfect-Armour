@@ -36,10 +36,10 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public Icon getIcon(ItemStack stack, int pass)
     {
-        
+
         return super.getIcon(stack, pass);
     }
-    
+
     @Override
     public void registerIcons(IconRegister register)
     {
@@ -47,7 +47,30 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         sb.append(iTexture);
         for (ArmorType type : ArmorTypes.getTypes().values())
         {
-            //sb.
+            sb.append(type.getTextureName());
+            sb.append("_");
+            switch (armorType)
+            {
+                case 0:
+                    sb.append("helmet");
+                    break;
+                case 1:
+                    sb.append("chestplate");
+                    break;
+                case 2:
+                    sb.append("leggins");
+                    break;
+                case 3:
+                    sb.append("boots");
+                    break;
+                default:
+                    break;
+            }
+            if (type.hasOverlay())
+            {
+                sb.append("_overlay");
+            }
+            sb.append(".png");
             type.setIcon(register.registerIcon(sb.toString()));
             sb.delete(iTexture.length(), sb.length());
         }
@@ -172,7 +195,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         }
         if (ArmorType.loadFromNBT(stack.getTagCompound()).hasOverlay() && (type != null) && type.equalsIgnoreCase("overlay"))
         {
-            builder.append("overlay");
+            builder.append("_overlay");
         }
         builder.append(".png");
 
