@@ -4,9 +4,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import ccm.perfectarmor.util.helper.NBTHelper;
+import ccm.perfectarmor.util.helper.RecipeHelper;
 import ccm.perfectarmor.util.helper.json.JsonHelper;
 import ccm.perfectarmor.util.helper.json.JsonNBTHelper;
-import ccm.perfectarmor.util.helper.recipe.RecipeHelper;
 import ccm.perfectarmor.util.lib.Archive;
 
 import com.google.gson.JsonObject;

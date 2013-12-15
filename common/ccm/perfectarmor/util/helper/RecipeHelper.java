@@ -1,4 +1,4 @@
-package ccm.perfectarmor.util.helper.recipe;
+package ccm.perfectarmor.util.helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,31 +15,34 @@ public class RecipeHelper
     public static IRecipe getRecipe(ArmorPiece piece, NBTTagCompound recipe)
     {
         Object[] temp = fix(recipe.toString());
-        Object[] data = new Object[temp.length];
+        for (Object o : temp)
+        {
+            System.out.println("TEMP PART:" + o.toString());
+        }
+        Object[] data = new Object[temp.length - 3];
         int index = 3;
         for (int i = 0; i < temp.length; i += 2)
         {
             String s = (String) temp[i];
-            System.out.println("S:" + s);
             if (s.equalsIgnoreCase("top"))
             {
                 data[0] = temp[i + 1];
-                System.out.println("TOP:"+temp[i + 1]);
             } else if (s.equalsIgnoreCase("middle"))
             {
                 data[1] = temp[i + 1];
-                System.out.println("MIDDLE:"+temp[i + 1]);
             } else if (s.equalsIgnoreCase("bottom"))
             {
                 data[2] = temp[i + 1];
-                System.out.println("BOTTOM:"+temp[i + 1]);
             } else
             {
                 data[index++] = s.toCharArray()[0];
-                System.out.println("TOP:"+temp[i + 1]);
                 ItemStack tmp = getItemStack((String) temp[i + 1]);
                 data[index++] = tmp.itemID > 0 ? tmp : temp[i + 1];
             }
+        }
+        for (Object o : data)
+        {
+            System.out.println("DATA PART:" + o.toString());
         }
         int id;
         switch (piece.getType())
@@ -72,25 +75,18 @@ public class RecipeHelper
 
     private static Object[] fix(String in)
     {
-        System.out.println(in);
         in = in.substring(2);
-        System.out.println(in);
         in = in.replace(",]", "");
-        System.out.println(in);
         String[] tmp = in.split(",");
         List<String> temp = new ArrayList<String>();
         for (String s : tmp)
         {
-            System.out.println(s);
             String[] r = s.split(":");
             for (int i = 0; i < r.length; i++)
             {
-                System.out.println(r[i]);
                 temp.add(r[i]);
             }
         }
-        System.out.println(temp);
-        System.out.println("DONE FIXING!!!");
         return temp.toArray();
     }
 
@@ -100,9 +96,9 @@ public class RecipeHelper
         int meta = 0;
 
         // Decompose String into (item ID, Meta) pairs
-        final String[] tmp = itemID.split("|");
+        final String[] tmp = itemID.split("&");
         if ((tmp != null) && (tmp.length > 0))
-        {
+        {          
             try
             {
                 id = Integer.parseInt(tmp[0]);
