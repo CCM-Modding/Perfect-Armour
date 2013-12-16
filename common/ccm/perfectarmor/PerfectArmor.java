@@ -11,6 +11,7 @@ import ccm.perfectarmor.item.CustomArmor;
 import ccm.perfectarmor.proxy.CommonProxy;
 import ccm.perfectarmor.types.ArmorType;
 import ccm.perfectarmor.types.ArmorTypes;
+import ccm.perfectarmor.util.helper.RecipeHelper;
 import ccm.perfectarmor.util.helper.json.JsonDefaults;
 import ccm.perfectarmor.util.lib.Archive;
 import cpw.mods.fml.common.Mod;
@@ -84,7 +85,7 @@ public class PerfectArmor
     @EventHandler
     public void init(final FMLInitializationEvent event)
     {
-        
+        RecipeHelper.deleteVanilla();
         for (Map.Entry<Integer, ArmorType> e : ArmorTypes.getTypes().entrySet())
         {
             GameRegistry.addRecipe(e.getValue().getHelmet().getIRecipe());

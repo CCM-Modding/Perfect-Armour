@@ -3,7 +3,9 @@ package ccm.perfectarmor.util.helper;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -15,10 +17,6 @@ public class RecipeHelper
     public static IRecipe getRecipe(ArmorPiece piece, NBTTagCompound recipe)
     {
         Object[] temp = fix(recipe.toString());
-        for (Object o : temp)
-        {
-            System.out.println("TEMP PART:" + o.toString());
-        }
         Object[] data = new Object[temp.length - 3];
         int index = 3;
         for (int i = 0; i < temp.length; i += 2)
@@ -39,10 +37,6 @@ public class RecipeHelper
                 ItemStack tmp = getItemStack((String) temp[i + 1]);
                 data[index++] = tmp.itemID > 0 ? tmp : temp[i + 1];
             }
-        }
-        for (Object o : data)
-        {
-            System.out.println("DATA PART:" + o.toString());
         }
         int id;
         switch (piece.getType())
@@ -118,5 +112,50 @@ public class RecipeHelper
             }
         }
         return new ItemStack(id, 1, meta);
+    }
+
+    private static List<ItemStack> delete = new ArrayList<ItemStack>();
+    static
+    {
+        // leather
+        delete.add(new ItemStack(Item.helmetLeather));
+        delete.add(new ItemStack(Item.plateLeather));
+        delete.add(new ItemStack(Item.legsLeather));
+        delete.add(new ItemStack(Item.bootsLeather));
+        // iron
+        delete.add(new ItemStack(Item.helmetIron));
+        delete.add(new ItemStack(Item.plateIron));
+        delete.add(new ItemStack(Item.legsIron));
+        delete.add(new ItemStack(Item.bootsIron));
+        // gold
+        delete.add(new ItemStack(Item.helmetGold));
+        delete.add(new ItemStack(Item.plateGold));
+        delete.add(new ItemStack(Item.legsGold));
+        delete.add(new ItemStack(Item.bootsGold));
+        // diamond
+        delete.add(new ItemStack(Item.helmetDiamond));
+        delete.add(new ItemStack(Item.plateDiamond));
+        delete.add(new ItemStack(Item.legsDiamond));
+        delete.add(new ItemStack(Item.bootsDiamond));
+    }
+
+    public static void deleteVanilla()
+    {
+        List<IRecipe> minecraftRecipes = CraftingManager.getInstance().getRecipeList();
+        for (int i = 0; i < minecraftRecipes.size(); ++i)
+        {
+            IRecipe tmp = minecraftRecipes.get(i);
+            ItemStack result = tmp.getRecipeOutput();
+            if (result != null)
+            {
+                for (final ItemStack toRemove : delete)
+                {
+                    if(toRemove.isItemEqual(result)){
+                        minecraftRecipes.remove(i);
+                        --i;
+                    }
+                }
+            }
+        }
     }
 }
