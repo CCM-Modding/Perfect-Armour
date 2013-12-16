@@ -10,6 +10,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import static ccm.perfectarmor.util.lib.Archive.MOD_NAME;
+
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class JsonDefaults
@@ -21,6 +23,7 @@ public class JsonDefaults
         File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
         if (!armours.exists())
         {
+            Systemp.out.println("[INFO] " + MOD_NAME + " is loading it's armor config, if the config is already created this is a BUG Please report!");
             JsonDefaults.addDefaults(armours);
         }
         JsonHelper.read(armours);
