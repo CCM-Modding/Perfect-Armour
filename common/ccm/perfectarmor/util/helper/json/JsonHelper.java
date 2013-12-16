@@ -26,7 +26,10 @@ public class JsonHelper
         }
         for (JsonElement element : rootArray)
         {
-            ArmorTypes.addType(element.getAsJsonObject());
+            if (element != null)
+            {
+                ArmorTypes.addType(element.getAsJsonObject());
+            }
         }
     }
 
