@@ -103,6 +103,11 @@ public final class ArmorPiece
     {
         return RecipeHelper.getRecipe(this, recipe);
     }
+    
+    public boolean hasIRecipe()
+    {
+        return recipe != null;
+    }
 
     public NBTTagCompound writeToNBT(NBTTagCompound nbt)
     {

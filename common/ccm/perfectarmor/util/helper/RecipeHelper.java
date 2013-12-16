@@ -69,6 +69,9 @@ public class RecipeHelper
 
     private static Object[] fix(String in)
     {
+        if(in.contains("ARMOR.PIECE.RECIPE")){
+            in = in.replace("ARMOR.PIECE.RECIPE", "");
+        }
         in = in.substring(2);
         in = in.replace(",]", "");
         String[] tmp = in.split(",");

@@ -22,19 +22,22 @@ public final class JsonNBTHelper
 {
     public static NBTBase parseJSON(JsonElement element)
     {
-        if (!element.isJsonNull())
+        if (element != null)
         {
-            if (element.isJsonObject())
+            if (!element.isJsonNull())
             {
-                return parseJSON(element.getAsJsonObject());
-            }
-            if (element.isJsonPrimitive())
-            {
-                return parseJSON(element.getAsJsonPrimitive());
-            }
-            if (element.isJsonArray())
-            {
-                return parseJSON(element.getAsJsonArray());
+                if (element.isJsonObject())
+                {
+                    return parseJSON(element.getAsJsonObject());
+                }
+                if (element.isJsonPrimitive())
+                {
+                    return parseJSON(element.getAsJsonPrimitive());
+                }
+                if (element.isJsonArray())
+                {
+                    return parseJSON(element.getAsJsonArray());
+                }
             }
         }
         return null;

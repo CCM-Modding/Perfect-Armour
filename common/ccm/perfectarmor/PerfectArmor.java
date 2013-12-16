@@ -4,11 +4,9 @@ import static ccm.perfectarmor.util.lib.Archive.CLIENT_PROXY;
 import static ccm.perfectarmor.util.lib.Archive.MOD_ID;
 import static ccm.perfectarmor.util.lib.Archive.MOD_NAME;
 import static ccm.perfectarmor.util.lib.Archive.SERVER_PROXY;
-
-import java.util.Map;
-
 import ccm.perfectarmor.item.CustomArmor;
 import ccm.perfectarmor.proxy.CommonProxy;
+import ccm.perfectarmor.types.ArmorPiece;
 import ccm.perfectarmor.types.ArmorType;
 import ccm.perfectarmor.types.ArmorTypes;
 import ccm.perfectarmor.util.helper.RecipeHelper;
@@ -86,12 +84,20 @@ public class PerfectArmor
     public void init(final FMLInitializationEvent event)
     {
         RecipeHelper.deleteVanilla();
-        for (Map.Entry<Integer, ArmorType> e : ArmorTypes.getTypes().entrySet())
+        for (ArmorType type : ArmorTypes.getTypes().values())
         {
-            GameRegistry.addRecipe(e.getValue().getHelmet().getIRecipe());
-            GameRegistry.addRecipe(e.getValue().getChest().getIRecipe());
-            GameRegistry.addRecipe(e.getValue().getPants().getIRecipe());
-            GameRegistry.addRecipe(e.getValue().getBoots().getIRecipe());
+            safeAddRecipe(type.getHelmet());
+            safeAddRecipe(type.getChest());
+            safeAddRecipe(type.getPants());
+            safeAddRecipe(type.getBoots());
+        }
+    }
+
+    private static void safeAddRecipe(ArmorPiece piece)
+    {
+        if (piece != null && piece.hasIRecipe())
+        {
+            GameRegistry.addRecipe(piece.getIRecipe());
         }
     }
 
