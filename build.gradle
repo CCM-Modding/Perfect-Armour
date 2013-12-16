@@ -16,7 +16,7 @@ apply plugin: "forge"
 
 group = 'ccm.perfectarmor'
 version = "0.0.1.${System.env.BUILD_NUMBER}"
-archivesBaseName = 'PerfectArmor'
+archivesBaseName = 'Perfect-Armour'
 
 sourceSets {
     main {
