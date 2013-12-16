@@ -144,9 +144,6 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
                     ItemStack tmp = new ItemStack(id, 1, e.getKey());
                     NBTTagCompound nbt = new NBTTagCompound();
 
-                    ArmorPiece temp = e.getValue().getPiece(armorType);
-                    temp.getClass();
-
                     e.getValue().writeToNBT(armorType, nbt);
                     tmp.setTagCompound(nbt);
                     tmp.setItemDamage(0);
@@ -188,30 +185,34 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         for (ArmorType type : ArmorTypes.getTypes().values())
         {
-            StringBuilder sb = new StringBuilder();
-            sb.append(Archive.MOD_ID + ":");
-            sb.append(type.getTextureName());
-            sb.append("/");
-            switch (armorType)
+            ArmorPiece piece = type.getPiece(armorType);
+            if ((piece != null) && !piece.isWorthless())
             {
-                case 0:
-                    sb.append("helmet");
-                    break;
-                case 1:
-                    sb.append("chestplate");
-                    break;
-                case 2:
-                    sb.append("leggings");
-                    break;
-                case 3:
-                    sb.append("boots");
-                    break;
+                StringBuilder sb = new StringBuilder();
+                sb.append(Archive.MOD_ID + ":");
+                sb.append(type.getTextureName());
+                sb.append("/");
+                switch (armorType)
+                {
+                    case 0:
+                        sb.append("helmet");
+                        break;
+                    case 1:
+                        sb.append("chestplate");
+                        break;
+                    case 2:
+                        sb.append("leggings");
+                        break;
+                    case 3:
+                        sb.append("boots");
+                        break;
+                }
+                if (type.hasOverlay())
+                {
+                    piece.setOverlay(register.registerIcon(sb.toString() + "_overlay"));
+                }
+                piece.setIcon(register.registerIcon(sb.toString()));
             }
-            if (type.hasOverlay())
-            {
-                type.getPiece(armorType).setOverlay(register.registerIcon(sb.toString() + "_overlay"));
-            }
-            type.getPiece(armorType).setIcon(register.registerIcon(sb.toString()));
         }
     }
 }
