@@ -76,7 +76,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
     {
-        return (int)(getPiece(armor).absorptionRatio() / 0.4D);
+        return (int)(getPiece(armor).absorptionRatio() / 0.04D);
     }
 
     private ArmorPiece getPiece(ItemStack stack)
