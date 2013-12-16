@@ -9,6 +9,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonSyntaxException;
 
 public class JsonHelper
 {
@@ -20,11 +21,16 @@ public class JsonHelper
         try
         {
             rootArray = PARSER.parse(new FileReader(file)).getAsJsonArray();
+        } catch (JsonSyntaxException e)
+        {
+            System.out.println("DO NOT REPORT THE ERROR BELOW, IT IS YOUR FAULT");
+            e.printStackTrace();
         } catch (Exception e)
         {
-            System.out.println("[ERROR] Something went HORRIBLY wrong if you see this check your config file it could be your fault!. Also REPORT the stack trace below WITH your config file and PLEASE USE PASTEBIN.COM or something like it!!!!!!");
+            System.out.println("Something went VERY wrong");
             e.printStackTrace();
         }
+
         for (JsonElement element : rootArray)
         {
             if (element != null)
