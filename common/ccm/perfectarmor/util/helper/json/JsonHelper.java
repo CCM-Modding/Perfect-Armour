@@ -22,13 +22,17 @@ public class JsonHelper
             rootArray = PARSER.parse(new FileReader(file)).getAsJsonArray();
         } catch (Exception e)
         {
+            System.out.println("[ERROR] Something went HORRIBLY wrong if you see this report stack trace below!");
             e.printStackTrace();
         }
-        for (JsonElement element : rootArray)
+        if (rootArray != null)
         {
-            if (element != null)
+            for (JsonElement element : rootArray)
             {
-                ArmorTypes.addType(element.getAsJsonObject());
+                if (element != null)
+                {
+                    ArmorTypes.addType(element.getAsJsonObject());
+                }
             }
         }
     }
