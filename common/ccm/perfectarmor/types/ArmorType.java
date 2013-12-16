@@ -166,8 +166,9 @@ public final class ArmorType
         result = (prime * result) + ((displayName == null) ? 0 : displayName.hashCode());
         result = (prime * result) + (hasOverlay ? 1231 : 1237);
         result = (prime * result) + ((helmet == null) ? 0 : helmet.hashCode());
-        result = (prime * result) + ((textureName == null) ? 0 : textureName.hashCode());
+        result = (prime * result) + id;
         result = (prime * result) + ((pants == null) ? 0 : pants.hashCode());
+        result = (prime * result) + ((textureName == null) ? 0 : textureName.hashCode());
         return result;
     }
 
@@ -175,14 +176,23 @@ public final class ArmorType
     public String toString()
     {
         StringBuilder builder = new StringBuilder();
-        builder.append("ArmourType [textureName=").append(textureName).append(", displayName=").append(displayName).append(", hasOverlay=").append(hasOverlay);
-
-        builder.append(", helmet=").append(getHelmet() != null ? getHelmet().toString() : "null");
-        builder.append(", chest=").append(getChest() != null ? getChest().toString() : "null");
-        builder.append(", pants=").append(getPants() != null ? getPants().toString() : "null");
-        builder.append(", boots=").append(getBoots() != null ? getBoots().toString() : "null");
-
-        builder.append(", hashCode()=").append(hashCode()).append("]");
+        builder.append("ArmorType [id=");
+        builder.append(id);
+        builder.append(", textureName=");
+        builder.append(textureName);
+        builder.append(", displayName=");
+        builder.append(displayName);
+        builder.append(", hasOverlay=");
+        builder.append(hasOverlay);
+        builder.append(", helmet=");
+        builder.append(helmet);
+        builder.append(", chest=");
+        builder.append(chest);
+        builder.append(", pants=");
+        builder.append(pants);
+        builder.append(", boots=");
+        builder.append(boots);
+        builder.append("]");
         return builder.toString();
     }
 
@@ -246,13 +256,7 @@ public final class ArmorType
         {
             return false;
         }
-        if (textureName == null)
-        {
-            if (other.textureName != null)
-            {
-                return false;
-            }
-        } else if (!textureName.equals(other.textureName))
+        if (id != other.id)
         {
             return false;
         }
@@ -263,6 +267,16 @@ public final class ArmorType
                 return false;
             }
         } else if (!pants.equals(other.pants))
+        {
+            return false;
+        }
+        if (textureName == null)
+        {
+            if (other.textureName != null)
+            {
+                return false;
+            }
+        } else if (!textureName.equals(other.textureName))
         {
             return false;
         }

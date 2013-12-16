@@ -39,6 +39,11 @@ public final class ArmorPiece
                 .getNumber(piece, "absorptionRatio").doubleValue(), type, (NBTTagCompound) JsonNBTHelper.parseJSON(JsonHelper.getJsonObject(piece, "recipe")));
     }
 
+    public boolean isWorthless()
+    {
+        return (displayName != null) && !displayName.equalsIgnoreCase("") && (durability > 0) && (maxAbsorption > 0) && (absorptionRatio > 0) && hasRecipe();
+    }
+
     public Icon getIcon()
     {
         return icon;
@@ -103,8 +108,8 @@ public final class ArmorPiece
     {
         return RecipeHelper.getRecipe(this, recipe);
     }
-    
-    public boolean hasIRecipe()
+
+    public boolean hasRecipe()
     {
         return recipe != null;
     }
@@ -148,7 +153,10 @@ public final class ArmorPiece
         result = (prime * result) + (int) (temp ^ (temp >>> 32));
         result = (prime * result) + ((displayName == null) ? 0 : displayName.hashCode());
         result = (prime * result) + durability;
+        result = (prime * result) + ((icon == null) ? 0 : icon.hashCode());
         result = (prime * result) + maxAbsorption;
+        result = (prime * result) + ((overlay == null) ? 0 : overlay.hashCode());
+        result = (prime * result) + ((parent == null) ? 0 : parent.hashCode());
         result = (prime * result) + ((recipe == null) ? 0 : recipe.hashCode());
         result = (prime * result) + type;
         return result;
@@ -158,7 +166,9 @@ public final class ArmorPiece
     public String toString()
     {
         StringBuilder builder = new StringBuilder();
-        builder.append("ArmourPiece [displayName=");
+        builder.append("ArmorPiece [parent=");
+        builder.append(parent);
+        builder.append(", displayName=");
         builder.append(displayName);
         builder.append(", durability=");
         builder.append(durability);
@@ -170,6 +180,17 @@ public final class ArmorPiece
         builder.append(type);
         builder.append(", recipe=");
         builder.append(recipe);
+        builder.append(", icon=");
+        builder.append(icon);
+        builder.append(", overlay=");
+        builder.append(overlay);
+        builder.append(", hasIRecipe()=");
+        builder.append(hasRecipe());
+        if (hasRecipe())
+        {
+            builder.append(", getIRecipe()=");
+            builder.append(getIRecipe());
+        }
         builder.append(", hashCode()=");
         builder.append(hashCode());
         builder.append("]");
@@ -210,7 +231,37 @@ public final class ArmorPiece
         {
             return false;
         }
+        if (icon == null)
+        {
+            if (other.icon != null)
+            {
+                return false;
+            }
+        } else if (!icon.equals(other.icon))
+        {
+            return false;
+        }
         if (maxAbsorption != other.maxAbsorption)
+        {
+            return false;
+        }
+        if (overlay == null)
+        {
+            if (other.overlay != null)
+            {
+                return false;
+            }
+        } else if (!overlay.equals(other.overlay))
+        {
+            return false;
+        }
+        if (parent == null)
+        {
+            if (other.parent != null)
+            {
+                return false;
+            }
+        } else if (!parent.equals(other.parent))
         {
             return false;
         }

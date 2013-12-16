@@ -42,7 +42,7 @@ public class JsonHelper
 
     public static String getString(JsonObject element, String name)
     {
-        if (element != null && element.get(name) != null)
+        if ((element != null) && (element.get(name) != null))
         {
             return element.get(name).getAsString();
         }
@@ -51,7 +51,7 @@ public class JsonHelper
 
     public static boolean getBoolean(JsonObject element, String name)
     {
-        if (element != null && element.get(name) != null)
+        if ((element != null) && (element.get(name) != null))
         {
             return element.get(name).getAsBoolean();
         }
@@ -60,7 +60,7 @@ public class JsonHelper
 
     public static JsonObject getJsonObject(JsonObject element, String name)
     {
-        if (element != null && element.get(name) != null)
+        if ((element != null) && (element.get(name) != null))
         {
             return element.get(name).getAsJsonObject();
         }
@@ -69,7 +69,7 @@ public class JsonHelper
 
     public static Number getNumber(JsonObject element, String name)
     {
-        if (element != null && element.get(name) != null)
+        if ((element != null) && (element.get(name) != null))
         {
             return element.get(name).getAsNumber();
         }

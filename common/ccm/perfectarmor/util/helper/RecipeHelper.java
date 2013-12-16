@@ -69,7 +69,8 @@ public class RecipeHelper
 
     private static Object[] fix(String in)
     {
-        if(in.contains("ARMOR.PIECE.RECIPE")){
+        if (in.contains("ARMOR.PIECE.RECIPE"))
+        {
             in = in.replace("ARMOR.PIECE.RECIPE", "");
         }
         in = in.substring(2);
@@ -153,7 +154,8 @@ public class RecipeHelper
             {
                 for (final ItemStack toRemove : delete)
                 {
-                    if(toRemove.isItemEqual(result)){
+                    if (toRemove.isItemEqual(result))
+                    {
                         minecraftRecipes.remove(i);
                         --i;
                     }

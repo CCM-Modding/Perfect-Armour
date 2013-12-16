@@ -76,7 +76,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     @Override
     public int getArmorDisplay(EntityPlayer player, ItemStack armor, int slot)
     {
-        return (int)(getPiece(armor).absorptionRatio() / 0.04D);
+        return (int) (getPiece(armor).absorptionRatio() / 0.04D);
     }
 
     private ArmorPiece getPiece(ItemStack stack)
@@ -137,14 +137,20 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         for (Map.Entry<Integer, ArmorType> e : ArmorTypes.getTypes().entrySet())
         {
-            ItemStack tmp = new ItemStack(id, 1, e.getKey());
-            NBTTagCompound nbt = new NBTTagCompound();
+            if (e.getValue() != null)
+            {
+                if ((e.getValue().getPiece(armorType) != null) && !e.getValue().getPiece(armorType).isWorthless())
+                {
+                    ItemStack tmp = new ItemStack(id, 1, e.getKey());
+                    NBTTagCompound nbt = new NBTTagCompound();
 
-            e.getValue().writeToNBT(armorType, nbt);
-            tmp.setTagCompound(nbt);
-            tmp.setItemDamage(0);
+                    e.getValue().writeToNBT(armorType, nbt);
+                    tmp.setTagCompound(nbt);
+                    tmp.setItemDamage(0);
 
-            list.add(tmp);
+                    list.add(tmp);
+                }
+            }
         }
     }
 

@@ -95,7 +95,7 @@ public class PerfectArmor
 
     private static void safeAddRecipe(ArmorPiece piece)
     {
-        if (piece != null && piece.hasIRecipe())
+        if ((piece != null) && piece.hasRecipe())
         {
             GameRegistry.addRecipe(piece.getIRecipe());
         }
