@@ -41,7 +41,8 @@ public final class ArmorPiece
 
     public boolean isWorthless()
     {
-        return (displayName != null) && !displayName.equalsIgnoreCase("") && (durability > 0) && (maxAbsorption > 0) && (absorptionRatio > 0) && hasRecipe();
+        boolean tmp = ((displayName == null) && displayName.equalsIgnoreCase("") && (durability == 0) && (maxAbsorption == 0) && (absorptionRatio == 0) && !hasRecipe());
+        return tmp;
     }
 
     public Icon getIcon()

@@ -144,6 +144,9 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
                     ItemStack tmp = new ItemStack(id, 1, e.getKey());
                     NBTTagCompound nbt = new NBTTagCompound();
 
+                    ArmorPiece temp = e.getValue().getPiece(armorType);
+                    temp.getClass();
+
                     e.getValue().writeToNBT(armorType, nbt);
                     tmp.setTagCompound(nbt);
                     tmp.setItemDamage(0);

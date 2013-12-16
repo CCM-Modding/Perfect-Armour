@@ -13,10 +13,10 @@ public final class ArmorType
     private final String textureName;
     private final String displayName;
     private final boolean hasOverlay;
-    private final ArmorPiece helmet;
-    private final ArmorPiece chest;
-    private final ArmorPiece pants;
-    private final ArmorPiece boots;
+    private ArmorPiece helmet;
+    private ArmorPiece chest;
+    private ArmorPiece pants;
+    private ArmorPiece boots;
 
     public ArmorType(int id, String textureName, String displayName, boolean hasOverlay, ArmorPiece helmet, ArmorPiece chest, ArmorPiece pants, ArmorPiece boots)
     {
@@ -62,18 +62,34 @@ public final class ArmorType
         if (helmet != null)
         {
             helmet.setParent(this);
+            if (helmet.isWorthless())
+            {
+                helmet = null;
+            }
         }
         if (chest != null)
         {
             chest.setParent(this);
+            if (chest.isWorthless())
+            {
+                chest = null;
+            }
         }
         if (pants != null)
         {
             pants.setParent(this);
+            if (pants.isWorthless())
+            {
+                pants = null;
+            }
         }
         if (boots != null)
         {
             boots.setParent(this);
+            if (boots.isWorthless())
+            {
+                boots = null;
+            }
         }
     }
 
