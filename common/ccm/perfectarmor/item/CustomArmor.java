@@ -36,7 +36,7 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     {
         return true;
     }
-    
+
     @Override
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
