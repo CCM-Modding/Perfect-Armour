@@ -9,6 +9,7 @@ import ccm.perfectarmor.proxy.CommonProxy;
 import ccm.perfectarmor.types.ArmorPiece;
 import ccm.perfectarmor.types.ArmorType;
 import ccm.perfectarmor.types.ArmorTypes;
+import ccm.perfectarmor.util.helper.PlayerStalker;
 import ccm.perfectarmor.util.helper.RecipeHelper;
 import ccm.perfectarmor.util.helper.json.JsonDefaults;
 import ccm.perfectarmor.util.lib.Archive;
@@ -91,6 +92,8 @@ public class PerfectArmor
             safeAddRecipe(type.getPants());
             safeAddRecipe(type.getBoots());
         }
+
+        GameRegistry.registerPlayerTracker(new PlayerStalker());
     }
 
     private static void safeAddRecipe(ArmorPiece piece)
