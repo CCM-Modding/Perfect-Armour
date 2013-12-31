@@ -14,10 +14,10 @@ A mod to create armor tiers that fit with your pack/server.
         "maxAbsorption": 500000,
         "absorptionRatio": 0.04,
         "recipe": {
-        "top": "xxx",
-        "middle": "x x",
-        "bottom": "   ",
-        "x": "334"
+            "top": "xxx",
+            "middle": "x x",
+            "bottom": "   ",
+            "x": "334"
         }
     }
 }
