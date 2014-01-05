@@ -59,11 +59,9 @@ public class RecipeHelper
         }
         ItemStack result = new ItemStack(id, 1, piece.getParent().getID());
         NBTTagCompound nbt = new NBTTagCompound();
-
         piece.getParent().writeToNBT(piece.getType(), nbt);
         result.setTagCompound(nbt);
         result.setItemDamage(0);
-
         return new ShapedOreRecipe(result, data);
     }
 
@@ -92,7 +90,6 @@ public class RecipeHelper
     {
         int id = 0;
         int meta = 0;
-
         // Decompose String into (item ID, Meta) pairs
         final String[] tmp = itemID.split("&");
         if ((tmp != null) && (tmp.length > 0))

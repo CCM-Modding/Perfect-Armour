@@ -90,8 +90,8 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
         return ArmorPiece.loadFromNBT(armorType, stack.getTagCompound());
     }
 
-    @SideOnly(Side.CLIENT)
     @Override
+    @SideOnly(Side.CLIENT)
     public boolean requiresMultipleRenderPasses()
     {
         return true;
@@ -124,11 +124,9 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     public String getItemDisplayName(ItemStack stack)
     {
         String s = (ArmorTypes.getType(stack).getDisplayName() + " " + getPiece(stack).getDisplayName());
-
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("display"))
         {
             NBTTagCompound nbt = stack.getTagCompound().getCompoundTag("display");
-
             if (nbt.hasKey("Name"))
             {
                 s = nbt.getString("Name");
@@ -149,11 +147,9 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
                 {
                     ItemStack tmp = new ItemStack(id, 1, e.getKey());
                     NBTTagCompound nbt = new NBTTagCompound();
-
                     e.getValue().writeToNBT(armorType, nbt);
                     tmp.setTagCompound(nbt);
                     tmp.setItemDamage(0);
-
                     list.add(tmp);
                 }
             }
@@ -164,7 +160,6 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
         StringBuilder builder = new StringBuilder();
-
         builder.append(Archive.MOD_ID + ":textures/models/armor/");
         builder.append(ArmorTypes.getType(stack).getTextureName());
         builder.append("_layer_");
@@ -182,7 +177,6 @@ public class CustomArmor extends ItemArmor implements ISpecialArmor
             builder.append("_overlay");
         }
         builder.append(".png");
-
         return builder.toString();
     }
 

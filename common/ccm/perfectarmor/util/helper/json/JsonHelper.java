@@ -30,7 +30,6 @@ public class JsonHelper
             System.out.println("Something went VERY wrong");
             e.printStackTrace();
         }
-
         for (JsonElement element : rootArray)
         {
             if (element != null)

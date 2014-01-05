@@ -18,7 +18,14 @@ public final class ArmorType
     private ArmorPiece pants;
     private ArmorPiece boots;
 
-    public ArmorType(int id, String textureName, String displayName, boolean hasOverlay, ArmorPiece helmet, ArmorPiece chest, ArmorPiece pants, ArmorPiece boots)
+    public ArmorType(int id,
+                     String textureName,
+                     String displayName,
+                     boolean hasOverlay,
+                     ArmorPiece helmet,
+                     ArmorPiece chest,
+                     ArmorPiece pants,
+                     ArmorPiece boots)
     {
         this.id = id;
         this.textureName = textureName;

@@ -28,10 +28,8 @@ public class PerfectArmor
 {
     @Instance(MOD_ID)
     public static PerfectArmor instance;
-
     @SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
     public static CommonProxy proxy;
-
     public CustomArmor helmet;
     public CustomArmor chest;
     public CustomArmor pants;
@@ -45,7 +43,6 @@ public class PerfectArmor
         int chestID = 3001/* Item.plateLeather.itemID */;
         int pantsID = 3002/* Item.legsLeather.itemID */;
         int bootsID = 3003/* Item.bootsLeather.itemID */;
-
         // Getting rid of Leather
         // Item.itemsList[Item.helmetLeather.itemID] = null;
         // Item.itemsList[Item.plateLeather.itemID] = null;
@@ -66,17 +63,14 @@ public class PerfectArmor
         // Item.itemsList[Item.plateDiamond.itemID] = null;
         // Item.itemsList[Item.legsDiamond.itemID] = null;
         // Item.itemsList[Item.bootsDiamond.itemID] = null;
-
         helmet = new CustomArmor(helmetID, 1, 0);
         chest = new CustomArmor(chestID, 1, 1);
         pants = new CustomArmor(pantsID, 1, 2);
         boots = new CustomArmor(bootsID, 1, 3);
-
         GameRegistry.registerItem(helmet, "custom.helmet", Archive.MOD_ID);
         GameRegistry.registerItem(chest, "custom.chest", Archive.MOD_ID);
         GameRegistry.registerItem(pants, "custom.pants", Archive.MOD_ID);
         GameRegistry.registerItem(boots, "custom.boots", Archive.MOD_ID);
-
         JsonDefaults.loadJson(event);
     }
 
@@ -91,7 +85,6 @@ public class PerfectArmor
             safeAddRecipe(type.getPants());
             safeAddRecipe(type.getBoots());
         }
-
         GameRegistry.registerPlayerTracker(new PlayerStalker());
     }
 

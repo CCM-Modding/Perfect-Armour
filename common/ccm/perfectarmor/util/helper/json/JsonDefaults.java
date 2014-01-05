@@ -36,13 +36,11 @@ public class JsonDefaults
             file.createNewFile();
             // Create main array
             JsonArray rootArray = new JsonArray();
-
             addLeather(rootArray);
             addIron(rootArray);
             addGold(rootArray);
             addDiamond(rootArray);
             // Done making Defaults, now writing them
-
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             bw.write(gson.toJson(rootArray));

@@ -16,7 +16,6 @@ public final class NBTHelper
     public static boolean hasTag(final ItemStack item, final String keyName)
     {
         initCompound(item);
-
         return item.getTagCompound().hasKey(keyName);
     }
 
@@ -50,7 +49,6 @@ public final class NBTHelper
     public static void setString(final ItemStack item, final String keyName, final String keyValue)
     {
         initCompound(item);
-
         item.getTagCompound().setString(keyName, keyValue);
     }
 
@@ -67,7 +65,6 @@ public final class NBTHelper
     public static void setBoolean(final ItemStack item, final String keyName, final boolean keyValue)
     {
         initCompound(item);
-
         item.getTagCompound().setBoolean(keyName, keyValue);
     }
 
@@ -84,7 +81,6 @@ public final class NBTHelper
     public static void setByte(final ItemStack item, final String keyName, final byte keyValue)
     {
         initCompound(item);
-
         item.getTagCompound().setByte(keyName, keyValue);
     }
 
@@ -101,7 +97,6 @@ public final class NBTHelper
     public static void setInteger(final ItemStack item, final String keyName, final int keyValue)
     {
         initCompound(item);
-
         item.getTagCompound().setInteger(keyName, keyValue);
     }
 
@@ -118,12 +113,10 @@ public final class NBTHelper
     public static void setDouble(final ItemStack item, final String keyName, final double keyValue)
     {
         initCompound(item);
-
         item.getTagCompound().setDouble(keyName, keyValue);
     }
 
     // NON ITEM BASED NBT
-
     // String
     public static String getString(final NBTTagCompound nbt, final String keyName)
     {

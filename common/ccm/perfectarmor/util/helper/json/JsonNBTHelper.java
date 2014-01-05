@@ -73,7 +73,6 @@ public final class JsonNBTHelper
         {
             return new NBTTagByte("", (byte) (element.getAsBoolean() ? 1 : 0));
         }
-
         Number n = element.getAsNumber();
         if (n instanceof Byte)
         {
