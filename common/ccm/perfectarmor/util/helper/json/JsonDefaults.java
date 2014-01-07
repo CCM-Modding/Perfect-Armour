@@ -1,11 +1,12 @@
 package ccm.perfectarmor.util.helper.json;
 
-import static ccm.perfectarmor.util.lib.Archive.MOD_NAME;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import ccm.nucleum.omnium.CCMMod;
+import ccm.perfectarmor.PerfectArmor;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,12 +19,10 @@ public class JsonDefaults
 {
     public static void loadJson(final FMLPreInitializationEvent event)
     {
-        File configFolder = new File(event.getModConfigurationDirectory().getAbsolutePath() + "/CCM-Modding/");
-        configFolder.mkdirs();
-        File armours = new File(configFolder.getAbsolutePath() + "/Armours.cfg");
+        File armours = new File(CCMMod.configDir.getAbsolutePath() + "/Armours.cfg");
         if (!armours.exists())
         {
-            System.out.println("[INFO] " + MOD_NAME + " is loading it's armor config, if the config is already created this is a BUG Please report!");
+            PerfectArmor.instance.logger().info("loading it's armor config, if the config is already created this is a BUG Please report!");
             JsonDefaults.addDefaults(armours);
         }
         JsonHelper.read(armours);

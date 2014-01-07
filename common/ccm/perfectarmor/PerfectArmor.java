@@ -1,11 +1,8 @@
 package ccm.perfectarmor;
 
-import static ccm.perfectarmor.util.lib.Archive.CLIENT_PROXY;
 import static ccm.perfectarmor.util.lib.Archive.MOD_ID;
-import static ccm.perfectarmor.util.lib.Archive.MOD_NAME;
-import static ccm.perfectarmor.util.lib.Archive.SERVER_PROXY;
+import ccm.nucleum.omnium.CCMMod;
 import ccm.perfectarmor.item.CustomArmor;
-import ccm.perfectarmor.proxy.CommonProxy;
 import ccm.perfectarmor.types.ArmorPiece;
 import ccm.perfectarmor.types.ArmorType;
 import ccm.perfectarmor.types.ArmorTypes;
@@ -16,20 +13,17 @@ import ccm.perfectarmor.util.lib.Archive;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = MOD_ID, name = MOD_NAME, useMetadata = true)
+@Mod(modid = MOD_ID, useMetadata = true, dependencies = "required-after:nucleum_omnium")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-public class PerfectArmor
+public class PerfectArmor extends CCMMod
 {
     @Instance(MOD_ID)
     public static PerfectArmor instance;
-    @SidedProxy(serverSide = SERVER_PROXY, clientSide = CLIENT_PROXY)
-    public static CommonProxy proxy;
     public CustomArmor helmet;
     public CustomArmor chest;
     public CustomArmor pants;
@@ -38,6 +32,7 @@ public class PerfectArmor
     @EventHandler
     public void preInit(final FMLPreInitializationEvent event)
     {
+        initLogger();
         // Getting our ids
         int helmetID = 3000/* Item.helmetLeather.itemID */;
         int chestID = 3001/* Item.plateLeather.itemID */;

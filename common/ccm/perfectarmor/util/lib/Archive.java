@@ -3,7 +3,6 @@ package ccm.perfectarmor.util.lib;
 public final class Archive
 {
     public static final String MOD_ID = "perfectarmor";
-    public static final String MOD_NAME = "Perfect Armor";
     public static final String PROXY = "ccm." + MOD_ID + ".proxy.";
     public static final String SERVER_PROXY = PROXY + "CommonProxy";
     public static final String CLIENT_PROXY = PROXY + "ClientProxy";

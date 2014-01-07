@@ -27,7 +27,7 @@ public final class PlayerStalker implements IPlayerTracker
     {
         ItemStack tmp = new ItemStack(Item.writtenBook);
         NBTTagCompound nbt = new NBTTagCompound();
-        nbt.setString("title", "Perfect Armor");
+        nbt.setString("title", "Perfect Armor Help");
         nbt.setString("author", "CCM Modding");
         NBTTagList pages = new NBTTagList("pages");
         // Clay can edit below
@@ -59,5 +59,11 @@ public final class PlayerStalker implements IPlayerTracker
 
     @Override
     public void onPlayerRespawn(final EntityPlayer player)
-    {}
+    {
+        final NBTTagCompound tag = player.getEntityData();
+        if (!tag.hasKey(NBT))
+        {
+            tag.setBoolean(NBT, true);
+        }
+    }
 }

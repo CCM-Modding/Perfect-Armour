@@ -9,6 +9,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import ccm.nucleum.omnium.utils.helper.FunctionHelper;
 import ccm.perfectarmor.PerfectArmor;
 import ccm.perfectarmor.types.ArmorPiece;
 
@@ -34,7 +35,7 @@ public class RecipeHelper
             } else
             {
                 data[index++] = s.toCharArray()[0];
-                ItemStack tmp = getItemStack((String) temp[i + 1]);
+                ItemStack tmp = FunctionHelper.getItemFromString((String) temp[i + 1], "&");
                 data[index++] = tmp.itemID > 0 ? tmp : temp[i + 1];
             }
         }
@@ -84,35 +85,6 @@ public class RecipeHelper
             }
         }
         return temp.toArray();
-    }
-
-    private static ItemStack getItemStack(final String itemID)
-    {
-        int id = 0;
-        int meta = 0;
-        // Decompose String into (item ID, Meta) pairs
-        final String[] tmp = itemID.split("&");
-        if ((tmp != null) && (tmp.length > 0))
-        {
-            try
-            {
-                id = Integer.parseInt(tmp[0]);
-                if (tmp.length > 1)
-                {
-                    try
-                    {
-                        meta = Integer.parseInt(tmp[1]);
-                    } catch (final Exception ex)
-                    {
-                        meta = 0;
-                    }
-                }
-            } catch (final Exception ex)
-            {
-                id = 0;
-            }
-        }
-        return new ItemStack(id, 1, meta);
     }
 
     private static List<ItemStack> delete = new ArrayList<ItemStack>();
